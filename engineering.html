@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Проектирование и Альбом технических решений (АТР 2026) — PipePrime</title>
+  <meta name="description" content="Инженерная поддержка проектировщиков и монтажных организаций: нормативная база (ГОСТ 32415-2013, ГОСТ Р 56730-2015, СП 315.1325800.2017), типовые узлы тепловых сетей, скачивание АТР 2026.">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" type="image/png" href="assets/images/pipe_cross_section.png">
+</head>
+<body>
+
+  <!-- Шапка -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo">
+        <div class="logo__mark">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="logo__text">
+          <div class="logo__title">Pipe<span>Prime</span></div>
+          <div class="logo__desc">Поставки труб</div>
+        </div>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="catalog.html" class="nav-link">Каталог</a>
+        <a href="calculator.html" class="nav-link">Калькулятор</a>
+        <a href="delivery.html" class="nav-link">Доставка и оплата</a>
+        <a href="about.html" class="nav-link">О компании</a>
+        <a href="contacts.html" class="nav-link">Контакты</a>
+      </nav>
+
+      <div class="header__actions">
+        <div class="phone-button">
+          <a href="tel:+74951287930" class="phone-button__number">+7 (495) 128-79-30</a>
+          <div class="phone-button__hint"><span class="status-dot"></span> Отдел комплектации</div>
+        </div>
+
+        <button class="spec-cart-btn open-spec-drawer" title="Спецификация">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+          <span>Спецификация</span>
+          <span class="badge spec-cart-count" style="display:none;">0</span>
+        </button>
+
+        <button class="burger-btn" aria-label="Открыть меню">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Заголовок страницы -->
+  <div style="padding: 40px 0 20px; background: rgba(15, 23, 42, 0.4); border-bottom: 1px solid var(--border-subtle);">
+    <div class="container">
+      <div style="display: flex; gap: 8px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
+        <a href="index.html" style="color: var(--text-secondary);">Главная</a>
+        <span>/</span>
+        <span style="color: var(--accent-primary);">Проектирование и АТР</span>
+      </div>
+      <h1 style="font-size: 2.2rem; margin-bottom: 8px;">Инженерная база и типовые решения</h1>
+      <p style="color: var(--text-secondary); max-width: 800px;">
+        Полный комплекс нормативно-технической документации, расчетных методик и типовых узлов для проектирования систем теплоснабжения и ГВС из труб PE-RT тип II.
+      </p>
+    </div>
+  </div>
+
+  <main class="section">
+    <div class="container">
+      
+      <!-- Блок скачивания АТР 2026 -->
+      <div class="atr-banner" style="margin-bottom: 60px;">
+        <div>
+          <div class="subheading-kicker">Техническая документация 2026</div>
+          <h2 style="margin: 14px 0 16px;">Альбом технических решений (АТР 2026)</h2>
+          <p style="font-size: 1.05rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 24px;">
+            «Полимерные напорные трубопроводы для систем ГВС и отопления Boilerberg / PipePrime». Содержит правила гидравлического расчета, методики компенсации температурных расширений, схемы неподвижных опор, колодцев и тепловых камер.
+          </p>
+          <button class="btn btn--primary btn--lg" data-open-modal="modal-quote">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            Запросить АТР 2026 для проекта
+          </button>
+        </div>
+        <div class="atr-preview">
+          <img src="assets/images/atr_cover.png" alt="АТР 2026" class="atr-preview__book">
+        </div>
+      </div>
+
+      <!-- Содержание разделов АТР -->
+      <div class="section-header">
+        <div class="section-header__subtitle">Структура документа</div>
+        <h2 class="section-header__title">Содержание Альбома типовых решений</h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 60px;">
+        <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 24px;">
+          <h4 style="color: var(--accent-primary); margin-bottom: 12px;">1. Общие сведения и свойства</h4>
+          <ul style="font-size: 0.9rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 8px;">
+            <li>• Нормативная база проектирования (СП 315, СП 124, СП 399)</li>
+            <li>• Физико-механические свойства термостойкого полиэтилена PE-RT тип II</li>
+            <li>• Таблицы химической стойкости к теплоносителям и антифризам</li>
+          </ul>
+        </div>
+
+        <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 24px;">
+          <h4 style="color: var(--accent-primary); margin-bottom: 12px;">2. Продукция и типоразмеры</h4>
+          <ul style="font-size: 0.9rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 8px;">
+            <li>• Напорные трубы d25–400 мм (SDR 7.4 / SDR 9 / SDR 11)</li>
+            <li>• Литые фитинги спигот и переходы</li>
+            <li>• Электросварные муфты и отводы</li>
+            <li>• Предизолированные фасонные элементы ППУ/ПЭ и ППУ/ОЦ</li>
+          </ul>
+        </div>
+
+        <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 24px;">
+          <h4 style="color: var(--accent-primary); margin-bottom: 12px;">3. Типовые решения прокладки</h4>
+          <ul style="font-size: 0.9rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 8px;">
+            <li>• Подключение к стальным трубопроводам и задвижкам (НСПС, фланцы)</li>
+            <li>• Конструкции и расчет неподвижных опор (НОП)</li>
+            <li>• Прокладка надземная и на эстакадах в оболочке ОЦ</li>
+            <li>• Обустройство тепловых камер и врезок</li>
+          </ul>
+        </div>
+
+        <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 24px;">
+          <h4 style="color: var(--accent-primary); margin-bottom: 12px;">4. Проектирование и расчеты</h4>
+          <ul style="font-size: 0.9rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 8px;">
+            <li>• Гидравлический расчет и выбор оптимального диаметра</li>
+            <li>• Самокомпенсация температурных расширений в грунте</li>
+            <li>• Допустимые радиусы изгиба гибких труб</li>
+          </ul>
+        </div>
+
+        <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 24px;">
+          <h4 style="color: var(--accent-primary); margin-bottom: 12px;">5. Системы снеготаяния</h4>
+          <ul style="font-size: 0.9rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 8px;">
+            <li>• Расчет тепловой мощности для спортивных полей</li>
+            <li>• Укладка контуров и коллекторные группы</li>
+            <li>• Инструкции по гидравлическим испытаниям</li>
+          </ul>
+        </div>
+
+        <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 24px;">
+          <h4 style="color: var(--accent-primary); margin-bottom: 12px;">6. Монтаж и контроль</h4>
+          <ul style="font-size: 0.9rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 8px;">
+            <li>• Пошаговая инструкция по заделке стыков (КЗС)</li>
+            <li>• Технология электромуфтовой и стыковой сварки</li>
+            <li>• Инструкция по монтажу узлов перехода полиэтилен-сталь (НСПС)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Нормативная база -->
+      <div style="background: rgba(11, 17, 32, 0.6); border: 1px solid var(--border-medium); border-radius: var(--radius-xl); padding: 36px;">
+        <h3 style="margin-bottom: 20px;">Государственные стандарты и своды правил</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; font-size: 0.9rem;">
+          <div style="padding: 12px; background: rgba(30, 41, 59, 0.4); border-radius: var(--radius-sm);">
+            <strong>ГОСТ 32415-2013</strong><br>
+            <span style="color: var(--text-muted);">Трубы напорные из термопластов и соединительные детали для водоснабжения и отопления</span>
+          </div>
+          <div style="padding: 12px; background: rgba(30, 41, 59, 0.4); border-radius: var(--radius-sm);">
+            <strong>ГОСТ Р 56730-2015</strong><br>
+            <span style="color: var(--text-muted);">Трубы полимерные гибкие с тепловой изоляцией для систем теплоснабжения</span>
+          </div>
+          <div style="padding: 12px; background: rgba(30, 41, 59, 0.4); border-radius: var(--radius-sm);">
+            <strong>СП 315.1325800.2017</strong><br>
+            <span style="color: var(--text-muted);">Тепловые сети бесканальной прокладки. Правила проектирования</span>
+          </div>
+          <div style="padding: 12px; background: rgba(30, 41, 59, 0.4); border-radius: var(--radius-sm);">
+            <strong>СП 124.13330.2012</strong><br>
+            <span style="color: var(--text-muted);">Свод правил: Тепловые сети. Актуализированная редакция СНиП 41-02-2003</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__bottom" style="border: none; padding-top: 0;">
+        <div>&copy; 2026 PipePrime (pipeprime.ru). Инженерная поддержка и комплексные поставки.</div>
+        <a href="catalog.html" style="color: var(--accent-primary);">Перейти в каталог →</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Drawer: Корзина спецификации -->
+  <div class="drawer-backdrop" id="spec-drawer">
+    <div class="drawer">
+      <div class="drawer__header">
+        <div>
+          <h3 style="font-size: 1.2rem; margin-bottom: 2px;">Спецификация поставки</h3>
+          <span style="font-size: 0.8rem; color: var(--text-muted);">Выбранные позиции для расчета КП</span>
+        </div>
+        <button id="close-spec-drawer" style="background: none; border: none; color: var(--text-muted); cursor: pointer;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <div class="drawer__body">
+        <div id="drawer-spec-empty" style="text-align: center; padding: 40px 0; color: var(--text-muted);">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom: 12px;"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line></svg>
+          <p>В спецификации пока нет позиций.<br>Выберите трубы или фитинги в каталоге.</p>
+          <a href="catalog.html" class="btn btn--outline btn--sm" style="margin-top: 16px;" onclick="App.closeDrawer()">Перейти в каталог</a>
+        </div>
+        <div id="drawer-spec-list"></div>
+      </div>
+
+      <div class="drawer__footer" id="drawer-spec-footer" style="display: none;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 16px; font-size: 0.95rem;">
+          <span>Расчетная масса партии:</span>
+          <strong id="drawer-spec-weight" style="color: var(--accent-primary);">0 кг</strong>
+        </div>
+        <button class="btn btn--primary" style="width: 100%; margin-bottom: 8px;" onclick="App.closeDrawer(); App.openModal('modal-quote');">
+          Запросить оптовый расчет КП
+        </button>
+        <button class="btn btn--outline btn--sm" style="width: 100%;" onclick="SpecCart.clear()">
+          Очистить список
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Запрос АТР / КП -->
+  <div class="modal-backdrop" id="modal-quote">
+    <div class="modal-card">
+      <button class="modal-close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+      <h3 style="margin-bottom: 6px;">Запрос АТР 2026 для проекта</h3>
+      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 20px;">Предоставляем альбом технических решений проектным институтам и строительным организациям</p>
+      
+      <form data-ajax-form>
+        <div class="form-group">
+          <label class="form-label">Ваша организация / ИНН</label>
+          <input type="text" class="form-control" placeholder="ООО «ПроектТеплоМонтаж»" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Контактное лицо / Должность</label>
+            <input type="text" class="form-control" placeholder="ГИП / Инженер-проектировщик" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Телефон</label>
+            <input type="tel" class="form-control" placeholder="+7 (___) ___-__-__" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Корпоративный Email</label>
+          <input type="email" class="form-control" placeholder="pto@company.ru" required>
+        </div>
+        <button type="submit" class="btn btn--primary" style="width: 100%;">Запросить документацию АТР</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Успешная отправка -->
+  <div class="modal-backdrop" id="modal-success">
+    <div class="modal-card" style="text-align: center; padding: 40px 32px;">
+      <div style="width: 64px; height: 64px; border-radius: 50%; background: rgba(16, 185, 129, 0.15); color: #10b981; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <h3 style="margin-bottom: 10px;">Заявка успешно принята!</h3>
+      <p style="color: var(--text-secondary); margin-bottom: 24px;">
+        Инженер отдела сопровождения проектов направит материалы АТР 2026 на указанный email.
+      </p>
+      <button class="btn btn--primary" onclick="App.closeAllModals()">Понятно, спасибо</button>
+    </div>
+  </div>
+
+  <script src="assets/js/catalog-data.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

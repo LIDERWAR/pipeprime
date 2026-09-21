@@ -1,0 +1,10 @@
+# OS & Editor files
+.DS_Store
+Thumbs.db
+[Dd]esktop.ini
+.idea/
+.vscode/
+*.log
+
+# Temp download in root
+Boilerberg_*.pdf

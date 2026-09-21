@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Каталог полимерных труб PE-RT тип II и фитингов — PipePrime</title>
+  <meta name="description" content="Интерактивный каталог напорных труб PE-RT тип II, предизолированных труб в ППУ/ПЭ и ППУ/ОЦ, электросварных и литых фитингов по стандарту АТР 2026. Оптовые цены, технические характеристики, поставка по РФ.">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/catalog.css">
+  <link rel="icon" type="image/png" href="assets/images/pipe_cross_section.png">
+</head>
+<body>
+
+  <!-- Шапка сайта -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo">
+        <div class="logo__mark">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="logo__text">
+          <div class="logo__title">Pipe<span>Prime</span></div>
+          <div class="logo__desc">Поставки труб</div>
+        </div>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="catalog.html" class="nav-link active">Каталог</a>
+        <a href="calculator.html" class="nav-link">Калькулятор</a>
+        <a href="delivery.html" class="nav-link">Доставка и оплата</a>
+        <a href="about.html" class="nav-link">О компании</a>
+        <a href="contacts.html" class="nav-link">Контакты</a>
+      </nav>
+
+      <div class="header__actions">
+        <div class="phone-button">
+          <a href="tel:+74951287930" class="phone-button__number">+7 (495) 128-79-30</a>
+          <div class="phone-button__hint"><span class="status-dot"></span> Отдел комплектации</div>
+        </div>
+
+        <button class="spec-cart-btn open-spec-drawer" title="Спецификация">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+          <span>Спецификация</span>
+          <span class="badge spec-cart-count" style="display:none;">0</span>
+        </button>
+
+        <button class="burger-btn" aria-label="Открыть меню">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Заголовок страницы каталога -->
+  <div style="padding: 40px 0 20px; background: rgba(15, 23, 42, 0.4); border-bottom: 1px solid var(--border-subtle);">
+    <div class="container">
+      <div style="display: flex; gap: 8px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
+        <a href="index.html" style="color: var(--text-secondary);">Главная</a>
+        <span>/</span>
+        <span style="color: var(--accent-primary);">Каталог продукции</span>
+      </div>
+      <h1 style="font-size: 2.2rem; margin-bottom: 8px;">Каталог полимерных трубопроводных систем</h1>
+      <p style="color: var(--text-secondary); max-width: 800px;">
+        Полная номенклатура труб PE-RT тип II (ГОСТ 32415-2013), предизолированных систем в ППУ/ПЭ и ППУ/ОЦ (ГОСТ Р 56730-2015), электросварных и литых фитингов по альбому АТР 2026.
+      </p>
+    </div>
+  </div>
+
+  <!-- Основной контент каталога с фильтрацией -->
+  <main class="section">
+    <div class="container">
+      
+      <!-- Панель фильтров и поиска -->
+      <div class="catalog-filter-bar">
+        <div class="filter-search-wrapper">
+          <svg class="filter-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="catalog-search-input" class="filter-search-input" placeholder="Поиск по диаметру, SDR, названию или артикулу (например: d110, SDR 7.4, отвод, муфта)...">
+        </div>
+
+        <!-- Категории (чипсы) -->
+        <div class="filter-chips-container" id="filter-categories"></div>
+
+        <!-- Контролы: диаметр, SDR, сброс -->
+        <div class="filter-controls-row">
+          <div class="filter-selects-group">
+            <div class="filter-select-item">
+              <label for="filter-diameter">Диаметр (d):</label>
+              <select id="filter-diameter" class="filter-select">
+                <option value="all">Все диаметры</option>
+                <option value="25">d25 мм</option>
+                <option value="32">d32 мм</option>
+                <option value="40">d40 мм</option>
+                <option value="50">d50 мм</option>
+                <option value="63">d63 мм</option>
+                <option value="75">d75 мм</option>
+                <option value="90">d90 мм</option>
+                <option value="110">d110 мм</option>
+                <option value="125">d125 мм</option>
+                <option value="140">d140 мм</option>
+                <option value="160">d160 мм</option>
+                <option value="180">d180 мм</option>
+                <option value="200">d200 мм</option>
+                <option value="225">d225 мм</option>
+                <option value="250">d250 мм</option>
+                <option value="280">d280 мм</option>
+                <option value="315">d315 мм</option>
+                <option value="355">d355 мм</option>
+                <option value="400">d400 мм</option>
+              </select>
+            </div>
+
+            <div class="filter-select-item">
+              <label for="filter-sdr">Давление / SDR:</label>
+              <select id="filter-sdr" class="filter-select">
+                <option value="all">Все SDR</option>
+                <option value="7.4">SDR 7.4 (1.0 МПа / 10 бар)</option>
+                <option value="9">SDR 9 (0.8 МПа / 8 бар)</option>
+                <option value="11">SDR 11 (0.6 МПа / 6 бар)</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <span id="catalog-results-count" style="font-size: 0.85rem; color: var(--text-muted);">Загрузка...</span>
+            <button class="btn btn--outline btn--sm" id="catalog-reset-filters">Сбросить фильтры</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Сетка товаров -->
+      <div class="product-grid" id="catalog-products-grid"></div>
+
+    </div>
+  </main>
+
+  <!-- Подвал сайта -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="logo" style="margin-bottom: 16px;">
+            <div class="logo__mark">
+              <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <div class="logo__text">
+              <div class="logo__title">Pipe<span>Prime</span></div>
+              <div class="logo__desc">Поставки труб</div>
+            </div>
+          </div>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 20px;">
+            Федеральный поставщик полимерных труб и фасонных изделий для тепловых сетей и ГВС.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer__col-title">Каталог</h4>
+          <div class="footer__links">
+            <a href="catalog.html?category=uninsulated_bars" class="footer__link">Трубы неизолированные (хлысты)</a>
+            <a href="catalog.html?category=uninsulated_coils" class="footer__link">Трубы неизолированные (бухты)</a>
+            <a href="catalog.html?category=insulated_ppu_pe" class="footer__link">Трубы в ППУ/ПЭ</a>
+            <a href="catalog.html?category=insulated_ppu_oc" class="footer__link">Трубы в ППУ/ОЦ</a>
+            <a href="catalog.html?category=fittings_electro" class="footer__link">Электросварные фитинги</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer__col-title">Сервисы</h4>
+          <div class="footer__links">
+            <a href="calculator.html" class="footer__link">Инженерный калькулятор</a>
+            <a href="engineering.html" class="footer__link">Альбом решений (АТР 2026)</a>
+            <a href="delivery.html" class="footer__link">Доставка и оплата</a>
+            <a href="about.html" class="footer__link">О компании</a>
+            <a href="contacts.html" class="footer__link">Контакты</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer__col-title">Контакты</h4>
+          <div class="footer__contacts">
+            <div class="footer__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <div><strong>+7 (495) 128-79-30</strong></div>
+            </div>
+            <div class="footer__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <div>info@pipeprime.ru</div>
+            </div>
+            <button class="btn btn--primary btn--sm" data-open-modal="modal-quote" style="margin-top: 8px;">Запросить оптовый прайс-лист</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <div>&copy; 2026 PipePrime (pipeprime.ru). Все права защищены.</div>
+        <a href="engineering.html" style="color: var(--text-muted);">Альбом решений (АТР 2026)</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Drawer спецификаций -->
+  <div class="drawer-backdrop" id="spec-drawer">
+    <div class="drawer">
+      <div class="drawer__header">
+        <div>
+          <h3 style="font-size: 1.2rem; margin-bottom: 2px;">Спецификация поставки</h3>
+          <span style="font-size: 0.8rem; color: var(--text-muted);">Выбранные позиции</span>
+        </div>
+        <button id="close-spec-drawer" style="background: none; border: none; color: var(--text-muted); cursor: pointer;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <div class="drawer__body">
+        <div id="drawer-spec-empty" style="text-align: center; padding: 40px 0; color: var(--text-muted);">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom: 12px;"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line></svg>
+          <p>В спецификации пока нет позиций.</p>
+        </div>
+        <div id="drawer-spec-list"></div>
+      </div>
+
+      <div class="drawer__footer" id="drawer-spec-footer" style="display: none;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 16px; font-size: 0.95rem;">
+          <span>Расчетная масса партии:</span>
+          <strong id="drawer-spec-weight" style="color: var(--accent-primary);">0 кг</strong>
+        </div>
+        <button class="btn btn--primary" style="width: 100%; margin-bottom: 8px;" onclick="App.closeDrawer(); App.openModal('modal-quote');">
+          Запросить оптовый расчет КП
+        </button>
+        <button class="btn btn--outline btn--sm" style="width: 100%;" onclick="SpecCart.clear()">
+          Очистить список
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модалка быстрого просмотра -->
+  <div class="modal-backdrop" id="modal-quickview">
+    <div class="modal-card" style="max-width: 800px;">
+      <button class="modal-close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+      <div id="modal-quickview-body"></div>
+    </div>
+  </div>
+
+  <!-- Модалка запроса КП -->
+  <div class="modal-backdrop" id="modal-quote">
+    <div class="modal-card">
+      <button class="modal-close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+      <h3 style="margin-bottom: 6px;">Запрос коммерческого предложения</h3>
+      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 20px;">Подготовим расчет с учетом индивидуальных оптовых скидок и логистики</p>
+      
+      <form data-ajax-form>
+        <div class="form-group">
+          <label class="form-label">Организация / ИНН</label>
+          <input type="text" class="form-control" placeholder="ООО «ТеплоСтрой»" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Контактное лицо</label>
+            <input type="text" class="form-control" placeholder="Иван Иванович" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Телефон</label>
+            <input type="tel" class="form-control" placeholder="+7 (___) ___-__-__" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control" placeholder="snab@company.ru" required>
+        </div>
+        <button type="submit" class="btn btn--primary" style="width: 100%;">Получить КП с ценами</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Модалка успеха -->
+  <div class="modal-backdrop" id="modal-success">
+    <div class="modal-card" style="text-align: center; padding: 40px 32px;">
+      <div style="width: 64px; height: 64px; border-radius: 50%; background: rgba(16, 185, 129, 0.15); color: #10b981; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <h3 style="margin-bottom: 10px;">Заявка принята!</h3>
+      <p style="color: var(--text-secondary); margin-bottom: 24px;">Инженер отдела поставок свяжется с вами и пришлет спецификацию с ценами.</p>
+      <button class="btn btn--primary" onclick="App.closeAllModals()">Закрыть</button>
+    </div>
+  </div>
+
+  <script src="assets/js/catalog-data.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/catalog.js"></script>
+</body>
+</html>
