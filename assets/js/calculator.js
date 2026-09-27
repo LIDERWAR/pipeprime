@@ -34,6 +34,11 @@
       if (addBtn) {
         addBtn.addEventListener('click', () => this.addCalculatedToCart());
       }
+
+      const pdfBtn = document.getElementById('calc-download-pdf');
+      if (pdfBtn) {
+        pdfBtn.addEventListener('click', () => this.downloadPdfOffer());
+      }
     },
 
     recalculate() {
@@ -147,6 +152,69 @@
 
       window.App.showToast('Расчетная спецификация добавлена в корзину');
       window.App.openDrawer();
+    },
+
+    async downloadPdfOffer() {
+      if (!this.lastCalculation) return;
+      const calc = this.lastCalculation;
+      const btn = document.getElementById('calc-download-pdf');
+      const origHtml = btn ? btn.innerHTML : '';
+
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = `
+          <svg class="spin-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation: spin 1s linear infinite;"><circle cx="12" cy="12" r="10" stroke-opacity="0.25"></circle><path d="M12 2a10 10 0 0 1 10 10"></path></svg>
+          Генерация КП...
+        `;
+      }
+
+      try {
+        const apiBase = window.PIPEPRIME_API_BASE || (window.location.port === '3000' ? 'http://localhost:8000' : '');
+        const payload = {
+          pipe_category: calc.pipeName,
+          diameter: `${calc.diameter} мм`,
+          sdr: `SDR ${calc.sdr}`,
+          length_meters: calc.totalMeters,
+          whips_12m: calc.barsCount,
+          joints_count: calc.jointsCount,
+          weight_tons: +(calc.totalWeightKg / 1000).toFixed(2),
+          trucks_count: Math.max(1, Math.ceil(calc.totalWeightKg / 18000))
+        };
+
+        const res = await fetch(`${apiBase}/api/calculator/generate-pdf`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (!res.ok) {
+          throw new Error(`Ошибка сервера: ${res.status}`);
+        }
+
+        const blob = await res.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `PipePrime_KP_d${calc.diameter}_${calc.totalMeters}m.pdf`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        window.URL.revokeObjectURL(url);
+
+        if (window.App && window.App.showToast) {
+          window.App.showToast('Официальное КП успешно сформировано и скачано');
+        }
+      } catch (err) {
+        console.error('PDF generation error:', err);
+        if (window.App && window.App.showToast) {
+          window.App.showToast('Ошибка при генерации PDF. Попробуйте еще раз.');
+        }
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = origHtml;
+        }
+      }
     }
   };
 

@@ -59,8 +59,8 @@
   --font-mono: 'JetBrains Mono', monospace;
   
   /* Контейнер */
-  --container-max: 1440px;
-  --header-height: 74px;
+  --container-max: 1640px;
+  --header-height: 76px;
   --topbar-height: 0px;
 }
 
@@ -151,8 +151,8 @@ button, input, select, textarea {
   max-width: var(--container-max);
   margin-left: auto;
   margin-right: auto;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-left: clamp(24px, 3.5vw, 56px);
+  padding-right: clamp(24px, 3.5vw, 56px);
   position: relative;
   z-index: 1;
 }
@@ -240,10 +240,6 @@ button, input, select, textarea {
   transition: all 0.3s ease;
 }
 
-.header .container {
-  max-width: 1560px;
-}
-
 .header.scrolled {
   box-shadow: var(--shadow-md);
   border-bottom-color: var(--border-medium);
@@ -315,37 +311,87 @@ button, input, select, textarea {
   white-space: nowrap;
 }
 
-/* Навигационное меню */
+/* Навигационное меню (Классическая инженерная навигация с неоновым световодом) */
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 32px;
   flex-shrink: 0;
   white-space: nowrap;
 }
 
 .nav-link {
-  padding: 8px 12px;
-  color: var(--text-primary);
-  font-weight: 500;
-  font-size: 0.92rem;
-  border-radius: var(--radius-sm);
-  transition: all 0.2s ease;
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
+  padding: 10px 0;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  transition: color 0.2s ease;
   white-space: nowrap;
+  text-decoration: none;
+  user-select: none;
 }
 
-.nav-link:hover, .nav-link.active {
-  color: var(--accent-primary);
-  background: var(--accent-light);
+.nav-link:hover {
+  color: var(--text-white);
+}
+
+.nav-link.active {
+  color: var(--text-white);
+  font-weight: 600;
+  text-shadow: 0 0 16px rgba(255, 107, 0, 0.45);
+}
+
+/* Неоновый лазерный световод под активным разделом */
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2.5px;
+  background: linear-gradient(90deg, #ff6b00 0%, #ff8533 50%, #ff6b00 100%);
+  border-radius: 2px;
+  box-shadow: 
+    0 0 10px rgba(255, 107, 0, 0.8),
+    0 0 3px #ff6b00,
+    0 2px 8px rgba(255, 107, 0, 0.4);
+}
+
+/* Мягкий след при наведении для неактивных пунктов */
+.nav-link:not(.active)::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: rgba(255, 107, 0, 0.6);
+  border-radius: 2px;
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), left 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link:not(.active):hover::after {
+  width: 100%;
+  left: 0;
 }
 
 .nav-link svg.arrow {
-  width: 12px;
-  height: 12px;
-  transition: transform 0.2s;
+  width: 13px;
+  height: 13px;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0.65;
+}
+
+.nav-link:hover svg.arrow,
+.nav-item--dropdown:hover .nav-link svg.arrow {
+  opacity: 1;
+  transform: translateY(2px);
 }
 
 /* Выпадающее меню каталога */
@@ -361,18 +407,23 @@ button, input, select, textarea {
 
 .dropdown-menu {
   position: absolute;
-  top: 100%;
-  left: 0;
-  width: 320px;
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border-medium);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-lg);
+  top: calc(100% + 12px);
+  left: -12px;
+  width: 340px;
+  background: rgba(15, 23, 42, 0.96);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 12px;
+  box-shadow: 
+    0 20px 48px rgba(0, 0, 0, 0.65),
+    0 4px 12px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   padding: 8px;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(10px);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(8px);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 1000;
 }
 
@@ -381,21 +432,24 @@ button, input, select, textarea {
   align-items: center;
   gap: 12px;
   padding: 10px 14px;
-  border-radius: var(--radius-sm);
-  color: var(--text-primary);
-  font-size: 0.9rem;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
   font-weight: 500;
-  transition: all 0.2s;
+  transition: all 0.18s ease;
+  border: 1px solid transparent;
 }
 
 .dropdown-item:hover {
-  background: rgba(255, 107, 0, 0.1);
-  color: var(--accent-primary);
+  background: rgba(255, 107, 0, 0.12);
+  color: var(--text-white);
+  border-color: rgba(255, 107, 0, 0.25);
+  transform: translateX(3px);
 }
 
 .dropdown-item svg {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   color: var(--accent-primary);
   flex-shrink: 0;
 }
@@ -634,20 +688,73 @@ button, input, select, textarea {
    ========================================================================== */
 .hero {
   position: relative;
-  padding: 60px 0 100px;
+  padding: 80px 0 90px;
   overflow: hidden;
+  min-height: calc(100vh - var(--header-height));
+  display: flex;
+  align-items: center;
+}
+
+/* Атмосферный фон с инженерной фотографией */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero__bg-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 65%;
+  height: 100%;
+  background-size: cover;
+  background-position: center right;
+  opacity: 0.35;
+  filter: saturate(0.85) contrast(1.15);
+  transform: scale(1.02);
+}
+
+.hero__bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(90deg, #0b1120 0%, #0b1120 38%, rgba(11, 17, 32, 0.88) 60%, rgba(11, 17, 32, 0.65) 80%, rgba(11, 17, 32, 0.92) 100%),
+    linear-gradient(180deg, rgba(11, 17, 32, 0.85) 0%, transparent 15%, transparent 75%, #0b1120 100%);
+}
+
+.hero__bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 64px 64px;
+  opacity: 0.75;
+}
+
+.hero__container {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  position: relative;
+  z-index: 2;
+  width: 100%;
 }
 
 .hero__grid {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 48px;
+  grid-template-columns: 1.18fr 0.92fr;
+  gap: 64px;
   align-items: center;
 }
 
 .hero__content {
   position: relative;
   z-index: 2;
+  max-width: 740px;
 }
 
 .hero__eyebrow {
@@ -660,7 +767,7 @@ button, input, select, textarea {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-secondary);
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .hero__eyebrow-accent {
@@ -674,7 +781,8 @@ button, input, select, textarea {
 
 .hero__title {
   margin-bottom: 24px;
-  line-height: 1.15;
+  line-height: 1.14;
+  font-size: clamp(2.4rem, 4.2vw, 3.8rem);
 }
 
 .hero__title .highlight {
@@ -685,50 +793,16 @@ button, input, select, textarea {
 
 .hero__lead {
   font-size: 1.15rem;
-  line-height: 1.65;
+  line-height: 1.7;
   color: var(--text-secondary);
   margin-bottom: 36px;
-  max-width: 620px;
+  max-width: 660px;
 }
 
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
-  margin-bottom: 48px;
-}
-
-/* Показатели / Метрики */
-.hero__metrics {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  padding-top: 32px;
-  border-top: 1px solid var(--border-subtle);
-}
-
-.metric-item {
-  display: flex;
-  flex-direction: column;
-}
-
-.metric-item__value {
-  font-family: var(--font-heading);
-  font-size: 2.2rem;
-  font-weight: 800;
-  color: var(--text-white);
-  line-height: 1;
-  margin-bottom: 6px;
-}
-
-.metric-item__value span {
-  color: var(--accent-primary);
-}
-
-.metric-item__label {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  line-height: 1.35;
 }
 
 /* ==========================================================================
@@ -736,17 +810,20 @@ button, input, select, textarea {
    ========================================================================== */
 .hero__visual {
   position: relative;
+  width: 100%;
 }
 
 .hero-slider {
   position: relative;
-  border-radius: var(--radius-xl);
+  border-radius: 16px;
   overflow: hidden;
-  border: 1px solid var(--border-medium);
-  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  box-shadow: 
+    0 24px 64px rgba(0, 0, 0, 0.65),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   background: var(--bg-card);
-  aspect-ratio: 16 / 11;
-  min-height: 380px;
+  aspect-ratio: 16 / 10.5;
+  min-height: 420px;
 }
 
 .hero-slider__slides {
@@ -783,16 +860,17 @@ button, input, select, textarea {
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 28px 24px 22px;
-  background: linear-gradient(to top, rgba(11, 17, 32, 0.95) 0%, rgba(11, 17, 32, 0.65) 60%, transparent 100%);
+  padding: 28px 26px 22px;
+  background: linear-gradient(to top, rgba(11, 17, 32, 0.96) 0%, rgba(11, 17, 32, 0.7) 65%, transparent 100%);
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  gap: 16px;
   z-index: 2;
 }
 
 .hero-slide__info {
-  max-width: 82%;
+  max-width: 78%;
 }
 
 .hero-slide__kicker {
@@ -806,13 +884,13 @@ button, input, select, textarea {
 
 .hero-slide__title {
   font-family: var(--font-heading);
-  font-size: 1.05rem;
+  font-size: 1.08rem;
   font-weight: 600;
   color: var(--text-white);
   line-height: 1.35;
 }
 
-/* Контролы слайдера в правом верхнем углу */
+/* Контролы слайдера (Строгий промышленный блок, НЕ капсула) */
 .hero-slider__controls {
   position: absolute;
   top: 16px;
@@ -820,14 +898,14 @@ button, input, select, textarea {
   display: flex;
   align-items: center;
   gap: 12px;
-  background: rgba(11, 17, 32, 0.85);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid var(--border-medium);
-  border-radius: var(--radius-full);
-  padding: 6px 14px;
+  background: rgba(11, 17, 32, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 8px;
+  padding: 6px 12px;
   z-index: 5;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
 }
 
 .hero-slider__pagination {
@@ -856,7 +934,7 @@ button, input, select, textarea {
 .hero-dot {
   width: 6px;
   height: 6px;
-  border-radius: 50%;
+  border-radius: 2px;
   background: rgba(255, 255, 255, 0.25);
   border: none;
   cursor: pointer;
@@ -866,7 +944,7 @@ button, input, select, textarea {
 
 .hero-dot.active {
   width: 16px;
-  border-radius: 4px;
+  border-radius: 2px;
   background: var(--accent-primary);
 }
 
@@ -880,7 +958,7 @@ button, input, select, textarea {
 .hero-arrow {
   width: 26px;
   height: 26px;
-  border-radius: 50%;
+  border-radius: 4px;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid var(--border-subtle);
   color: var(--text-white);
@@ -896,6 +974,107 @@ button, input, select, textarea {
   background: var(--accent-primary);
   border-color: var(--accent-primary);
   color: white;
+}
+
+/* ==========================================================================
+   Новая инженерная панель ключевых метрик (Precision Stats Strip)
+   ========================================================================== */
+.hero-stats-panel {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-stat-card {
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.55) 0%, rgba(15, 23, 42, 0.75) 100%);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 12px;
+  padding: 24px 28px;
+  position: relative;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+.hero-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.3), transparent);
+  transition: background 0.3s;
+}
+
+.hero-stat-card:hover {
+  border-color: rgba(255, 107, 0, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
+}
+
+.hero-stat-card:hover::before {
+  background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+}
+
+.hero-stat-card--accent {
+  border-color: rgba(255, 107, 0, 0.32);
+  background: linear-gradient(180deg, rgba(255, 107, 0, 0.08) 0%, rgba(15, 23, 42, 0.75) 100%);
+}
+
+.hero-stat-card__tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hero-stat-card__metric {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.hero-stat-card__number {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-white);
+  letter-spacing: -0.02em;
+}
+
+.hero-stat-card__unit,
+.hero-stat-card__prefix {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+}
+
+.hero-stat-card__title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-white);
+  margin-bottom: 6px;
+}
+
+.hero-stat-card__desc {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
 }
 
 /* ==========================================================================
@@ -1713,9 +1892,21 @@ button, input, select, textarea {
    Адаптивность (Media Queries)
    ========================================================================== */
 @media (max-width: 1080px) {
+  .hero {
+    padding: 60px 0;
+  }
   .hero__grid {
     grid-template-columns: 1fr;
     gap: 40px;
+  }
+  .hero-stats-panel {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 36px;
+  }
+  .hero__bg-img {
+    width: 100%;
+    opacity: 0.18;
   }
   .atr-banner {
     grid-template-columns: 1fr;
@@ -1738,9 +1929,10 @@ button, input, select, textarea {
   .burger-btn {
     display: block;
   }
-  .hero__metrics {
+  .hero-stats-panel {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 14px;
+    margin-top: 28px;
   }
   .footer__grid {
     grid-template-columns: 1fr;

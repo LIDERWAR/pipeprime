@@ -1,0 +1,18 @@
+# PipePrime Enterprise B2B - robots.txt
+User-agent: *
+Allow: /
+Allow: /catalog.html
+Allow: /calculator.html
+Allow: /engineering.html
+Allow: /delivery.html
+Allow: /about.html
+Allow: /contacts.html
+Allow: /assets/
+
+# Disallow internal backend APIs, docs, and private downloads
+Disallow: /api/
+Disallow: /docs
+Disallow: /redoc
+Disallow: /server/
+
+Sitemap: https://pipeprime.ru/sitemap.xml

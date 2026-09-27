@@ -13,7 +13,7 @@
   <meta property="og:image" content="assets/images/hero_warehouse.jpg">
 
   <!-- CSS Design System -->
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=4">
   <link rel="stylesheet" href="assets/css/catalog.css">
   <link rel="stylesheet" href="assets/css/calculator.css">
   <link rel="icon" type="image/png" href="assets/images/pipe_cross_section.png">
@@ -75,119 +75,146 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero Section с атмосферным фоновым артом и панелью ключевых показателей -->
   <section class="hero">
-    <div class="container hero__grid">
-      <div class="hero__content">
-        <div class="hero__eyebrow">
-          <span class="hero__eyebrow-accent">B2B Дистрибьютор</span>
-          <span class="hero__eyebrow-sep">/</span>
-          <span>ГОСТ 32415-2013</span>
-          <span class="hero__eyebrow-dot">•</span>
-          <span>ГОСТ Р 56730-2015</span>
-        </div>
-        <h1 class="hero__title">
-          Поставка полимерных труб <span class="highlight">PE-RT тип II</span> для теплосетей и ГВС
-        </h1>
-        <p class="hero__lead">
-          Официальный поставщик трубопроводных систем от ведущих заводов-производителей. 100% аналог труб из стали и PEX с выгодой до 40%. Комплектуем объекты трубами в хлыстах и бухтах, ППУ изоляцией, фитингами и КЗС с отгрузкой со склада за 24 часа.
-        </p>
-        <div class="hero__actions">
-          <a href="catalog.html" class="btn btn--primary btn--lg">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-            Каталог продукции
-          </a>
-          <a href="calculator.html" class="btn btn--outline btn--lg">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16" y2="18"></line><path d="M16 10h.01"></path><path d="M12 10h.01"></path><path d="M8 10h.01"></path><path d="M12 14h.01"></path><path d="M8 14h.01"></path><path d="M12 18h.01"></path><path d="M8 18h.01"></path></svg>
-            Калькулятор теплотрассы
-          </a>
+    <!-- Атмосферный фон с инженерной фотографией -->
+    <div class="hero__bg" aria-hidden="true">
+      <div class="hero__bg-img" style="background-image: url('assets/images/project_trench.jpg');"></div>
+      <div class="hero__bg-overlay"></div>
+      <div class="hero__bg-grid"></div>
+    </div>
+
+    <div class="container hero__container">
+      <div class="hero__grid">
+        <div class="hero__content">
+          <div class="hero__eyebrow">
+            <span class="hero__eyebrow-accent">B2B Дистрибьютор</span>
+            <span class="hero__eyebrow-sep">/</span>
+            <span>ГОСТ 32415-2013</span>
+            <span class="hero__eyebrow-dot">•</span>
+            <span>ГОСТ Р 56730-2015</span>
+          </div>
+          <h1 class="hero__title">
+            Поставка полимерных труб <span class="highlight">PE-RT тип II</span> для теплосетей и ГВС
+          </h1>
+          <p class="hero__lead">
+            Официальный поставщик трубопроводных систем от ведущих заводов-производителей. 100% аналог труб из стали и PEX с выгодой до 40%. Комплектуем объекты трубами в хлыстах и бухтах, ППУ изоляцией, фитингами и КЗС с отгрузкой со склада за 24 часа.
+          </p>
+          <div class="hero__actions">
+            <a href="catalog.html" class="btn btn--primary btn--lg">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+              Каталог продукции
+            </a>
+            <a href="calculator.html" class="btn btn--outline btn--lg">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16" y2="18"></line><path d="M16 10h.01"></path><path d="M12 10h.01"></path><path d="M8 10h.01"></path><path d="M12 14h.01"></path><path d="M8 14h.01"></path><path d="M12 18h.01"></path><path d="M8 18h.01"></path></svg>
+              Калькулятор теплотрассы
+            </a>
+          </div>
         </div>
 
-        <div class="hero__metrics">
-          <div class="metric-item">
-            <div class="metric-item__value">50+ <span>лет</span></div>
-            <div class="metric-item__label">Срок безаварийной службы трубопроводов</div>
-          </div>
-          <div class="metric-item">
-            <div class="metric-item__value">1 000+</div>
-            <div class="metric-item__label">Позиций труб и фитингов в наличии на складах</div>
-          </div>
-          <div class="metric-item">
-            <div class="metric-item__value">до 40%</div>
-            <div class="metric-item__label">Экономия сметной стоимости относительно PEX и стали</div>
+        <div class="hero__visual">
+          <div class="hero-slider" id="hero-slider">
+            <div class="hero-slider__slides">
+              <div class="hero-slide active">
+                <img src="assets/images/hero_warehouse.jpg" alt="Логистический комплекс PipePrime с трубами PE-RT" class="hero-slide__img">
+                <div class="hero-slide__overlay">
+                  <div class="hero-slide__info">
+                    <div class="hero-slide__kicker">Складской комплекс PipePrime</div>
+                    <div class="hero-slide__title">Постоянное наличие более 1000 тонн труб и фитингов PE-RT</div>
+                  </div>
+                  <button class="btn btn--primary btn--sm" data-open-modal="modal-quote">Запросить КП</button>
+                </div>
+              </div>
+
+              <div class="hero-slide">
+                <img src="assets/images/project_trench.jpg" alt="Бесканальная укладка теплотрассы" class="hero-slide__img">
+                <div class="hero-slide__overlay">
+                  <div class="hero-slide__info">
+                    <div class="hero-slide__kicker">Монтаж бесканальной теплотрассы</div>
+                    <div class="hero-slide__title">Трубы PE-RT тип II в ППУ/ПЭ изоляции для подземных сетей</div>
+                  </div>
+                  <button class="btn btn--primary btn--sm" data-open-modal="modal-quote">Запросить КП</button>
+                </div>
+              </div>
+
+              <div class="hero-slide">
+                <img src="assets/images/hero_coils.jpg" alt="Поставка гибких труб в бухтах" class="hero-slide__img">
+                <div class="hero-slide__overlay">
+                  <div class="hero-slide__info">
+                    <div class="hero-slide__kicker">Бухтовые поставки</div>
+                    <div class="hero-slide__title">Длинномерные бухты d25–d110 мм до 500 м — сокращение стыков на 80%</div>
+                  </div>
+                  <button class="btn btn--primary btn--sm" data-open-modal="modal-quote">Запросить КП</button>
+                </div>
+              </div>
+
+              <div class="hero-slide">
+                <img src="assets/images/hero_welding.jpg" alt="Электросварной монтаж теплотрассы" class="hero-slide__img">
+                <div class="hero-slide__overlay">
+                  <div class="hero-slide__info">
+                    <div class="hero-slide__kicker">Электросварной монтаж</div>
+                    <div class="hero-slide__title">Монолитные герметичные соединения фитингами со штрих-код сваркой</div>
+                  </div>
+                  <button class="btn btn--primary btn--sm" data-open-modal="modal-quote">Запросить КП</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-slider__controls">
+              <div class="hero-slider__pagination">
+                <span class="hero-slider__current" id="hero-slider-current">01</span>
+                <span class="hero-slider__divider">/</span>
+                <span class="hero-slider__total" id="hero-slider-total">04</span>
+              </div>
+              <div class="hero-slider__dots" id="hero-slider-dots">
+                <button class="hero-dot active" aria-label="Слайд 1"></button>
+                <button class="hero-dot" aria-label="Слайд 2"></button>
+                <button class="hero-dot" aria-label="Слайд 3"></button>
+                <button class="hero-dot" aria-label="Слайд 4"></button>
+              </div>
+              <div class="hero-slider__arrows">
+                <button class="hero-arrow hero-arrow--prev" id="hero-prev" aria-label="Предыдущий слайд">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button class="hero-arrow hero-arrow--next" id="hero-next" aria-label="Следующий слайд">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="hero__visual">
-        <div class="hero-slider" id="hero-slider">
-          <div class="hero-slider__slides">
-            <div class="hero-slide active">
-              <img src="assets/images/hero_warehouse.jpg" alt="Логистический комплекс PipePrime с трубами PE-RT" class="hero-slide__img">
-              <div class="hero-slide__overlay">
-                <div class="hero-slide__info">
-                  <div class="hero-slide__kicker">Складской комплекс PipePrime</div>
-                  <div class="hero-slide__title">Постоянное наличие более 1000 тонн труб и фитингов PE-RT</div>
-                </div>
-                <button class="btn btn--primary btn--sm" data-open-modal="modal-quote">Запросить КП</button>
-              </div>
-            </div>
-
-            <div class="hero-slide">
-              <img src="assets/images/project_trench.jpg" alt="Бесканальная укладка теплотрассы" class="hero-slide__img">
-              <div class="hero-slide__overlay">
-                <div class="hero-slide__info">
-                  <div class="hero-slide__kicker">Монтаж бесканальной теплотрассы</div>
-                  <div class="hero-slide__title">Трубы PE-RT тип II в ППУ/ПЭ изоляции для подземных сетей</div>
-                </div>
-                <button class="btn btn--primary btn--sm" data-open-modal="modal-quote">Запросить КП</button>
-              </div>
-            </div>
-
-            <div class="hero-slide">
-              <img src="assets/images/hero_coils.jpg" alt="Поставка гибких труб в бухтах" class="hero-slide__img">
-              <div class="hero-slide__overlay">
-                <div class="hero-slide__info">
-                  <div class="hero-slide__kicker">Бухтовые поставки</div>
-                  <div class="hero-slide__title">Длинномерные бухты d25–d110 мм до 500 м — сокращение стыков на 80%</div>
-                </div>
-                <button class="btn btn--primary btn--sm" data-open-modal="modal-quote">Запросить КП</button>
-              </div>
-            </div>
-
-            <div class="hero-slide">
-              <img src="assets/images/hero_welding.jpg" alt="Электросварной монтаж теплотрассы" class="hero-slide__img">
-              <div class="hero-slide__overlay">
-                <div class="hero-slide__info">
-                  <div class="hero-slide__kicker">Электросварной монтаж</div>
-                  <div class="hero-slide__title">Монолитные герметичные соединения фитингами со штрих-код сваркой</div>
-                </div>
-                <button class="btn btn--primary btn--sm" data-open-modal="modal-quote">Запросить КП</button>
-              </div>
-            </div>
+      <!-- Инженерная панель ключевых показателей -->
+      <div class="hero-stats-panel">
+        <div class="hero-stat-card">
+          <div class="hero-stat-card__tag">[РЕСУРС ЭКСПЛУАТАЦИИ]</div>
+          <div class="hero-stat-card__metric">
+            <span class="hero-stat-card__number">50+</span>
+            <span class="hero-stat-card__unit">лет</span>
           </div>
+          <div class="hero-stat-card__title">Срок службы теплотрассы</div>
+          <div class="hero-stat-card__desc">Безаварийная работа по стандарту ГОСТ Р 56730-2015 без коррозии, зарастания и катодной защиты</div>
+        </div>
 
-          <div class="hero-slider__controls">
-            <div class="hero-slider__pagination">
-              <span class="hero-slider__current" id="hero-slider-current">01</span>
-              <span class="hero-slider__divider">/</span>
-              <span class="hero-slider__total" id="hero-slider-total">04</span>
-            </div>
-            <div class="hero-slider__dots" id="hero-slider-dots">
-              <button class="hero-dot active" aria-label="Слайд 1"></button>
-              <button class="hero-dot" aria-label="Слайд 2"></button>
-              <button class="hero-dot" aria-label="Слайд 3"></button>
-              <button class="hero-dot" aria-label="Слайд 4"></button>
-            </div>
-            <div class="hero-slider__arrows">
-              <button class="hero-arrow hero-arrow--prev" id="hero-prev" aria-label="Предыдущий слайд">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
-              </button>
-              <button class="hero-arrow hero-arrow--next" id="hero-next" aria-label="Следующий слайд">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              </button>
-            </div>
+        <div class="hero-stat-card">
+          <div class="hero-stat-card__tag">[СКЛАДСКОЙ РЕЗЕРВ]</div>
+          <div class="hero-stat-card__metric">
+            <span class="hero-stat-card__number">1 000+</span>
+            <span class="hero-stat-card__unit">тонн</span>
           </div>
+          <div class="hero-stat-card__title">Труб и фасонины в наличии</div>
+          <div class="hero-stat-card__desc">Прямые хлысты 12 м, гибкие бухты, предизолированные трубы в ППУ и комплекты КЗС с отгрузкой за 24 часа</div>
+        </div>
+
+        <div class="hero-stat-card hero-stat-card--accent">
+          <div class="hero-stat-card__tag">[ЭКОНОМИЯ БЮДЖЕТА]</div>
+          <div class="hero-stat-card__metric">
+            <span class="hero-stat-card__prefix">до</span>
+            <span class="hero-stat-card__number">40%</span>
+          </div>
+          <div class="hero-stat-card__title">Экономия сметной стоимости</div>
+          <div class="hero-stat-card__desc">Снижение капитальных затрат и ускорение монтажа в 2.5 раза относительно стальных трубопроводов и сшитого PEX</div>
         </div>
       </div>
     </div>

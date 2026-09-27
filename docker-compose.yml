@@ -1,0 +1,33 @@
+services:
+  pipeprime-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pipeprime-app
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8000
+    env_file:
+      - path: server/.env
+        required: false
+      - path: .env
+        required: false
+    volumes:
+      # Persistent SQLite DB, uploaded project specifications, and protected ATR
+      - ./server/data:/app/server/data
+      - ./server/storage/uploads:/app/server/storage/uploads
+      - ./server/storage/protected:/app/server/storage/protected
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

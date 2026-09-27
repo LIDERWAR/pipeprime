@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Инженерный калькулятор теплотрассы — PipePrime</title>
   <meta name="description" content="Онлайн-калькулятор расчета параметров трубопроводов PE-RT тип II для отопления и ГВС. Расчет массы, количества хлыстов 12 м, муфт КЗС, объема для логистики и подбор автотранспорта.">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=4">
   <link rel="stylesheet" href="assets/css/calculator.css">
   <link rel="icon" type="image/png" href="assets/images/pipe_cross_section.png">
 </head>
@@ -201,8 +201,12 @@
             <button class="btn btn--outline" data-open-modal="modal-quote">
               Запросить официальное КП с ценой
             </button>
-            <button class="btn btn--secondary btn--sm" onclick="window.print()">
-              Распечатать ведомость (Печать / PDF)
+            <button class="btn btn--secondary btn--sm" id="calc-download-pdf" style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              Скачать расчетное КП (PDF)
+            </button>
+            <button class="btn btn--outline btn--sm" onclick="window.print()" style="opacity: 0.7;">
+              Печать ведомости (Ctrl+P)
             </button>
           </div>
         </div>

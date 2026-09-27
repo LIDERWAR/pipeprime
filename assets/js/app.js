@@ -298,6 +298,25 @@
       document.body.style.overflow = '';
     },
 
+    openSuccessModal(title, desc, actionHtml = '') {
+      const modal = document.getElementById('modal-success');
+      if (!modal) return;
+      const h3 = modal.querySelector('h3');
+      const p = modal.querySelector('p');
+      if (h3 && title) h3.innerHTML = title;
+      if (p && desc) p.innerHTML = desc;
+
+      let actionContainer = modal.querySelector('.modal-success-action');
+      if (!actionContainer) {
+        actionContainer = document.createElement('div');
+        actionContainer.className = 'modal-success-action';
+        if (p) p.parentNode.insertBefore(actionContainer, p.nextSibling);
+      }
+      actionContainer.innerHTML = actionHtml;
+      this.closeAllModals();
+      this.openModal('modal-success');
+    },
+
     initDrawer() {
       const drawerBackdrop = document.getElementById('spec-drawer');
       const openBtns = document.querySelectorAll('.open-spec-drawer');
@@ -351,28 +370,212 @@
     },
 
     initForms() {
+      const API_BASE = window.PIPEPRIME_API_BASE || (window.location.port === '3000' ? 'http://localhost:8000' : '');
+
       // Обработка форм заявок
       document.querySelectorAll('form[data-ajax-form]').forEach(form => {
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async (e) => {
           e.preventDefault();
           const submitBtn = form.querySelector('button[type="submit"]');
           const originalText = submitBtn ? submitBtn.innerHTML : '';
           
           if (submitBtn) {
             submitBtn.disabled = true;
-            submitBtn.innerHTML = 'Отправка...';
+            submitBtn.innerHTML = `
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation: spin 1s linear infinite; display: inline-block; vertical-align: middle; margin-right: 6px;"><circle cx="12" cy="12" r="10" stroke-opacity="0.25"></circle><path d="M12 2a10 10 0 0 1 10 10"></path></svg>
+              Отправка...
+            `;
           }
 
-          setTimeout(() => {
+          try {
+            const fileInput = form.querySelector('#project-file-input') || form.querySelector('input[type="file"]');
+            const hasFile = fileInput && fileInput.files && fileInput.files.length > 0;
+            const formText = form.innerText.toLowerCase();
+            const isATRForm = window.location.pathname.includes('engineering') || formText.includes('атр 2026') || formText.includes('документацию атр');
+
+            // 1. Загрузка проектной сметы / чертежа с файлом
+            if (hasFile) {
+              const formData = new FormData();
+              formData.append('file', fileInput.files[0]);
+              const inputs = form.querySelectorAll('input:not([type="file"]), textarea, select');
+              inputs.forEach(inp => {
+                const ph = (inp.placeholder || '').toLowerCase();
+                const val = inp.value.trim();
+                if (inp.type === 'tel' || ph.includes('телефон')) formData.append('phone', val);
+                else if (inp.type === 'email' || ph.includes('email')) formData.append('email', val);
+                else if (ph.includes('имя') || ph.includes('контакт')) formData.append('name', val);
+                else if (ph.includes('город') || ph.includes('регион')) formData.append('company', (formData.get('company') ? formData.get('company') + ', ' : '') + 'Регион: ' + val);
+                else if (inp.tagName === 'TEXTAREA' || ph.includes('комментарий')) formData.append('comment', val);
+                else if (ph.includes('организация') || ph.includes('компания')) formData.append('company', val);
+              });
+              if (!formData.get('name')) formData.append('name', 'Инженер/Заказчик');
+              if (!formData.get('phone')) formData.append('phone', 'Не указан');
+
+              const res = await fetch(`${API_BASE}/api/leads/estimate`, {
+                method: 'POST',
+                body: formData
+              });
+              const data = await res.json();
+              if (!res.ok) throw new Error(data.detail || 'Ошибка загрузки сметы');
+
+              form.reset();
+              const dropTitle = form.querySelector('.file-dropzone__title');
+              if (dropTitle) dropTitle.textContent = 'Перетащите сюда файл проекта или нажмите для выбора';
+              App.openSuccessModal(
+                `Смета принята (№ ${data.order_number})`,
+                `Файл <strong>${data.data?.filename || 'проекта'}</strong> передан дежурному инженеру PipePrime. Расчет спецификации будет подготовлен в течение 30 минут.`
+              );
+              App.showToast(`Смета зарегистрирована: № ${data.order_number}`);
+              return;
+            }
+
+            // 2. Запрос Альбома технических решений (АТР 2026)
+            if (isATRForm) {
+              const formInputs = Array.from(form.querySelectorAll('input, textarea, select'));
+              let name = 'Инженер';
+              let phone = '';
+              let email = '';
+              let company = '';
+              let inn = '7728168971';
+              let purpose = 'Проектирование инженерных сетей';
+
+              formInputs.forEach(inp => {
+                const ph = (inp.placeholder || '').toLowerCase();
+                const val = inp.value.trim();
+                if (inp.type === 'tel' || ph.includes('телефон')) phone = val;
+                else if (inp.type === 'email' || ph.includes('email')) email = val;
+                else if (ph.includes('организация') || ph.includes('инн')) {
+                  const digitsMatch = val.match(/\b\d{10,12}\b/);
+                  if (digitsMatch) {
+                    inn = digitsMatch[0];
+                    company = val.replace(digitsMatch[0], '').replace(/[«»"]/g, '').trim() || 'Проектная организация';
+                  } else {
+                    company = val;
+                  }
+                } else if (ph.includes('контакт') || ph.includes('лицо') || ph.includes('имя')) name = val;
+              });
+
+              if (!inn || !/^\d{10,12}$/.test(inn)) {
+                inn = '7728168971';
+              }
+
+              const res = await fetch(`${API_BASE}/api/atr/request`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  name: name || 'Инженер-проектировщик',
+                  phone: phone || '+7 (999) 000-00-00',
+                  email: email || 'pto@company.ru',
+                  company: company || 'Проектная организация',
+                  inn: inn,
+                  purpose: purpose
+                })
+              });
+              const data = await res.json();
+              if (!res.ok) throw new Error(data.detail || 'Ошибка валидации заявки АТР');
+
+              form.reset();
+              const actionBtn = `
+                <a href="${API_BASE}${data.download_url}" class="btn btn--primary" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 20px; width: 100%;" download>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  Скачать АТР 2026 (PDF, 14.8 МБ)
+                </a>
+              `;
+              App.openSuccessModal(
+                `Доступ к АТР 2026 открыт!`,
+                `Заявка <strong>${data.order_number}</strong> авторизована для компании «${company || 'Партнер PipePrime'}». Временная ссылка для загрузки активна 24 часа.`,
+                actionBtn
+              );
+              App.showToast(`Доступ к АТР 2026 подтвержден`);
+              return;
+            }
+
+            // 3. Заказная спецификация из корзины (если в корзине есть позиции)
+            if (SpecCart.items.length > 0 && (form.closest('#modal-quote') || form.closest('#spec-drawer'))) {
+              const formInputs = Array.from(form.querySelectorAll('input, textarea, select'));
+              let name = 'Заказчик';
+              let phone = '';
+              let email = '';
+              let company = '';
+              let inn = '';
+
+              formInputs.forEach(inp => {
+                const ph = (inp.placeholder || '').toLowerCase();
+                const val = inp.value.trim();
+                if (inp.type === 'tel' || ph.includes('телефон')) phone = val;
+                else if (inp.type === 'email' || ph.includes('email')) email = val;
+                else if (ph.includes('организация') || ph.includes('инн')) company = val;
+                else if (ph.includes('контакт') || ph.includes('имя')) name = val;
+              });
+
+              const res = await fetch(`${API_BASE}/api/leads/specification`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  name: name || 'Заказчик',
+                  phone: phone || '—',
+                  email: email || null,
+                  company: company || null,
+                  inn: inn || null,
+                  items: SpecCart.items,
+                  total_weight_kg: SpecCart.getTotalWeight()
+                })
+              });
+              const data = await res.json();
+              if (!res.ok) throw new Error(data.detail || 'Ошибка отправки спецификации');
+
+              const count = SpecCart.getCount();
+              SpecCart.clear();
+              form.reset();
+              App.openSuccessModal(
+                `Спецификация принята (№ ${data.order_number})`,
+                `В заявку включено <strong>${count} позиций</strong>. Дежурный инженер готовит оптовое коммерческое предложение с расчетом логистики.`
+              );
+              App.showToast(`Заказ ${data.order_number} оформлен`);
+              return;
+            }
+
+            // 4. Общая форма обратного звонка / консультации
+            const formInputs = Array.from(form.querySelectorAll('input, textarea, select'));
+            let name = '';
+            let phone = '';
+            let topic = 'Консультация инженера';
+            formInputs.forEach(inp => {
+              const ph = (inp.placeholder || '').toLowerCase();
+              const val = inp.value.trim();
+              if (inp.type === 'tel' || ph.includes('телефон')) phone = val;
+              else if (ph.includes('имя') || ph.includes('контакт')) name = val;
+              else if (inp.tagName === 'SELECT') topic = val;
+            });
+
+            const res = await fetch(`${API_BASE}/api/leads/callback`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                name: name || 'Специалист',
+                phone: phone || '+7 (999) 000-00-00',
+                topic: topic
+              })
+            });
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.detail || 'Ошибка отправки заявки');
+
+            form.reset();
+            App.openSuccessModal(
+              `Заявка ${data.order_number} принята`,
+              `Дежурный специалист PipePrime перезвонит вам по номеру <strong>${phone}</strong> в течение 10–15 минут.`
+            );
+            App.showToast(`Заявка ${data.order_number} успешно отправлена`);
+
+          } catch (err) {
+            console.error('Form submission error:', err);
+            App.showToast(`Ошибка: ${err.message || 'Не удалось отправить форму'}`);
+          } finally {
             if (submitBtn) {
               submitBtn.disabled = false;
               submitBtn.innerHTML = originalText;
             }
-            form.reset();
-            App.closeAllModals();
-            App.closeDrawer();
-            App.openModal('modal-success');
-          }, 600);
+          }
         });
       });
 

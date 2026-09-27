@@ -1,0 +1,23 @@
+[Unit]
+Description=PipePrime Enterprise B2B Platform Service
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/pipeprime
+EnvironmentFile=/var/www/pipeprime/server/.env
+ExecStart=/var/www/pipeprime/venv/bin/uvicorn server.main:app --host 127.0.0.1 --port 8000 --workers 4 --proxy-headers
+Restart=always
+RestartSec=5s
+KillMode=process
+PrivateTmp=true
+
+# Security sandboxing
+ProtectSystem=full
+ProtectHome=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
