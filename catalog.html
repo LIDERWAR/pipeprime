@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Каталог полимерных труб PE-RT тип II и фитингов — PipePrime</title>
   <meta name="description" content="Интерактивный каталог напорных труб PE-RT тип II (d25–630 мм), предизолированных труб в ППУ/ПЭ и ППУ/ОЦ, гибких систем в гофре, электросварных и литых фитингов по стандарту АТР 2026. Оптовые цены, технические характеристики, поставка по РФ.">
-  <link rel="stylesheet" href="assets/css/style.css?v=9">
+  <link rel="stylesheet" href="assets/css/style.css?v=10">
+  <link rel="stylesheet" href="assets/css/catalog.css?v=10">
   <!-- Favicons -->
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
@@ -82,65 +83,20 @@
       <div class="catalog-filter-bar">
         <div class="filter-search-wrapper">
           <svg class="filter-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          <input type="text" id="catalog-search-input" class="filter-search-input" placeholder="Поиск по диаметру, SDR, названию или артикулу (например: d110, SDR 7.4, отвод, муфта)...">
+          <input type="text" id="catalog-search-input" class="filter-search-input" placeholder="Поиск по категории, диаметру, SDR или названию (например: d110, SDR 7.4, отвод, муфта, ППУ)...">
         </div>
 
         <!-- Категории (чипсы) -->
         <div class="filter-chips-container" id="filter-categories"></div>
 
-        <!-- Контролы: диаметр, SDR, сброс -->
-        <div class="filter-controls-row">
-          <div class="filter-selects-group">
-            <div class="filter-select-item">
-              <label for="filter-diameter">Диаметр (d):</label>
-              <select id="filter-diameter" class="filter-select">
-                <option value="all">Все диаметры</option>
-                <option value="25">d25 мм</option>
-                <option value="32">d32 мм</option>
-                <option value="40">d40 мм</option>
-                <option value="50">d50 мм</option>
-                <option value="63">d63 мм</option>
-                <option value="75">d75 мм</option>
-                <option value="90">d90 мм</option>
-                <option value="110">d110 мм</option>
-                <option value="125">d125 мм</option>
-                <option value="140">d140 мм</option>
-                <option value="160">d160 мм</option>
-                <option value="180">d180 мм</option>
-                <option value="200">d200 мм</option>
-                <option value="225">d225 мм</option>
-                <option value="250">d250 мм</option>
-                <option value="280">d280 мм</option>
-                <option value="315">d315 мм</option>
-                <option value="355">d355 мм</option>
-                <option value="400">d400 мм</option>
-                <option value="450">d450 мм</option>
-                <option value="500">d500 мм</option>
-                <option value="560">d560 мм</option>
-                <option value="630">d630 мм</option>
-              </select>
-            </div>
-
-            <div class="filter-select-item">
-              <label for="filter-sdr">Давление / SDR:</label>
-              <select id="filter-sdr" class="filter-select">
-                <option value="all">Все SDR</option>
-                <option value="7.4">SDR 7.4 (1.0 МПа / 10 бар)</option>
-                <option value="9">SDR 9 (0.8 МПа / 8 бар)</option>
-                <option value="11">SDR 11 (0.6 МПа / 6 бар)</option>
-              </select>
-            </div>
-          </div>
-
-          <div style="display: flex; align-items: center; gap: 16px;">
-            <span id="catalog-results-count" style="font-size: 0.85rem; color: var(--text-muted);">Загрузка...</span>
-            <button class="btn btn--outline btn--sm" id="catalog-reset-filters">Сбросить фильтры</button>
-          </div>
+        <div class="filter-status-row">
+          <span id="catalog-results-count">Отображение: 10 товарных групп продукции (d25–630 мм)</span>
+          <button class="btn btn--outline btn--sm" id="catalog-reset-filters">Показать все группы</button>
         </div>
       </div>
 
-      <!-- Сетка товаров -->
-      <div class="product-grid" id="catalog-products-grid"></div>
+      <!-- Контейнер карточек-конфигураторов продукции -->
+      <div id="catalog-configurators-container"></div>
 
     </div>
   </main>
@@ -301,8 +257,8 @@
     </div>
   </div>
 
-  <script src="assets/js/catalog-data.js?v=2"></script>
-  <script src="assets/js/app.js?v=2"></script>
-  <script src="assets/js/catalog.js?v=2"></script>
+  <script src="assets/js/catalog-data.js?v=3"></script>
+  <script src="assets/js/app.js?v=3"></script>
+  <script src="assets/js/catalog.js?v=3"></script>
 </body>
 </html>
