@@ -461,57 +461,54 @@ button, input, select, textarea {
   flex-shrink: 0;
 }
 
-/* Правый блок хедера */
+/* Правая сервисная зона хедера (Однострочная, строгая, без лишнего визуального шума) */
 .header__actions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
   flex-shrink: 0;
   white-space: nowrap;
 }
 
-.phone-button {
-  display: flex;
-  flex-direction: column;
-  text-align: right;
-  flex-shrink: 0;
-  white-space: nowrap;
-}
-
-.phone-button__number {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 1.15rem;
+.header-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
   color: var(--text-white);
-  transition: color 0.2s;
-  white-space: nowrap;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.05rem;
   letter-spacing: -0.01em;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  padding: 6px 0;
 }
 
-.phone-button__number:hover {
+.header-phone svg {
+  color: var(--accent-primary);
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.header-phone:hover {
   color: var(--accent-primary);
 }
 
-.phone-button__hint {
-  font-size: 0.75rem;
-  color: var(--success);
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  justify-content: flex-end;
-  white-space: nowrap;
+.header-phone:hover svg {
+  transform: scale(1.12);
 }
 
-.status-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--success);
-  box-shadow: 0 0 8px var(--success);
+.header-divider {
+  width: 1px;
+  height: 22px;
+  background: var(--border-medium);
+  opacity: 0.7;
   flex-shrink: 0;
 }
 
 /* Корзина спецификации */
+
 .spec-cart-btn {
   position: relative;
   background: var(--bg-tertiary);
@@ -1957,3 +1954,27 @@ button, input, select, textarea {
     margin-top: 16px;
   }
 }
+
+@media (max-width: 576px) {
+  .header-phone span {
+    display: none;
+  }
+  .header-divider {
+    display: none;
+  }
+  .header__actions {
+    gap: 12px;
+  }
+  .header-phone {
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-md);
+    padding: 0;
+  }
+}
+
