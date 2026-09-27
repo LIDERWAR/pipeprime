@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Инженерный калькулятор теплотрассы — PipePrime</title>
   <meta name="description" content="Онлайн-калькулятор расчета параметров трубопроводов PE-RT тип II для отопления и ГВС. Расчет массы, количества хлыстов 12 м, муфт КЗС, объема для логистики и подбор автотранспорта.">
-  <link rel="stylesheet" href="assets/css/style.css?v=6">
+  <link rel="stylesheet" href="assets/css/style.css?v=9">
   <!-- Favicons -->
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
@@ -121,6 +121,7 @@
             <div class="form-group">
               <label class="form-label">Наружный диаметр трубы (d)</label>
               <select id="calc-diameter" class="form-control">
+                <option value="25">d25 мм (защитная оболочка D90)</option>
                 <option value="32">d32 мм (защитная оболочка D110)</option>
                 <option value="40">d40 мм (защитная оболочка D110)</option>
                 <option value="50">d50 мм (защитная оболочка D125)</option>
@@ -131,11 +132,18 @@
                 <option value="125">d125 мм (защитная оболочка D200)</option>
                 <option value="140">d140 мм (защитная оболочка D225)</option>
                 <option value="160">d160 мм (защитная оболочка D250)</option>
+                <option value="180">d180 мм (защитная оболочка D280)</option>
                 <option value="200">d200 мм (защитная оболочка D315)</option>
                 <option value="225">d225 мм (защитная оболочка D315)</option>
                 <option value="250">d250 мм (защитная оболочка D355)</option>
+                <option value="280">d280 мм (защитная оболочка D400)</option>
                 <option value="315">d315 мм (защитная оболочка D450)</option>
+                <option value="355">d355 мм (защитная оболочка D500)</option>
                 <option value="400">d400 мм (защитная оболочка D560)</option>
+                <option value="450">d450 мм (защитная оболочка D630)</option>
+                <option value="500">d500 мм (защитная оболочка D670)</option>
+                <option value="560">d560 мм (защитная оболочка D710)</option>
+                <option value="630">d630 мм (защитная оболочка D800)</option>
               </select>
             </div>
 
@@ -297,8 +305,8 @@
     </div>
   </div>
 
-  <script src="assets/js/catalog-data.js"></script>
-  <script src="assets/js/app.js"></script>
-  <script src="assets/js/calculator.js"></script>
+  <script src="assets/js/catalog-data.js?v=2"></script>
+  <script src="assets/js/app.js?v=2"></script>
+  <script src="assets/js/calculator.js?v=2"></script>
 </body>
 </html>
