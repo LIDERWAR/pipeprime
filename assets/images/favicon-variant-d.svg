@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgDarkD" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#151b24"/>
+      <stop offset="100%" stop-color="#0a0d12"/>
+    </linearGradient>
+    <linearGradient id="hotFlowD" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff9142"/>
+      <stop offset="100%" stop-color="#e65100"/>
+    </linearGradient>
+    <linearGradient id="returnFlowD" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <filter id="glowD" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="14" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Dark industrial squircle base -->
+  <rect width="512" height="512" rx="124" fill="url(#bgDarkD)"/>
+  <rect x="12" y="12" width="488" height="488" rx="114" fill="none" stroke="#253245" stroke-width="10"/>
+
+  <g filter="url(#glowD)">
+    <!-- Central connecting bridge / bracket -->
+    <rect x="190" y="238" width="132" height="36" rx="10" fill="#2a3342" stroke="#4b5563" stroke-width="4"/>
+
+    <!-- Left pipe: Подача (T1 +95°C Hot Supply) -->
+    <circle cx="160" cy="256" r="92" fill="#202938" stroke="#3b485d" stroke-width="8"/>
+    <circle cx="160" cy="256" r="66" fill="url(#hotFlowD)"/>
+    <circle cx="160" cy="256" r="32" fill="#ffffff"/>
+
+    <!-- Right pipe: Обратка (T2 +70°C Return Flow) -->
+    <circle cx="352" cy="256" r="92" fill="#202938" stroke="#3b485d" stroke-width="8"/>
+    <circle cx="352" cy="256" r="66" fill="url(#returnFlowD)"/>
+    <circle cx="352" cy="256" r="32" fill="#ffffff"/>
+  </g>
+</svg>

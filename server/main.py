@@ -303,6 +303,7 @@ HTML_PAGES = {
     "about": PROJECT_ROOT / "about.html",
     "delivery": PROJECT_ROOT / "delivery.html",
     "contacts": PROJECT_ROOT / "contacts.html",
+    "favicon-preview": PROJECT_ROOT / "favicon-preview.html",
 }
 
 @app.get("/", tags=["Pages"])
@@ -318,11 +319,12 @@ async def serve_page(page_name: str):
     if clean_name in HTML_PAGES and HTML_PAGES[clean_name].exists():
         return FileResponse(HTML_PAGES[clean_name])
 
-    # Allow SEO and icon root assets
-    if page_name in {"robots.txt", "sitemap.xml", "favicon.ico"}:
+    # Allow SEO, manifest and icon root assets
+    if page_name in {"robots.txt", "sitemap.xml", "favicon.ico", "site.webmanifest"}:
         target = PROJECT_ROOT / page_name
         if target.exists():
             return FileResponse(target)
+
 
     raise HTTPException(status_code=404, detail="Страница не найдена")
 

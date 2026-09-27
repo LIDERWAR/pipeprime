@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Выбор фавикона — PipePrime</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .preview-page {
+      padding: 60px 0 100px;
+    }
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 32px;
+      margin-top: 40px;
+    }
+    .variant-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+    .variant-card:hover {
+      border-color: var(--accent-primary);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+    }
+    .variant-card.recommended {
+      border-color: rgba(255, 107, 0, 0.4);
+      background: linear-gradient(180deg, rgba(255, 107, 0, 0.05) 0%, var(--bg-card) 40%);
+    }
+    .variant-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-primary);
+      margin-bottom: 12px;
+    }
+    .variant-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .variant-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+    .sizes-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 20px;
+      background: var(--bg-surface);
+      padding: 24px;
+      border-radius: var(--radius-md);
+      margin-bottom: 24px;
+      justify-content: center;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+    .size-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .size-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+    /* Browser Tab Simulation */
+    .tab-sim {
+      background: #1e222b;
+      border-radius: 8px 8px 0 0;
+      padding: 8px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.82rem;
+      color: #e5e7eb;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-bottom: none;
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 24px;
+    }
+    .tab-sim-light {
+      background: #f1f3f5;
+      color: #1f2937;
+      border: 1px solid #d1d5db;
+      border-bottom: none;
+    }
+    .tab-close {
+      margin-left: auto;
+      opacity: 0.5;
+      font-size: 0.9rem;
+    }
+    .apply-btn {
+      width: 100%;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo">
+        <div class="logo__mark">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="logo__text">
+          <div class="logo__title">Pipe<span>Prime</span></div>
+          <div class="logo__desc">Поставки труб</div>
+        </div>
+      </a>
+      <a href="index.html" class="btn btn--outline btn--sm">← Вернуться на сайт</a>
+    </div>
+  </header>
+
+  <main class="preview-page container">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+      <span class="subheading" style="color: var(--accent-primary); letter-spacing: 0.1em; font-weight: 700; text-transform: uppercase;">ФИРМЕННЫЙ СТИЛЬ & АЙДЕНТИКА</span>
+      <h1 style="font-size: 2.4rem; margin: 12px 0 16px;">Варианты фавикона для PipePrime</h1>
+      <p style="color: var(--text-secondary); font-size: 1.05rem;">
+        Фавикон отображается во вкладках браузера, закладках, мобильных ярлыках и поисковой выдаче Яндекса и Google.
+        Ниже представлены 4 концептуальных варианта, отмасштабированных под реальные размеры.
+      </p>
+    </div>
+
+    <div class="preview-grid">
+      <!-- Вариант 1 -->
+      <div class="variant-card recommended">
+        <div class="variant-badge">Вариант 1 • Рекомендуемый (Брендовый)</div>
+        <div class="variant-title">Фирменный знак (Brand Squircle)</div>
+        <div class="variant-desc">
+          100% соответствие официальному логотипу PipePrime: фирменный оранжевый сквиркл со скошенными углами и трехслойная изометрическая структура (PE-RT II + ППУ + оболочка). Максимальная узнаваемость сайта.
+        </div>
+
+        <div class="sizes-row">
+          <div class="size-box">
+            <img src="assets/images/favicon-variant-a.svg" width="64" height="64" alt="64x64">
+            <span class="size-label">64x64</span>
+          </div>
+          <div class="size-box">
+            <img src="assets/images/favicon-variant-a.svg" width="32" height="32" alt="32x32">
+            <span class="size-label">32x32</span>
+          </div>
+          <div class="size-box">
+            <img src="assets/images/favicon-variant-a.svg" width="24" height="24" alt="24x24">
+            <span class="size-label">24x24</span>
+          </div>
+          <div class="size-box">
+            <img src="assets/images/favicon-variant-a.svg" width="16" height="16" alt="16x16">
+            <span class="size-label">16x16</span>
+          </div>
+        </div>
+
+        <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 6px;">Вид во вкладке Chrome (Темная тема):</div>
+        <div class="tab-sim">
+          <img src="assets/images/favicon-variant-a.svg" width="16" height="16" alt="fav">
+          <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">PipePrime — Поставки труб PE-RT II</span>
+          <span class="tab-close">✕</span>
+        </div>
+
+        <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 6px;">Вид во вкладке Chrome (Светлая тема):</div>
+        <div class="tab-sim tab-sim-light">
+          <img src="assets/images/favicon-variant-a.svg" width="16" height="16" alt="fav">
+          <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">PipePrime — Поставки труб PE-RT II</span>
+          <span class="tab-close">✕</span>
+        </div>
+
+        <button class="btn btn--primary apply-btn" onclick="applyFavicon('a')">Выбрать этот вариант (№1)</button>
+      </div>
+
+      <!-- Вариант 2 -->
+      <div class="variant-card">
+        <div class="variant-badge">Вариант 2 • Инженерный</div>
+        <div class="variant-title">Труба ППУ в изометрии</div>
+        <div class="variant-desc">
+          Реалистичный срез предизолированной трубы в изометрии: защитный темный полиэтиленовый кожух, слой оранжевой пенополиуретановой изоляции (ППУ) и горячее напорное ядро теплоносителя (+95°C).
+        </div>
+
+        <div class="sizes-row">
+          <div class="size-box">
+            <img src="assets/images/favicon-variant-b.svg" width="64" height="64" alt="64x64">
+            <span class="size-label">64x64</span>
+          </div>
+          <div class="size-box">
+            <img src="assets/images/favicon-variant-b.svg" width="32" height="32" alt="32x32">
+            <span class="size-label">32x32</span>
+          </div>
+          <div class="size-box">
+            <img src="assets/images/favicon-variant-b.svg" width="24" height="24" alt="24x24">
+            <span class="size-label">24x24</span>
+          </div>
+          <div class="size-box">
+            <img src="assets/images/favicon-variant-b.svg" width="16" height="16" alt="16x16">
+            <span class="size-label">16x16</span>
+          </div>
+        </div>
+
+        <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 6px;">Вид во вкладке Chrome (Темная тема):</div>
+        <div class="tab-sim">
+          <img src="assets/images/favicon-variant-b.svg" width="16" height="16" alt="fav">
+          <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">PipePrime — Поставки труб PE-RT II</span>
+          <span class="tab-close">✕</span>
+        </div>
+
+        <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 6px;">Вид во вкладке Chrome (Светлая тема):</div>
+        <div class="tab-sim tab-sim-light">
+          <img src="assets/images/favicon-variant-b.svg" width="16" height="16" alt="fav">
+          <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">PipePrime — Поставки труб PE-RT II</span>
+          <span class="tab-close">✕</span>
+        </div>
+
+        <button class="btn btn--outline apply-btn" onclick="applyFavicon('b')">Выбрать этот вариант (№2)</button>
+      </div>
+
+      <!-- Вариант 3 -->
+      <div class="variant-card">
+        <div class="variant-badge">Вариант 3 • Графичный</div>
+        <div class="variant-title">Монограмма «P» (Pipe Flow)</div>
+        <div class="variant-desc">
+          Четкая буква «P», сконструированная из трубного отвода 90° со стыковочным фланцем и белой сигнальной точкой потока. Обладает безупречной читаемостью даже на самых крошечных экранах (16×16 px).
+        </div>
+
+        <div class="sizes-row">
+          <div class="size-box">
+            <img src="assets/images/favicon-variant-c.svg" width="64" height="64" alt="64x64">
+            <span class="size-label">64x64</span>
+          </div>
+          <div class="size-box">
+            <img src="assets/images/favicon-variant-c.svg" width="32" height="32" alt="32x32">
+            <span class="size-label">32x32</span>
+          </div>
+          <div class="size-box">
+            <img src="assets/images/favicon-variant-c.svg" width="24" height="24" alt="24x24">
+            <span class="size-label">24x24</span>
+          </div>
+          <div class="size-box">
+            <img src="assets/images/favicon-variant-c.svg" width="16" height="16" alt="16x16">
+            <span class="size-label">16x16</span>
+          </div>
+        </div>
+
+        <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 6px;">Вид во вкладке Chrome (Темная тема):</div>
+        <div class="tab-sim">
+          <img src="assets/images/favicon-variant-c.svg" width="16" height="16" alt="fav">
+          <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">PipePrime — Поставки труб PE-RT II</span>
+          <span class="tab-close">✕</span>
+        </div>
+
+        <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 6px;">Вид во вкладке Chrome (Светлая тема):</div>
+        <div class="tab-sim tab-sim-light">
+          <img src="assets/images/favicon-variant-c.svg" width="16" height="16" alt="fav">
+          <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">PipePrime — Поставки труб PE-RT II</span>
+          <span class="tab-close">✕</span>
+        </div>
+
+        <button class="btn btn--outline apply-btn" onclick="applyFavicon('c')">Выбрать этот вариант (№3)</button>
+      </div>
+
+      <!-- Вариант 4 -->
+      <div class="variant-card">
+        <div class="variant-badge">Вариант 4 • Инфраструктурный</div>
+        <div class="variant-title">Двухтрубная система (Twin Pipe)</div>
+        <div class="variant-desc">
+          Образ классической теплотрассы в две нитки: подающий горячий трубопровод T1 (+95°C, оранжевый) и обратный трубопровод T2 (+70°C, голубой/стальной), соединенные монтажной планкой.
+        </div>
+
+        <div class="sizes-row">
+          <div class="size-box">
+            <img src="assets/images/favicon-variant-d.svg" width="64" height="64" alt="64x64">
+            <span class="size-label">64x64</span>
+          </div>
+          <div class="size-box">
+            <img src="assets/images/favicon-variant-d.svg" width="32" height="32" alt="32x32">
+            <span class="size-label">32x32</span>
+          </div>
+          <div class="size-box">
+            <img src="assets/images/favicon-variant-d.svg" width="24" height="24" alt="24x24">
+            <span class="size-label">24x24</span>
+          </div>
+          <div class="size-box">
+            <img src="assets/images/favicon-variant-d.svg" width="16" height="16" alt="16x16">
+            <span class="size-label">16x16</span>
+          </div>
+        </div>
+
+        <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 6px;">Вид во вкладке Chrome (Темная тема):</div>
+        <div class="tab-sim">
+          <img src="assets/images/favicon-variant-d.svg" width="16" height="16" alt="fav">
+          <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">PipePrime — Поставки труб PE-RT II</span>
+          <span class="tab-close">✕</span>
+        </div>
+
+        <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 6px;">Вид во вкладке Chrome (Светлая тема):</div>
+        <div class="tab-sim tab-sim-light">
+          <img src="assets/images/favicon-variant-d.svg" width="16" height="16" alt="fav">
+          <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">PipePrime — Поставки труб PE-RT II</span>
+          <span class="tab-close">✕</span>
+        </div>
+
+        <button class="btn btn--outline apply-btn" onclick="applyFavicon('d')">Выбрать этот вариант (№4)</button>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function applyFavicon(variant) {
+      const link = document.createElement('a');
+      link.href = 'assets/images/favicon-variant-' + variant + '.svg';
+      link.download = 'favicon.svg';
+      alert('Вариант выбран! Сообщите в чате ассистенту выбранный номер (' + variant.toUpperCase() + '), и он будет мгновенно применен на всем сайте и на боевом сервере.');
+    }
+  </script>
+</body>
+</html>

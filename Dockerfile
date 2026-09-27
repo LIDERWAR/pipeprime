@@ -23,9 +23,10 @@ RUN pip install --no-cache-dir -r /app/server/requirements.txt
 
 # Copy platform files
 COPY assets/ /app/assets/
-COPY index.html catalog.html calculator.html engineering.html about.html delivery.html contacts.html /app/
-COPY robots.txt sitemap.xml /app/
+COPY index.html catalog.html calculator.html engineering.html about.html delivery.html contacts.html favicon-preview.html /app/
+COPY robots.txt sitemap.xml favicon.ico site.webmanifest /app/
 COPY server/ /app/server/
+
 
 # Ensure runtime directories exist
 RUN mkdir -p /app/server/data /app/server/storage/uploads /app/server/storage/protected
