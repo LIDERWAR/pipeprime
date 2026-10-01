@@ -151,6 +151,11 @@ img {
   display: block;
 }
 
+svg {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
 button, input, select, textarea {
   font-family: inherit;
   font-size: 1rem;
