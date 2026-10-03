@@ -40,7 +40,7 @@ const PIPEBOUND_DATA = {
       name: "Трубы PE-RT тип II неизолированные (хлысты 12 м)",
       shortName: "Трубы неизолированные (хлысты)",
       badge: "ГОСТ 32415-2013",
-      image: "assets/images/cat_pert_pipe.png",
+      image: "assets/images/prod_pert_pipe.jpg",
       description: "Напорные трубы из термостойкого полиэтилена PE-RT тип II в отрезках по 12 метров для отопления и ГВС. Диаметры 25–630 мм. Рабочая температура до +95°С (пиковая +110°С).",
       features: ["SDR 7.4 / SDR 9 / SDR 11", "Давление до 1.0 МПа (10 бар)", "Срок службы 50+ лет", "Сварка встык и электромуфтовая"],
       type: "pipes"
@@ -50,7 +50,7 @@ const PIPEBOUND_DATA = {
       name: "Трубы PE-RT тип II неизолированные (бухты 100–500 м)",
       shortName: "Трубы неизолированные (бухты)",
       badge: "Бесшовный монтаж",
-      image: "assets/images/cat_pert_pipe.png",
+      image: "assets/images/prod_pert_pipe.jpg",
       description: "Гибкие напорные трубы в бухтах от 100 до 500 метров для бестраншейной и канальной прокладки. Минимизируют количество стыков на трассе, ускоряя монтаж в 3 раза.",
       features: ["Диаметры 25, 32, 40, 50, 63, 75, 90, 110 мм", "Поставка цельными отрезками", "Идеально для ГНБ и реконструкции", "Экономия на фитингах"],
       type: "pipes"
@@ -60,7 +60,7 @@ const PIPEBOUND_DATA = {
       name: "Трубы PE-RT тип II предизолированные в ППУ/ПЭ (хлысты 12 м)",
       shortName: "Трубы в ППУ/ПЭ (подземные)",
       badge: "ГОСТ Р 56730-2015",
-      image: "assets/images/cat_ppu_pipe.png",
+      image: "assets/images/prod_ppu_pe.jpg",
       description: "Трубы в жестком пенополиуретане (ППУ) с полиэтиленовой оболочкой для бесканальной подземной прокладки тепловых сетей. Оснащаются проводниками системы ОДК.",
       features: ["Защитная ПЭ оболочка", "Теплопроводность ППУ 0.028 Вт/(м·К)", "Встроенная система ОДК", "Бесканальная укладка прямо в грунт"],
       type: "pipes"
@@ -70,7 +70,7 @@ const PIPEBOUND_DATA = {
       name: "Трубы PE-RT тип II предизолированные в ППУ/ОЦ (хлысты 12 м)",
       shortName: "Трубы в ППУ/ОЦ (надземные)",
       badge: "Оцинкованная сталь",
-      image: "assets/images/cat_ppu_pipe.png",
+      image: "assets/images/prod_ppu_oc.jpg",
       description: "Трубы с ППУ изоляцией в спирально-навивной оцинкованной оболочке (ОЦ) для надземной прокладки, эстакад, мостовых переходов и проходных каналов.",
       features: ["Устойчивость к УФ и осадкам", "Пожаробезопасность", "Прокладка по эстакадам и подвалам", "Долговечная антикоррозийная защита"],
       type: "pipes"
@@ -80,7 +80,7 @@ const PIPEBOUND_DATA = {
       name: "Трубы PE-RT тип II гибкие в гофрированной оболочке ППУ/ПЭ (бухты)",
       shortName: "Гибкие трубы в гофре (бухты)",
       badge: "Бухты 100–300 м",
-      image: "assets/images/cat_ppu_pipe.png",
+      image: "assets/images/prod_flexible_coil.jpg",
       description: "Гибкие предизолированные трубопроводы в гофрированном полиэтиленовом кожухе высокой стойкости. Поставляются в бухтах до 300 метров для бестраншейной прокладки в плотной городской застройке без стыков и компенсаторов.",
       features: ["Бухты 100–300 м", "Огибание любых подземных препятствий", "Монтаж без компенсаторов", "Размеры 25/90 – 110/180 мм"],
       type: "pipes"
@@ -90,7 +90,7 @@ const PIPEBOUND_DATA = {
       name: "Фитинги PE-RT тип II электросварные",
       shortName: "Фитинги электросварные",
       badge: "SDR 7.4 / SDR 11",
-      image: "assets/images/cat_fitting_electro.png",
+      image: "assets/images/prod_fitting_electro.jpg",
       description: "Муфты, отводы 45°/90°, равнопроходные и редукционные тройники, переходы и седелки со встроенными нагревательными спиралями. 100% герметичность и штрих-код автоматической сварки.",
       features: ["Штрих-код для сварочного аппарата", "Диаметры 25–400 мм", "Сварка без зазоров и протечек", "Рабочее давление до 1.6 МПа"],
       type: "fittings"
@@ -100,7 +100,7 @@ const PIPEBOUND_DATA = {
       name: "Фитинги PE-RT тип II литые (спигот) под сварку встык",
       shortName: "Литые фитинги (спигот)",
       badge: "Сварка встык",
-      image: "assets/images/cat_fitting_spigot.png",
+      image: "assets/images/prod_fitting_spigot.jpg",
       description: "Литые фасонные изделия (отводы 45° и 90°, тройники равнопроходные и редукционные, переходы концентрические, втулки под фланец). Удлиненный хвостовик для сварки нагретым инструментом встык или электромуфтами.",
       features: ["Высокая прочность литья", "Идеальная геометрия", "Диаметры 32–630 мм", "Экономичное решение для магистралей"],
       type: "fittings"
@@ -110,7 +110,7 @@ const PIPEBOUND_DATA = {
       name: "Фитинги PE-RT тип II для раструбной сварки",
       shortName: "Раструбные фитинги",
       badge: "Раструб и резьба",
-      image: "assets/images/cat_fitting_spigot.png",
+      image: "assets/images/prod_fitting_rastrub.jpg",
       description: "Фасонные детали для раструбной сварки (муфты, отводы, тройники, комбинированные муфты ВР/НР с латунными резьбами и накидными гайками-американками). Применяются при обвязке ИТП/ЦТП, котельных и узлов учета.",
       features: ["Диаметры 20–63 мм", "Комбинированные муфты с латунью", "Быстрый ручной монтаж", "Надежность узлов ИТП и котельных"],
       type: "fittings"
@@ -120,9 +120,9 @@ const PIPEBOUND_DATA = {
       name: "Фитинги PE-RT тип II предизолированные в ППУ/ПЭ и ППУ/ОЦ",
       shortName: "Фасонные изделия в ППУ",
       badge: "Заводская изоляция",
-      image: "assets/images/cat_ppu_pipe.png",
-      description: "Отводы 90° и 45°, тройники равнопроходные и ответвления, тройники с шаровым краном воздушника, концевые элементы с кабелем ОДК, неподвижные опоры (НОП) с заводской теплоизоляцией.",
-      features: ["Оболочка ПЭ или ОЦ", "Встроенные проводники ОДК", "Краны воздушников в ППУ", "Заводской контроль качества"],
+      image: "assets/images/prod_valve_ppu.jpg",
+      description: "Отводы 90° и 45°, тройники равнопроходные и ответвления, шаровые краны со штоком в ППУ, тройники с шаровым краном воздушника, концевые элементы с кабелем ОДК, неподвижные опоры (НОП) с заводской теплоизоляцией.",
+      features: ["Оболочка ПЭ или ОЦ", "Шаровые краны и фасонина ППУ", "Краны воздушников в ППУ", "Заводской контроль качества"],
       type: "fittings"
     },
     {
@@ -130,7 +130,7 @@ const PIPEBOUND_DATA = {
       name: "Комплектующие для теплосетей (НСПС, фланцы, КЗС, ОДК)",
       shortName: "Комплектующие и КЗС",
       badge: "100% герметичность",
-      image: "assets/images/kzs_joint.png",
+      image: "assets/images/prod_kzs_joint.jpg",
       description: "Неразъемные соединения полиэтилен-сталь (НСПС), фланцы расточенные стальные PN10/PN16 в полипропиленовой защитной оболочке, комплекты заделки стыков (КЗС) под оболочку D90–560 мм, манжеты стенового ввода и ковера ОДК.",
       features: ["НСПС ПЭ/Сталь ст.20", "Расточенные фланцы в ПП", "КЗС с муфтой и пеной ППУ А+Б", "Манжеты и система ОДК"],
       type: "accessories"
@@ -165,7 +165,7 @@ const PIPEBOUND_DATA = {
           insulation: "Без изоляции",
           pressure: pressure,
           temp: "До +95°С (пиковая +110°С)",
-          image: "assets/images/cat_pert_pipe.png",
+          image: "assets/images/prod_pert_pipe.jpg",
           standard: "ГОСТ 32415-2013",
           application: "Отопление, горячее и холодное водоснабжение, бесканальная прокладка в футлярах, технологические трубопроводы"
         });
@@ -197,7 +197,7 @@ const PIPEBOUND_DATA = {
           insulation: "Без изоляции",
           pressure: pressure,
           temp: "До +95°С (пиковая +110°С)",
-          image: "assets/images/cat_pert_pipe.png",
+          image: "assets/images/prod_pert_pipe.jpg",
           standard: "ГОСТ 32415-2013",
           application: "Бестраншейный монтаж, ГНБ, длинномерная бесканальная прокладка с минимумом стыков"
         });
@@ -231,7 +231,7 @@ const PIPEBOUND_DATA = {
           odk: "С проводниками ОДК",
           pressure: sdr === 7.4 ? "1.0 МПа" : sdr === 9 ? "0.8 МПа" : "0.6 МПа",
           temp: "Рабочая +95°С, пиковая +110°С",
-          image: "assets/images/cat_ppu_pipe.png",
+          image: "assets/images/prod_ppu_pe.jpg",
           standard: "ГОСТ Р 56730-2015, СП 315.1325800.2017",
           application: "Подземная бесканальная прокладка магистральных и распределительных тепловых сетей"
         });
@@ -265,7 +265,7 @@ const PIPEBOUND_DATA = {
           odk: "С проводниками ОДК",
           pressure: sdr === 7.4 ? "1.0 МПа (10 бар)" : "0.6 МПа (6 бар)",
           temp: "Рабочая +95°С, пиковая +110°С",
-          image: "assets/images/cat_ppu_pipe.png",
+          image: "assets/images/prod_ppu_oc.jpg",
           standard: "ГОСТ Р 56730-2015",
           application: "Надземная прокладка теплотрасс, эстакады, переходы через препятствия, подвалы"
         });
@@ -303,7 +303,7 @@ const PIPEBOUND_DATA = {
           odk: "С проводниками ОДК",
           pressure: sdr === 7.4 ? "1.0 МПа (10 бар)" : sdr === 9 ? "0.8 МПа (8 бар)" : "0.6 МПа (6 бар)",
           temp: "До +95°С (пиковая +110°С)",
-          image: "assets/images/cat_ppu_pipe.png",
+          image: "assets/images/prod_flexible_coil.jpg",
           standard: "ГОСТ Р 56730-2015, ТУ завода-изготовителя",
           application: "Бестраншейная бесканальная прокладка теплосетей и ГВС в стесненных городских условиях с огибанием коммуникаций без компенсаторов"
         });
@@ -324,7 +324,7 @@ const PIPEBOUND_DATA = {
         sdr: "7.4 / 11",
         typeItem: "Муфта электросварная",
         pressure: "1.6 МПа (16 бар)",
-        image: "assets/images/cat_fitting_electro.png",
+        image: "assets/images/prod_fitting_electro.jpg",
         standard: "ГОСТ 32415-2013, ГОСТ Р 52779",
         application: "Монолитное соединение напорных труб PE-RT со штрих-код позиционированием"
       });
@@ -341,7 +341,7 @@ const PIPEBOUND_DATA = {
           sdr: "7.4 / 11",
           typeItem: "Отвод 90° электросварной",
           pressure: "1.6 МПа (16 бар)",
-          image: "assets/images/cat_fitting_electro.png",
+          image: "assets/images/prod_fitting_electro.jpg",
           standard: "ГОСТ 32415-2013",
           application: "Поворот трассы теплосети под углом 90°"
         });
@@ -356,7 +356,7 @@ const PIPEBOUND_DATA = {
           sdr: "7.4 / 11",
           typeItem: "Отвод 45° электросварной",
           pressure: "1.6 МПа (16 бар)",
-          image: "assets/images/cat_fitting_electro.png",
+          image: "assets/images/prod_fitting_electro.jpg",
           standard: "ГОСТ 32415-2013",
           application: "Плавный поворот трассы теплосети под углом 45°"
         });
@@ -371,7 +371,7 @@ const PIPEBOUND_DATA = {
           sdr: "7.4 / 11",
           typeItem: "Тройник электросварной",
           pressure: "1.6 МПа (16 бар)",
-          image: "assets/images/cat_fitting_electro.png",
+          image: "assets/images/prod_fitting_electro.jpg",
           standard: "ГОСТ 32415-2013",
           application: "Разветвление трубопровода с закладным нагревателем"
         });
@@ -394,7 +394,7 @@ const PIPEBOUND_DATA = {
         sdr: "7.4 / 11",
         typeItem: "Переход редукционный электросварной",
         pressure: "1.6 МПа",
-        image: "assets/images/cat_fitting_electro.png",
+        image: "assets/images/prod_fitting_electro.jpg",
         standard: "ГОСТ 32415-2013",
         application: "Переход диаметра трубопровода при электромуфтовой сварке"
       });
@@ -414,7 +414,7 @@ const PIPEBOUND_DATA = {
         sdr: 11,
         typeItem: "Отвод литой 90°",
         pressure: "1.0 МПа (10 бар)",
-        image: "assets/images/cat_fitting_spigot.png",
+        image: "assets/images/prod_fitting_spigot.jpg",
         standard: "ГОСТ 32415-2013",
         application: "Поворот магистральных линий под стыковую или электромуфтовую сварку"
       });
@@ -430,7 +430,7 @@ const PIPEBOUND_DATA = {
         sdr: 11,
         typeItem: "Отвод литой 45°",
         pressure: "1.0 МПа (10 бар)",
-        image: "assets/images/cat_fitting_spigot.png",
+        image: "assets/images/prod_fitting_spigot.jpg",
         standard: "ГОСТ 32415-2013",
         application: "Угловой поворот магистрали под 45°"
       });
@@ -446,7 +446,7 @@ const PIPEBOUND_DATA = {
         sdr: 11,
         typeItem: "Тройник литой",
         pressure: "1.0 МПа (10 бар)",
-        image: "assets/images/cat_fitting_spigot.png",
+        image: "assets/images/prod_fitting_spigot.jpg",
         standard: "ГОСТ 32415-2013",
         application: "Разветвление трубопроводов под сварку встык или электромуфты"
       });
@@ -462,7 +462,7 @@ const PIPEBOUND_DATA = {
         sdr: 11,
         typeItem: "Втулка под фланец",
         pressure: "1.0 МПа",
-        image: "assets/images/cat_fitting_spigot.png",
+        image: "assets/images/prod_fitting_spigot.jpg",
         standard: "ГОСТ 32415-2013",
         application: "Фланцевое присоединение полимерной трубы к запорной арматуре"
       });
@@ -485,7 +485,7 @@ const PIPEBOUND_DATA = {
         sdr: 11,
         typeItem: "Переход литой редукционный",
         pressure: "1.0 МПа",
-        image: "assets/images/cat_fitting_spigot.png",
+        image: "assets/images/prod_fitting_spigot.jpg",
         standard: "ГОСТ 32415-2013",
         application: "Концентрическое сужение диаметра трубопровода при сварке встык"
       });
@@ -507,7 +507,7 @@ const PIPEBOUND_DATA = {
         sdr: 7.4,
         typeItem: "Муфта раструбная",
         pressure: "1.0 МПа",
-        image: "assets/images/cat_fitting_spigot.png",
+        image: "assets/images/prod_fitting_rastrub.jpg",
         standard: "ГОСТ 32415-2013",
         application: "Раструбное соединение труб PE-RT ручным аппаратом"
       });
@@ -523,7 +523,7 @@ const PIPEBOUND_DATA = {
         sdr: 7.4,
         typeItem: "Отвод 90° раструбный",
         pressure: "1.0 МПа",
-        image: "assets/images/cat_fitting_spigot.png",
+        image: "assets/images/prod_fitting_rastrub.jpg",
         standard: "ГОСТ 32415-2013",
         application: "Поворот на 90° при раструбной сварке в ИТП и котельных"
       });
@@ -539,7 +539,7 @@ const PIPEBOUND_DATA = {
         sdr: 7.4,
         typeItem: "Тройник раструбный",
         pressure: "1.0 МПа",
-        image: "assets/images/cat_fitting_spigot.png",
+        image: "assets/images/prod_fitting_rastrub.jpg",
         standard: "ГОСТ 32415-2013",
         application: "Тройниковое ответвление при раструбном монтаже"
       });
@@ -554,7 +554,7 @@ const PIPEBOUND_DATA = {
         diameter: d,
         typeItem: "Муфта комбинированная ВР",
         pressure: "1.0 МПа",
-        image: "assets/images/cat_fitting_spigot.png",
+        image: "assets/images/prod_fitting_rastrub.jpg",
         standard: "ГОСТ 32415-2013",
         application: "Переход с трубы PE-RT на внутреннюю трубную резьбу для кранов и приборов"
       });
@@ -569,7 +569,7 @@ const PIPEBOUND_DATA = {
         diameter: d,
         typeItem: "Муфта комбинированная с накидной гайкой",
         pressure: "1.0 МПа",
-        image: "assets/images/cat_fitting_spigot.png",
+        image: "assets/images/prod_fitting_rastrub.jpg",
         standard: "ГОСТ 32415-2013",
         application: "Разъемное резьбовое соединение с запорной арматурой"
       });
@@ -592,7 +592,7 @@ const PIPEBOUND_DATA = {
         sdr: 7.4,
         typeItem: "Отвод 90° в ППУ/ПЭ",
         pressure: "1.0 МПа",
-        image: "assets/images/cat_ppu_pipe.png",
+        image: "assets/images/prod_valve_ppu.jpg",
         standard: "ГОСТ Р 56730-2015",
         application: "Поворот бесканальной теплотрассы с сохранением непрерывной ППУ изоляции и цепи ОДК"
       });
@@ -609,7 +609,7 @@ const PIPEBOUND_DATA = {
         sdr: 7.4,
         typeItem: "Отвод 45° в ППУ/ПЭ",
         pressure: "1.0 МПа",
-        image: "assets/images/cat_ppu_pipe.png",
+        image: "assets/images/prod_valve_ppu.jpg",
         standard: "ГОСТ Р 56730-2015",
         application: "Плавный поворот подземной теплотрассы в грунте"
       });
@@ -626,7 +626,7 @@ const PIPEBOUND_DATA = {
         sdr: 7.4,
         typeItem: "Тройник в ППУ/ПЭ",
         pressure: "1.0 МПа",
-        image: "assets/images/cat_ppu_pipe.png",
+        image: "assets/images/prod_valve_ppu.jpg",
         standard: "ГОСТ Р 56730-2015",
         application: "Разветвление предизолированной тепловой сети с ОДК"
       });
@@ -642,7 +642,7 @@ const PIPEBOUND_DATA = {
         casingD: casing,
         typeItem: "Неподвижная опора",
         pressure: "1.0 МПа",
-        image: "assets/images/cat_ppu_pipe.png",
+        image: "assets/images/prod_valve_ppu.jpg",
         standard: "ГОСТ Р 56730-2015, АТР 2026",
         application: "Восприятие осевых температурных усилий и фиксация трубопровода в грунте"
       });
@@ -658,7 +658,7 @@ const PIPEBOUND_DATA = {
         casingD: casing,
         typeItem: "Концевой элемент с ОДК",
         pressure: "1.0 МПа",
-        image: "assets/images/cat_ppu_pipe.png",
+        image: "assets/images/prod_valve_ppu.jpg",
         standard: "ГОСТ Р 56730-2015, СП 315.1325800.2017",
         application: "Вывод сигнальных проводников системы ОДК в терминал контроля влажности"
       });
@@ -683,7 +683,7 @@ const PIPEBOUND_DATA = {
         sdr: 11,
         typeItem: "Переходник ПЭ-Сталь",
         pressure: "1.0 МПа (10 бар)",
-        image: "assets/images/cat_fitting_spigot.png",
+        image: "assets/images/prod_kzs_joint.jpg",
         standard: "ТУ, Альбом АТР 2026",
         application: "Переход с полимерной трубы PE-RT на стальную запорную арматуру или тепловую камеру"
       });
@@ -701,7 +701,7 @@ const PIPEBOUND_DATA = {
         diameter: d,
         typeItem: "Фланец расточенный в ПП",
         pressure: "1.6 МПа (PN16)",
-        image: "assets/images/cat_fitting_spigot.png",
+        image: "assets/images/prod_kzs_joint.jpg",
         standard: "ГОСТ 33259-2015, ТУ",
         application: "Фланцевый монтаж полимерных втулок со стальной антикоррозийной защитой"
       });
@@ -718,7 +718,7 @@ const PIPEBOUND_DATA = {
         casingD: casing,
         typeItem: "Комплект КЗС",
         components: "Радиационно-сшитая термомуфта, пенопакет ППУ А+Б, пробки заварные/стравливающие, адгезивная лента",
-        image: "assets/images/kzs_joint.png",
+        image: "assets/images/prod_kzs_joint.jpg",
         standard: "ГОСТ Р 56730-2015, СП 315.1325800.2017",
         application: "100% герметизация и восстановление изоляции на стыках предизолированных труб в грунте"
       });
