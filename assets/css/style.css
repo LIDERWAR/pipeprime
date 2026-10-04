@@ -744,7 +744,7 @@ button, input, select, textarea {
 .hero__container {
   display: flex;
   flex-direction: column;
-  gap: 56px;
+  gap: 16px;
   position: relative;
   z-index: 2;
   width: 100%;
@@ -1975,7 +1975,6 @@ button, input, select, textarea {
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
   width: 100%;
-  margin-top: 24px;
   position: relative;
   z-index: 2;
 }
