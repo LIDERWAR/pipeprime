@@ -34,17 +34,7 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--accent-primary);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.solution-code::before {
-  content: "";
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  background: var(--accent-primary);
+  display: block;
 }
 
 .solution-title {

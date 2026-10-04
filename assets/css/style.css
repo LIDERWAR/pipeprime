@@ -182,9 +182,7 @@ button, input, select, textarea {
 /* Строгие инженерные подзаголовки (НЕ капсулы) */
 .subheading-kicker,
 .section-subtitle {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  display: inline-block;
   color: var(--accent-primary);
   font-size: 0.82rem;
   font-weight: 700;
@@ -193,24 +191,9 @@ button, input, select, textarea {
   margin-bottom: 12px;
 }
 
-.subheading-kicker::before,
-.section-subtitle::before {
-  content: '';
-  display: inline-block;
-  width: 18px;
-  height: 2px;
-  background: var(--accent-primary);
-  border-radius: 1px;
-}
-
 .subheading-kicker--blue,
 .section-subtitle--blue {
   color: #60a5fa;
-}
-
-.subheading-kicker--blue::before,
-.section-subtitle--blue::before {
-  background: #60a5fa;
 }
 
 /* Строгий технический тег (прямоугольный с микро-скруглением 4px, не пузырь) */
@@ -1207,23 +1190,7 @@ button, input, select, textarea {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.section-header__subtitle::before {
-  content: '';
-  width: 20px;
-  height: 2px;
-  background: var(--accent-primary);
-}
-
-.section-header--center .section-header__subtitle::after {
-  content: '';
-  width: 20px;
-  height: 2px;
-  background: var(--accent-primary);
+  display: block;
 }
 
 .section-header__title {
@@ -1646,18 +1613,21 @@ button, input, select, textarea {
 }
 
 .atr-preview__book {
-  width: 275px;
+  width: 285px;
+  max-width: 100%;
   height: auto;
-  border-radius: var(--radius-md);
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.85));
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
   display: block;
 }
 
 .atr-preview:hover .atr-preview__book {
-  transform: translateY(-6px) scale(1.03);
-  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.85), 0 0 35px rgba(255, 107, 0, 0.25);
+  transform: translateY(-8px) scale(1.02);
+  filter: drop-shadow(0 28px 45px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 25px rgba(255, 107, 0, 0.3));
 }
 
 /* ==========================================================================
