@@ -927,7 +927,8 @@ button, input, select, textarea {
 .hero-prod-card__visual,
 .hero-matrix-card__visual {
   width: 100%;
-  height: 154px;
+  aspect-ratio: 4/3;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1942,50 +1943,47 @@ button, input, select, textarea {
 }
 
 
- . h e r o - c a t a l o g - l i n k   { 
-     d i s p l a y :   i n l i n e - f l e x ; 
-     a l i g n - i t e m s :   c e n t e r ; 
-     g a p :   6 p x ; 
-     f o n t - s i z e :   0 . 8 8 r e m ; 
-     f o n t - w e i g h t :   7 0 0 ; 
-     c o l o r :   v a r ( - - a c c e n t - p r i m a r y ) ; 
-     t e x t - d e c o r a t i o n :   n o n e ; 
-     t r a n s i t i o n :   a l l   0 . 2 s   e a s e ; 
- } 
- 
- . h e r o - c a t a l o g - l i n k   s v g   { 
-     t r a n s i t i o n :   t r a n s f o r m   0 . 2 s   e a s e ; 
- } 
- 
- . h e r o - c a t a l o g - l i n k : h o v e r   { 
-     c o l o r :   # f f 8 5 3 3 ; 
- } 
- 
- . h e r o - c a t a l o g - l i n k : h o v e r   s v g   { 
-     t r a n s f o r m :   t r a n s l a t e X ( 4 p x ) ; 
- } 
-  
- 
- . h e r o - b o t t o m - c a r d s   { 
-     d i s p l a y :   g r i d ; 
-     g r i d - t e m p l a t e - c o l u m n s :   r e p e a t ( 4 ,   1 f r ) ; 
-     g a p :   1 6 p x ; 
-     w i d t h :   1 0 0 % ; 
-     m a r g i n - t o p :   2 4 p x ; 
-     p o s i t i o n :   r e l a t i v e ; 
-     z - i n d e x :   2 ; 
- } 
- 
- @ m e d i a   ( m a x - w i d t h :   1 0 8 0 p x )   { 
-     . h e r o - b o t t o m - c a r d s   { 
-         g r i d - t e m p l a t e - c o l u m n s :   r e p e a t ( 2 ,   1 f r ) ; 
-     } 
- } 
- 
- @ m e d i a   ( m a x - w i d t h :   7 6 8 p x )   { 
-     . h e r o - b o t t o m - c a r d s   { 
-         g r i d - t e m p l a t e - c o l u m n s :   1 f r ; 
-     } 
- } 
-  
- 
+.hero-catalog-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.hero-catalog-link svg {
+  transition: transform 0.2s ease;
+}
+
+.hero-catalog-link:hover {
+  color: #ff8533;
+}
+
+.hero-catalog-link:hover svg {
+  transform: translateX(4px);
+}
+
+.hero-bottom-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  width: 100%;
+  margin-top: 24px;
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 1080px) {
+  .hero-bottom-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-bottom-cards {
+    grid-template-columns: 1fr;
+  }
+}
