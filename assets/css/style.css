@@ -754,7 +754,7 @@ button, input, select, textarea {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
-  align-items: flex-start;
+  align-items: stretch;
 }
 
 .hero__content {
@@ -762,6 +762,8 @@ button, input, select, textarea {
   z-index: 2;
   max-width: 740px;
   padding-right: clamp(16px, 4vw, 48px);
+  display: flex;
+  flex-direction: column;
 }
 
 .hero__eyebrow {
@@ -810,6 +812,7 @@ button, input, select, textarea {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
+  margin-top: auto;
 }
 
 /* ==========================================================================
