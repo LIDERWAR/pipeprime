@@ -130,7 +130,7 @@ const PIPEBOUND_DATA = {
       name: "Комплектующие для теплосетей (НСПС, фланцы, КЗС, ОДК)",
       shortName: "Комплектующие и КЗС",
       badge: "100% герметичность",
-      image: "assets/images/prod_kzs_joint.jpg",
+      image: "assets/images/prod_kzs_joint.jpg?v=5",
       description: "Неразъемные соединения полиэтилен-сталь (НСПС), фланцы расточенные стальные PN10/PN16 в полипропиленовой защитной оболочке, комплекты заделки стыков (КЗС) под оболочку D90–560 мм, манжеты стенового ввода и ковера ОДК.",
       features: ["НСПС ПЭ/Сталь ст.20", "Расточенные фланцы в ПП", "КЗС с муфтой и пеной ППУ А+Б", "Манжеты и система ОДК"],
       type: "accessories"
@@ -683,7 +683,7 @@ const PIPEBOUND_DATA = {
         sdr: 11,
         typeItem: "Переходник ПЭ-Сталь",
         pressure: "1.0 МПа (10 бар)",
-        image: "assets/images/prod_kzs_joint.jpg",
+        image: "assets/images/prod_nsps_flange.jpg",
         standard: "ТУ, Альбом АТР 2026",
         application: "Переход с полимерной трубы PE-RT на стальную запорную арматуру или тепловую камеру"
       });
@@ -701,7 +701,7 @@ const PIPEBOUND_DATA = {
         diameter: d,
         typeItem: "Фланец расточенный в ПП",
         pressure: "1.6 МПа (PN16)",
-        image: "assets/images/prod_kzs_joint.jpg",
+        image: "assets/images/prod_nsps_flange.jpg",
         standard: "ГОСТ 33259-2015, ТУ",
         application: "Фланцевый монтаж полимерных втулок со стальной антикоррозийной защитой"
       });
@@ -718,7 +718,7 @@ const PIPEBOUND_DATA = {
         casingD: casing,
         typeItem: "Комплект КЗС",
         components: "Радиационно-сшитая термомуфта, пенопакет ППУ А+Б, пробки заварные/стравливающие, адгезивная лента",
-        image: "assets/images/prod_kzs_joint.jpg",
+        image: "assets/images/prod_kzs_joint.jpg?v=5",
         standard: "ГОСТ Р 56730-2015, СП 315.1325800.2017",
         application: "100% герметизация и восстановление изоляции на стыках предизолированных труб в грунте"
       });
