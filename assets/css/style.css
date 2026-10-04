@@ -754,7 +754,7 @@ button, input, select, textarea {
   display: grid;
   grid-template-columns: 1.18fr 0.92fr;
   gap: 64px;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .hero__content {
