@@ -100,11 +100,35 @@
             </div>
           </div>
 
-          <!-- Чертежная область (Blueprint) -->
-          <div class="blueprint-card">
-            <div class="blueprint-badge">СХЕМА УЗЛА: М 1:10 // dn ${state.diameter} мм</div>
-            <div class="blueprint-svg-container">
-              ${svgGraphic}
+          <!-- Инженерный визуальный блок (Реальное фото объекта + CAD Схема) -->
+          <div class="solution-visuals-grid">
+            <!-- 1. Профессиональное фото реального узла -->
+            <div class="solution-photo-card">
+              <div class="photo-overlay-badges">
+                <span class="photo-field-badge">${sol.fieldBadge || 'ТИПОВОЙ ОБЪЕКТ'}</span>
+                <span class="photo-standard-badge">${sol.atrPages || 'АТР 2026'}</span>
+              </div>
+              <div class="solution-photo-wrapper">
+                <picture>
+                  <source srcset="${sol.image || 'assets/images/sol_steel_flange.webp'}" type="image/webp">
+                  <img src="${sol.imageJpg || sol.image || 'assets/images/sol_steel_flange.jpg'}" 
+                       alt="${sol.imageAlt || sol.title}" 
+                       class="solution-photo-img" 
+                       loading="lazy">
+                </picture>
+              </div>
+              <div class="solution-photo-caption">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                <span>${sol.photoCaption || sol.description}</span>
+              </div>
+            </div>
+
+            <!-- 2. Чертежная область (Интерактивная CAD Схема АТР) -->
+            <div class="blueprint-card">
+              <div class="blueprint-badge">СХЕМА АТР 2026: М 1:10 // dn ${state.diameter} мм</div>
+              <div class="blueprint-svg-container">
+                ${svgGraphic}
+              </div>
             </div>
           </div>
 

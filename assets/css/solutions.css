@@ -74,8 +74,115 @@
 }
 
 /* ==========================================================================
-   Чертежная панель (Blueprint Canvas)
+   Инженерный визуальный блок (Visuals Showcase: Real Photo + CAD Blueprint)
    ========================================================================== */
+.solution-visuals-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  background: #090d16;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+@media (max-width: 992px) {
+  .solution-visuals-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Карточка реальной фотографии объекта */
+.solution-photo-card {
+  position: relative;
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  background: #070a12;
+  overflow: hidden;
+}
+
+@media (max-width: 992px) {
+  .solution-photo-card {
+    border-right: none;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+}
+
+.solution-photo-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #04060c;
+  cursor: pointer;
+}
+
+.solution-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+}
+
+.solution-photo-card:hover .solution-photo-img {
+  transform: scale(1.03);
+}
+
+.photo-overlay-badges {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  right: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.photo-field-badge {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 4px 10px;
+}
+
+.photo-standard-badge {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--accent-primary);
+  background: rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 107, 0, 0.35);
+  padding: 4px 10px;
+}
+
+.solution-photo-caption {
+  padding: 14px 18px;
+  background: rgba(15, 23, 42, 0.7);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  flex: 1;
+}
+
+.solution-photo-caption svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--accent-primary);
+}
+
+/* Чертежная панель (Blueprint Canvas) */
 .blueprint-card {
   padding: 24px 28px;
   background: #090d16;
@@ -83,14 +190,16 @@
     linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   background-size: 20px 20px;
-  border-bottom: 1px solid var(--border-subtle);
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .blueprint-badge {
   position: absolute;
-  top: 16px;
-  right: 20px;
+  top: 14px;
+  right: 18px;
   font-family: var(--font-mono, monospace);
   font-size: 0.72rem;
   text-transform: uppercase;
@@ -98,7 +207,8 @@
   color: var(--text-muted);
   border: 1px solid rgba(255, 255, 255, 0.12);
   padding: 4px 8px;
-  background: rgba(15, 23, 42, 0.7);
+  background: rgba(15, 23, 42, 0.85);
+  z-index: 2;
 }
 
 .blueprint-svg-container {
@@ -349,16 +459,59 @@
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 24px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .solution-hub-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   border-color: var(--accent-primary);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+.solution-hub-card__image-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #090d16;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.solution-hub-card__image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.solution-hub-card:hover .solution-hub-card__image-box img {
+  transform: scale(1.05);
+}
+
+.solution-hub-card__badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #fff;
+  padding: 4px 10px;
+}
+
+.solution-hub-card__content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .solution-hub-card .code {
