@@ -752,8 +752,8 @@ button, input, select, textarea {
 
 .hero__grid {
   display: grid;
-  grid-template-columns: 1.18fr 0.92fr;
-  gap: 64px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
   align-items: flex-start;
 }
 
@@ -761,6 +761,7 @@ button, input, select, textarea {
   position: relative;
   z-index: 2;
   max-width: 740px;
+  padding-right: clamp(16px, 4vw, 48px);
 }
 
 .hero__eyebrow {
@@ -1867,6 +1868,9 @@ button, input, select, textarea {
   .hero__grid {
     grid-template-columns: 1fr;
     gap: 40px;
+  }
+  .hero__content {
+    padding-right: 0;
   }
   .hero-stats-panel {
     grid-template-columns: 1fr;
