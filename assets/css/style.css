@@ -263,20 +263,18 @@ button, input, select, textarea {
 .logo__mark {
   width: 42px;
   height: 42px;
-  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 16px var(--accent-glow);
   position: relative;
-  overflow: hidden;
   flex-shrink: 0;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), filter 0.25s ease;
+  filter: drop-shadow(0 2px 8px rgba(255, 107, 0, 0.3));
 }
 
 .logo:hover .logo__mark {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px var(--accent-glow);
+  transform: translateY(-1px) scale(1.05);
+  filter: drop-shadow(0 4px 16px rgba(255, 107, 0, 0.6));
 }
 
 .logo__mark img,
