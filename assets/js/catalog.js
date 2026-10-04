@@ -996,6 +996,19 @@
       }
     },
 
+    selectCategory(catId) {
+      this.currentCategory = catId;
+      this.searchQuery = '';
+      const sInput = document.getElementById('catalog-search-input');
+      if (sInput) sInput.value = '';
+      this.updateChipUI();
+      this.renderConfigurators();
+      const target = document.getElementById('catalog-section') || document.getElementById('catalog-configurators-container');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    },
+
     resetFilters() {
       this.currentCategory = 'all';
       this.searchQuery = '';
