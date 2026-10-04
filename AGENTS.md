@@ -15,3 +15,11 @@
    - Single clickable phone on one line.
    - Cart/Specification drawer button.
    - No duplicate CTA buttons (e.g. no "Заказать звонок" next to phone).
+5. **Immediate Push & Production Deploy Rule**:
+   - Always immediately commit, push to GitHub (`main`), and deploy changes to the production server upon task completion:
+     1. Recompile pages if templates/pages changed: `python build_pages.py`
+     2. Commit changes with a clear message: `git commit`
+     3. Push to remote: `git push origin main`
+     4. Deploy to production server: `ssh root@194.58.118.106 "cd /var/www/pipeprime && ./deploy/deploy.sh docker"`
+     5. Verify production container health: `ssh root@194.58.118.106 "docker ps; curl -s http://localhost:8000/api/health"`
+
