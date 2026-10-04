@@ -111,6 +111,8 @@
 .config-card:hover {
   border-color: var(--border-medium);
   box-shadow: var(--shadow-md);
+  position: relative;
+  z-index: 10;
 }
 
 .config-card__header {
