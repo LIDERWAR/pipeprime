@@ -436,6 +436,24 @@
   margin-bottom: 50px;
 }
 
+.solutions-grid--4col {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 1280px) {
+  .solutions-grid--4col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .solutions-grid--4col {
+    grid-template-columns: 1fr;
+  }
+}
+
 .solution-hub-card {
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
