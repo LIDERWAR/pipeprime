@@ -203,36 +203,38 @@
         </p>
       </div>
 
-      <div class="supply-flow-wrap">
-        
+      <div class="unboxed-flow">
         <!-- Top Pipeline Visual Track -->
-        <div class="pipeline-track">
-          <div class="pipeline-node">
-            <span class="pipeline-node__step">01. Производство на заводах</span>
+        <div class="flow-pipeline">
+          <div class="flow-pipeline__step">
+            <span class="flow-pipeline__num">01</span>
+            <span class="flow-pipeline__label">Производство на заводах</span>
           </div>
-          <div class="pipeline-connector">
-            <div class="pipeline-connector__line"></div>
-            <div class="pipeline-connector__arrow">➔</div>
+          <div class="flow-pipeline__pipe">
+            <div class="flow-pipeline__line"></div>
+            <span class="flow-pipeline__arrow">➔</span>
           </div>
-          <div class="pipeline-node pipeline-node--hub">
-            <span class="pipeline-node__step">02. Комплектация & Аудит PipePrime</span>
+          <div class="flow-pipeline__step flow-pipeline__step--hub">
+            <span class="flow-pipeline__num">02</span>
+            <span class="flow-pipeline__label">Комплектация & Аудит PipePrime</span>
           </div>
-          <div class="pipeline-connector">
-            <div class="pipeline-connector__line pipeline-connector__line--hub-out"></div>
-            <div class="pipeline-connector__arrow">➔</div>
+          <div class="flow-pipeline__pipe">
+            <div class="flow-pipeline__line"></div>
+            <span class="flow-pipeline__arrow">➔</span>
           </div>
-          <div class="pipeline-node">
-            <span class="pipeline-node__step">03. Строительный объект / Монтаж</span>
+          <div class="flow-pipeline__step">
+            <span class="flow-pipeline__num">03</span>
+            <span class="flow-pipeline__label">Строительный объект / Монтаж</span>
           </div>
         </div>
 
-        <div class="supply-flow-grid">
+        <!-- 3 Unboxed Columns -->
+        <div class="unboxed-flow-columns">
           
-          <!-- Step 1: Заводы -->
-          <div class="flow-step">
-            <div class="flow-step__badge">01 / Входной поток</div>
-            <div class="flow-step__header">
-              <div class="flow-step__icon">
+          <!-- Column 1: Заводы -->
+          <div class="flow-col">
+            <div class="flow-col__header">
+              <div class="flow-col__icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                   <path d="M2 20h20"></path>
                   <path d="M5 20V9l6 4V9l6 4V4h3v16"></path>
@@ -240,102 +242,97 @@
                   <path d="M12 16h2"></path>
                 </svg>
               </div>
-              <div class="flow-step__title-wrap">
-                <h3 class="flow-step__title">Крупнейшие заводы РФ</h3>
-                <span class="flow-step__sub">Прямые дилерские контракты</span>
+              <div class="flow-col__title-wrap">
+                <span class="flow-col__subtitle">Входной поток</span>
+                <h3 class="flow-col__title">Крупнейшие заводы РФ</h3>
               </div>
             </div>
 
-            <p class="flow-step__lead">Производство труб PE-RT тип II и ППУ-изоляции на автоматизированных линиях ведущих производителей России.</p>
+            <p class="flow-col__lead">Производство труб PE-RT тип II и ППУ-изоляции на автоматизированных линиях ведущих производителей России по прямым дилерским контрактам.</p>
 
-            <ul class="flow-step__list">
-              <li>
-                <span class="flow-step__check">
+            <ul class="flow-col__specs">
+              <li class="flow-col__spec-item">
+                <div class="flow-col__spec-indicator">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </span>
-                <div>
-                  <strong>Прямые заводские цены</strong>
-                  <span>Оптовые дилерские квоты без коммерческих наценок на партии любого объема.</span>
+                </div>
+                <div class="flow-col__spec-content">
+                  <div class="flow-col__spec-title">Прямые заводские цены</div>
+                  <div class="flow-col__spec-desc">Оптовые дилерские квоты без коммерческих наценок на партии любого объема.</div>
                 </div>
               </li>
-              <li>
-                <span class="flow-step__check">
+              <li class="flow-col__spec-item">
+                <div class="flow-col__spec-indicator">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </span>
-                <div>
-                  <strong>100% ГОСТ 32415-2013</strong>
-                  <span>Заводские паспорта качества, плавки полимера и сертификаты на каждый метр.</span>
+                </div>
+                <div class="flow-col__spec-content">
+                  <div class="flow-col__spec-title">100% ГОСТ 32415-2013</div>
+                  <div class="flow-col__spec-desc">Заводские паспорта качества, плавки полимера и сертификаты на каждый метр.</div>
                 </div>
               </li>
-              <li>
-                <span class="flow-step__check">
+              <li class="flow-col__spec-item">
+                <div class="flow-col__spec-indicator">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </span>
-                <div>
-                  <strong>Резерв мощностей заводов</strong>
-                  <span>Фиксация сроков экструзии и бронь сырья под согласованный график строительства.</span>
+                </div>
+                <div class="flow-col__spec-content">
+                  <div class="flow-col__spec-title">Резерв мощностей заводов</div>
+                  <div class="flow-col__spec-desc">Фиксация сроков экструзии и бронь сырья под согласованный график строительства.</div>
                 </div>
               </li>
             </ul>
           </div>
 
-          <!-- Step 2: PipePrime Hub (Hero) -->
-          <div class="flow-step flow-step--hub">
-            <div class="flow-step__badge flow-step__badge--hub">
-              <span class="pulse-dot"></span>
-              02 / Ядро системы: PipePrime
-            </div>
-            <div class="flow-step__header">
-              <div class="flow-step__icon flow-step__icon--hub">
+          <!-- Column 2: PipePrime Hub -->
+          <div class="flow-col flow-col--hub">
+            <div class="flow-col__header">
+              <div class="flow-col__icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                   <circle cx="12" cy="12" r="3"></circle>
                   <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
                 </svg>
               </div>
-              <div class="flow-step__title-wrap">
-                <h3 class="flow-step__title">Инженерный хаб и аудит</h3>
-                <span class="flow-step__sub">Единый центр комплектации</span>
+              <div class="flow-col__title-wrap">
+                <span class="flow-col__subtitle">Ядро системы: PipePrime</span>
+                <h3 class="flow-col__title">Инженерный хаб и аудит</h3>
               </div>
             </div>
 
-            <p class="flow-step__lead">Берём на себя проверку спецификаций, консолидацию всех элементов теплотрассы и проектное финансирование.</p>
+            <p class="flow-col__lead">Берём на себя проверку спецификаций, консолидацию всех элементов теплотрассы, раскрой под трассу и проектное финансирование.</p>
 
-            <ul class="flow-step__list">
-              <li>
-                <span class="flow-step__check flow-step__check--accent">
+            <ul class="flow-col__specs">
+              <li class="flow-col__spec-item">
+                <div class="flow-col__spec-indicator">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </span>
-                <div>
-                  <strong>100% комплектация «под ключ»</strong>
-                  <span>Трубы, сварные фитинги, муфты КЗС, неподвижные опоры и ОДК собираются в один заказ.</span>
+                </div>
+                <div class="flow-col__spec-content">
+                  <div class="flow-col__spec-title">100% комплектация «под ключ»</div>
+                  <div class="flow-col__spec-desc">Трубы, сварные фитинги, муфты КЗС, неподвижные опоры и ОДК собираются в единую спецификацию.</div>
                 </div>
               </li>
-              <li>
-                <span class="flow-step__check flow-step__check--accent">
+              <li class="flow-col__spec-item">
+                <div class="flow-col__spec-indicator">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </span>
-                <div>
-                  <strong>Инженерный аудит и раскрой</strong>
-                  <span>Проверяем диаметры и гидравлику. Подбираем раскрой хлыстов и бухт до 300 м без лишних обрезков.</span>
+                </div>
+                <div class="flow-col__spec-content">
+                  <div class="flow-col__spec-title">Инженерный аудит и раскрой</div>
+                  <div class="flow-col__spec-desc">Проверяем гидравлику и диаметры. Раскрой хлыстов и бухт до 300 м исключает лишние обрезки.</div>
                 </div>
               </li>
-              <li>
-                <span class="flow-step__check flow-step__check--accent">
+              <li class="flow-col__spec-item">
+                <div class="flow-col__spec-indicator">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </span>
-                <div>
-                  <strong>Отсрочка платежа до 60 дней</strong>
-                  <span>Факторинг и гибкие графики оплаты для аккредитованных подрядчиков — монтаж до полной оплаты.</span>
+                </div>
+                <div class="flow-col__spec-content">
+                  <div class="flow-col__spec-title">Отсрочка платежа до 60 дней</div>
+                  <div class="flow-col__spec-desc">Факторинг и гибкие графики оплаты для аккредитованных подрядчиков — монтаж до полной оплаты.</div>
                 </div>
               </li>
             </ul>
           </div>
 
-          <!-- Step 3: Объект -->
-          <div class="flow-step">
-            <div class="flow-step__badge">03 / Финал: Объект и пуск</div>
-            <div class="flow-step__header">
-              <div class="flow-step__icon">
+          <!-- Column 3: Объект -->
+          <div class="flow-col">
+            <div class="flow-col__header">
+              <div class="flow-col__icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                   <rect x="1" y="3" width="15" height="13"></rect>
                   <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
@@ -343,46 +340,47 @@
                   <circle cx="18.5" cy="18.5" r="2.5"></circle>
                 </svg>
               </div>
-              <div class="flow-step__title-wrap">
-                <h3 class="flow-step__title">Строительная площадка</h3>
-                <span class="flow-step__sub">Точно в траншею по графику</span>
+              <div class="flow-col__title-wrap">
+                <span class="flow-col__subtitle">Финал: Объект и пуск</span>
+                <h3 class="flow-col__title">Строительная площадка</h3>
               </div>
             </div>
 
-            <p class="flow-step__lead">Бесперебойный монтаж теплотрассы без задержек, простоев бригад и загромождения стройплощадки.</p>
+            <p class="flow-col__lead">Бесперебойный монтаж теплотрассы без задержек, простоев бригад и загромождения строительной площадки лишним грузом.</p>
 
-            <ul class="flow-step__list">
-              <li>
-                <span class="flow-step__check">
+            <ul class="flow-col__specs">
+              <li class="flow-col__spec-item">
+                <div class="flow-col__spec-indicator">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </span>
-                <div>
-                  <strong>Собственная логистика по РФ</strong>
-                  <span>Доставка 12м длинномерами и спецтранспортом прямо в зону выгрузки у траншеи.</span>
+                </div>
+                <div class="flow-col__spec-content">
+                  <div class="flow-col__spec-title">Собственная логистика по РФ</div>
+                  <div class="flow-col__spec-desc">Доставка 12м длинномерами и спецтранспортом прямо в зону выгрузки у траншеи по графику.</div>
                 </div>
               </li>
-              <li>
-                <span class="flow-step__check">
+              <li class="flow-col__spec-item">
+                <div class="flow-col__spec-indicator">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </span>
-                <div>
-                  <strong>Поставка комплектом в 1 день</strong>
-                  <span>Труба и фасонина приезжают вместе. Бригада не ждет недостающую муфту или тройник.</span>
+                </div>
+                <div class="flow-col__spec-content">
+                  <div class="flow-col__spec-title">Поставка комплектом в 1 день</div>
+                  <div class="flow-col__spec-desc">Труба и фасонина приезжают вместе — монтажники сразу приступают к укладке без ожидания муфт.</div>
                 </div>
               </li>
-              <li>
-                <span class="flow-step__check">
+              <li class="flow-col__spec-item">
+                <div class="flow-col__spec-indicator">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </span>
-                <div>
-                  <strong>Шеф-монтаж и технадзор</strong>
-                  <span>Исполнительная документация, паспорта стыков и консультации инженеров на объекте.</span>
+                </div>
+                <div class="flow-col__spec-content">
+                  <div class="flow-col__spec-title">Шеф-монтаж и технадзор</div>
+                  <div class="flow-col__spec-desc">Исполнительная документация, паспорта стыков и консультации инженеров на объекте.</div>
                 </div>
               </li>
             </ul>
           </div>
 
         </div>
+      </div>
 
       </div>
     </div>
