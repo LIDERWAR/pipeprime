@@ -1196,6 +1196,8 @@ button, input, select, textarea {
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  text-decoration: none;
+  color: inherit;
 }
 
 .category-card:hover {

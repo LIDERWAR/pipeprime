@@ -16,10 +16,15 @@
     init() {
       if (!window.PIPEBOUND_DATA) return;
 
+      const container = document.getElementById('catalog-configurators-container');
+      const singleFamily = container ? container.getAttribute('data-single-family') : null;
+
       // Читаем параметр URL (например: catalog.html?category=insulated_ppu_pe)
       const urlParams = new URLSearchParams(window.location.search);
       const catParam = urlParams.get('category');
-      if (catParam && this.getFamilies().some(f => f.id === catParam)) {
+      if (singleFamily && this.getFamilies().some(f => f.id === singleFamily)) {
+        this.currentCategory = singleFamily;
+      } else if (catParam && this.getFamilies().some(f => f.id === catParam)) {
         this.currentCategory = catParam;
       }
 
@@ -490,7 +495,13 @@
       const countEl = document.getElementById('catalog-results-count');
       if (!container) return;
 
+      const singleFamily = container.getAttribute('data-single-family');
+
       const families = this.getFamilies().filter(fam => {
+        // Если это страница конкретной категории, выводим только её конфигуратор
+        if (singleFamily) {
+          return fam.id === singleFamily;
+        }
         // Фильтр по выбранной категории
         if (this.currentCategory !== 'all' && fam.id !== this.currentCategory) {
           return false;
@@ -521,13 +532,29 @@
         return;
       }
 
-      container.innerHTML = families.map(fam => this.renderSingleConfigCard(fam)).join('');
+      container.innerHTML = families.map(fam => this.renderSingleConfigCard(fam, !!singleFamily)).join('');
       this.bindCardInteractivity();
     },
 
-    renderSingleConfigCard(fam) {
+    renderSingleConfigCard(fam, isSingleFamily = false) {
       const state = this.cardStates[fam.id];
       const specs = this.calculateSpecs(fam.id);
+      const pageUrls = {
+        uninsulated_bars: "catalog-uninsulated-bars.html",
+        uninsulated_coils: "catalog-uninsulated-coils.html",
+        insulated_ppu_pe: "catalog-insulated-ppu-pe.html",
+        insulated_ppu_oc: "catalog-insulated-ppu-oc.html",
+        insulated_flexible: "catalog-insulated-flexible.html",
+        fittings_electro: "catalog-fittings-electro.html",
+        fittings_spigot: "catalog-fittings-spigot.html",
+        fittings_rastrub: "catalog-fittings-rastrub.html",
+        fittings_ppu: "catalog-fittings-ppu.html",
+        accessories_kzs: "catalog-accessories-kzs.html"
+      };
+      const dedicatedUrl = pageUrls[fam.id] || "catalog.html";
+      const titleHtml = isSingleFamily
+        ? fam.name
+        : `<a href="${dedicatedUrl}" style="color: inherit; text-decoration: none;" title="Перейти на отдельную страницу категории">${fam.name}</a>`;
 
       return `
         <div class="config-card" id="config-card-${fam.id}" data-family-id="${fam.id}">
@@ -537,7 +564,7 @@
                 <span class="status-indicator-dot"></span>
                 <span>Официальный стандарт АТР 2026</span>
               </div>
-              <h3 class="config-card__title">${fam.name}</h3>
+              <h3 class="config-card__title">${titleHtml}</h3>
               <p class="config-card__desc">${fam.desc}</p>
             </div>
             <span class="config-card__badge-tag">${fam.badge}</span>

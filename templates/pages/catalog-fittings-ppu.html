@@ -1,0 +1,187 @@
+{% extends "base.html" %}
+
+{% block title %}Фасонные изделия в ППУ изоляции (Отводы, тройники, краны) — Каталог PipePrime{% endblock %}
+
+{% block meta_description %}Заводские предизолированные отводы 90° и 45°, тройники, шаровые краны со штоком, тройники с краном воздушника и неподвижные опоры (НОП) с ППУ изоляцией и кабелем ОДК по ГОСТ Р 56730-2015.{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="assets/css/catalog.css?v=29">
+{% endblock %}
+
+{% block content %}
+  <!-- Хлебные крошки и заголовок категории -->
+  <div style="padding: 40px 0 20px; background: rgba(15, 23, 42, 0.4); border-bottom: 1px solid var(--border-subtle);">
+    <div class="container">
+      <div style="display: flex; gap: 8px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px; flex-wrap: wrap;">
+        <a href="index.html" style="color: var(--text-secondary);">Главная</a>
+        <span>/</span>
+        <a href="catalog.html" style="color: var(--text-secondary);">Каталог продукции</a>
+        <span>/</span>
+        <span style="color: var(--accent-primary);">Фасонные изделия в ППУ</span>
+      </div>
+      <div class="subheading-kicker">Заводская изоляция ППУ • ОДК</div>
+      <h1 style="font-size: 2.2rem; margin: 10px 0 12px; line-height: 1.25;">Предизолированные фасонные изделия и краны в ППУ изоляции</h1>
+      <p style="color: var(--text-secondary); max-width: 880px; line-height: 1.6; font-size: 1.05rem;">
+        Заводские элементы фасонины с монолитным слоем пенополиуретана и защитной полиэтиленовой (ПЭ) или оцинкованной (ОЦ) оболочкой. Включают отводы 90°/45°, равнопроходные и переходные тройники, тройниковые ответвления с шаровым краном спускника/воздушника, цельносварные шаровые краны в ППУ с удлиненным штоком под ковер и концевые элементы с выводом кабеля ОДК.
+      </p>
+
+      <!-- Панель ключевых инженерных характеристик -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 24px;">
+        <div style="background: rgba(11, 17, 32, 0.6); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 12px 16px;">
+          <div style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;">Диаметры трубы</div>
+          <div style="font-size: 1.05rem; font-weight: 700; color: var(--text-white);">d25 – 630 мм</div>
+        </div>
+        <div style="background: rgba(11, 17, 32, 0.6); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 12px 16px;">
+          <div style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;">Оболочки</div>
+          <div style="font-size: 1.05rem; font-weight: 700; color: var(--text-white);">ПЭ (подземная) / ОЦ (надземная)</div>
+        </div>
+        <div style="background: rgba(11, 17, 32, 0.6); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 12px 16px;">
+          <div style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;">Система ОДК</div>
+          <div style="font-size: 1.05rem; font-weight: 700; color: var(--text-white);">Встроенные проводники во всех узлах</div>
+        </div>
+        <div style="background: rgba(11, 17, 32, 0.6); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 12px 16px;">
+          <div style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;">Контроль качества</div>
+          <div style="font-size: 1.05rem; font-weight: 700; color: var(--text-white);">100% герметичность и адгезия ППУ</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Секция: Интерактивный конфигуратор и заказ спецификации -->
+  <section class="section" style="padding-top: 36px; padding-bottom: 48px;">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: 24px;">
+        <div class="section-header__subtitle">Интерактивный конфигуратор позиции</div>
+        <h2 class="section-header__title">Подбор параметров, расчет массы и добавление в спецификацию</h2>
+        <p class="section-header__desc">
+          Выберите типоразмер, класс давления SDR и требуемое количество. Система мгновенно рассчитает вес, погонные метры и артикул для сметной ведомости.
+        </p>
+      </div>
+
+      <!-- Контейнер карточки-конфигуратора для данной категории -->
+      <div id="catalog-configurators-container" data-single-family="fittings_ppu"></div>
+    </div>
+  </section>
+
+  <!-- Секция: Нормативно-справочная таблица АТР 2026 -->
+  <section class="section section--alt" style="padding: 48px 0;">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-header__subtitle">Инженерный справочник</div>
+        <h2 class="section-header__title">Номенклатура предизолированных фасонных узлов (АТР Листы 70–81)</h2>
+      </div>
+
+      <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 24px; overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--border-medium); color: var(--text-muted); text-align: left;">
+              <th style="padding: 10px 14px;">Элемент</th>
+              <th style="padding: 10px 14px;">Диапазон d/D, мм</th>
+              <th style="padding: 10px 14px;">Исполнение</th>
+              <th style="padding: 10px 14px;">Назначение</th>
+              <th style="padding: 10px 14px;">ОДК</th>
+            </tr>
+          </thead>
+          <tbody style="color: var(--text-secondary);">
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 10px 14px;">Отвод 90° в ППУ</td><td style="padding: 10px 14px;">d25/90 – d630/800</td><td style="padding: 10px 14px;">ПЭ / ОЦ</td><td style="padding: 10px 14px;">Повороты теплотрассы в траншее</td><td style="padding: 10px 14px;">Да</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 10px 14px;">Отвод 45° в ППУ</td><td style="padding: 10px 14px;">d25/90 – d630/800</td><td style="padding: 10px 14px;">ПЭ / ОЦ</td><td style="padding: 10px 14px;">Обход коммуникаций и препятствий</td><td style="padding: 10px 14px;">Да</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 10px 14px;">Тройник стандартный</td><td style="padding: 10px 14px;">d32/110 – d630/800</td><td style="padding: 10px 14px;">ПЭ / ОЦ</td><td style="padding: 10px 14px;">Отводы и ответвления теплосети</td><td style="padding: 10px 14px;">Да</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 10px 14px;">Тройник с краном воздушника</td><td style="padding: 10px 14px;">d50/125 – d400/560</td><td style="padding: 10px 14px;">ПЭ / ОЦ</td><td style="padding: 10px 14px;">Выпуск воздуха в верхних точках</td><td style="padding: 10px 14px;">Да</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 10px 14px;">Шаровой кран в ППУ со штоком</td><td style="padding: 10px 14px;">d32/110 – d315/450</td><td style="padding: 10px 14px;">ПЭ / ОЦ</td><td style="padding: 10px 14px;">Секционирование без камер (под ковер)</td><td style="padding: 10px 14px;">Да</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 10px 14px;">Неподвижная опора (НОП)</td><td style="padding: 10px 14px;">d32/110 – d630/800</td><td style="padding: 10px 14px;">ПЭ / ОЦ</td><td style="padding: 10px 14px;">Восприятие осевых усилий до 45 тс</td><td style="padding: 10px 14px;">Да</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Секция: Инженерные преимущества и стандарты монтажа -->
+  <section class="section" style="padding: 48px 0;">
+    <div class="container">
+      <div class="section-header section-header--center">
+        <div class="section-header__subtitle">Стандарты качества PipePrime</div>
+        <h2 class="section-header__title">Преимущества поставки по стандарту АТР 2026</h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+        <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 24px;">
+          <div style="color: var(--accent-primary); font-weight: 700; font-size: 1.1rem; margin-bottom: 8px;">100% заводской контроль</div>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+            Каждая партия проходит ультразвуковой контроль геометрии, термостабильности и адгезии ППУ слоя. Паспорта качества и сертификаты соответствия ГОСТ на каждый метр.
+          </p>
+        </div>
+        <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 24px;">
+          <div style="color: var(--accent-primary); font-weight: 700; font-size: 1.1rem; margin-bottom: 8px;">Аудит и раскрой трассы</div>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+            Инженеры PipePrime выполняют аудит проектных спецификаций и гидравлики. Подбираем точные длины хлыстов и бухт до 300 м без обрезков.
+          </p>
+        </div>
+        <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 24px;">
+          <div style="color: var(--accent-primary); font-weight: 700; font-size: 1.1rem; margin-bottom: 8px;">Отгрузка со склада за 24 часа</div>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+            Постоянный неснижаемый складской резерв ходовых диаметров d25–315 мм, фитингов и комплектов КЗС. Доставка длинномерами 12 м на объект.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Секция: Другие разделы каталога продукции -->
+  <section class="section section--alt" style="padding: 48px 0;">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-header__subtitle">Номенклатура поставок</div>
+        <h2 class="section-header__title">Другие товарные группы каталога</h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px;">
+        <a href="catalog-uninsulated-bars.html" style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 14px 18px; text-decoration: none; color: var(--text-white); display: flex; align-items: center; justify-content: space-between; font-weight: 600; font-size: 0.9rem; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--accent-primary)'; this.style.color='var(--accent-primary)';" onmouseout="this.style.borderColor='var(--border-subtle)'; this.style.color='var(--text-white)';">
+          <span>Трубы неизолированные (хлысты)</span>
+          <span style="color: var(--accent-primary);">→</span>
+        </a>
+        <a href="catalog-uninsulated-coils.html" style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 14px 18px; text-decoration: none; color: var(--text-white); display: flex; align-items: center; justify-content: space-between; font-weight: 600; font-size: 0.9rem; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--accent-primary)'; this.style.color='var(--accent-primary)';" onmouseout="this.style.borderColor='var(--border-subtle)'; this.style.color='var(--text-white)';">
+          <span>Трубы неизолированные (бухты)</span>
+          <span style="color: var(--accent-primary);">→</span>
+        </a>
+        <a href="catalog-insulated-ppu-pe.html" style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 14px 18px; text-decoration: none; color: var(--text-white); display: flex; align-items: center; justify-content: space-between; font-weight: 600; font-size: 0.9rem; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--accent-primary)'; this.style.color='var(--accent-primary)';" onmouseout="this.style.borderColor='var(--border-subtle)'; this.style.color='var(--text-white)';">
+          <span>Трубы в ППУ/ПЭ (подземные)</span>
+          <span style="color: var(--accent-primary);">→</span>
+        </a>
+        <a href="catalog-insulated-ppu-oc.html" style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 14px 18px; text-decoration: none; color: var(--text-white); display: flex; align-items: center; justify-content: space-between; font-weight: 600; font-size: 0.9rem; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--accent-primary)'; this.style.color='var(--accent-primary)';" onmouseout="this.style.borderColor='var(--border-subtle)'; this.style.color='var(--text-white)';">
+          <span>Трубы в ППУ/ОЦ (надземные)</span>
+          <span style="color: var(--accent-primary);">→</span>
+        </a>
+        <a href="catalog-insulated-flexible.html" style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 14px 18px; text-decoration: none; color: var(--text-white); display: flex; align-items: center; justify-content: space-between; font-weight: 600; font-size: 0.9rem; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--accent-primary)'; this.style.color='var(--accent-primary)';" onmouseout="this.style.borderColor='var(--border-subtle)'; this.style.color='var(--text-white)';">
+          <span>Гибкие трубы в гофре (бухты)</span>
+          <span style="color: var(--accent-primary);">→</span>
+        </a>
+        <a href="catalog-fittings-electro.html" style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 14px 18px; text-decoration: none; color: var(--text-white); display: flex; align-items: center; justify-content: space-between; font-weight: 600; font-size: 0.9rem; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--accent-primary)'; this.style.color='var(--accent-primary)';" onmouseout="this.style.borderColor='var(--border-subtle)'; this.style.color='var(--text-white)';">
+          <span>Фитинги электросварные</span>
+          <span style="color: var(--accent-primary);">→</span>
+        </a>
+        <a href="catalog-fittings-spigot.html" style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 14px 18px; text-decoration: none; color: var(--text-white); display: flex; align-items: center; justify-content: space-between; font-weight: 600; font-size: 0.9rem; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--accent-primary)'; this.style.color='var(--accent-primary)';" onmouseout="this.style.borderColor='var(--border-subtle)'; this.style.color='var(--text-white)';">
+          <span>Литые фитинги (спигот)</span>
+          <span style="color: var(--accent-primary);">→</span>
+        </a>
+        <a href="catalog-fittings-rastrub.html" style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 14px 18px; text-decoration: none; color: var(--text-white); display: flex; align-items: center; justify-content: space-between; font-weight: 600; font-size: 0.9rem; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--accent-primary)'; this.style.color='var(--accent-primary)';" onmouseout="this.style.borderColor='var(--border-subtle)'; this.style.color='var(--text-white)';">
+          <span>Раструбные фитинги и ИТП</span>
+          <span style="color: var(--accent-primary);">→</span>
+        </a>
+        <a href="catalog-accessories-kzs.html" style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 14px 18px; text-decoration: none; color: var(--text-white); display: flex; align-items: center; justify-content: space-between; font-weight: 600; font-size: 0.9rem; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--accent-primary)'; this.style.color='var(--accent-primary)';" onmouseout="this.style.borderColor='var(--border-subtle)'; this.style.color='var(--text-white)';">
+          <span>Комплекты заделки стыков КЗС</span>
+          <span style="color: var(--accent-primary);">→</span>
+        </a>
+      </div>
+
+      <div style="text-align: center; margin-top: 36px;">
+        <a href="catalog.html" class="btn btn--outline btn--lg">
+          ← Вернуться в общий каталог продукции
+        </a>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block extra_scripts %}
+  <script src="assets/js/catalog.js?v=31"></script>
+{% endblock %}

@@ -1,0 +1,194 @@
+{% extends "base.html" %}
+
+{% block title %}Трубы PE-RT тип II неизолированные (хлысты 12 м) — Каталог PipePrime{% endblock %}
+
+{% block meta_description %}Напорные полимерные трубы PE-RT тип II в прямых отрезках по 12 метров по ГОСТ 32415-2013 и АТР 2026. Диаметры d25–630 мм, SDR 7.4 / 9 / 11 для сетей отопления и ГВС. Интерактивный расчет веса и оптовые поставки.{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="assets/css/catalog.css?v=29">
+{% endblock %}
+
+{% block content %}
+  <!-- Хлебные крошки и заголовок категории -->
+  <div style="padding: 40px 0 20px; background: rgba(15, 23, 42, 0.4); border-bottom: 1px solid var(--border-subtle);">
+    <div class="container">
+      <div style="display: flex; gap: 8px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px; flex-wrap: wrap;">
+        <a href="index.html" style="color: var(--text-secondary);">Главная</a>
+        <span>/</span>
+        <a href="catalog.html" style="color: var(--text-secondary);">Каталог продукции</a>
+        <span>/</span>
+        <span style="color: var(--accent-primary);">Трубы неизолированные (хлысты)</span>
+      </div>
+      <div class="subheading-kicker">ГОСТ 32415-2013 • Хлысты 12 м</div>
+      <h1 style="font-size: 2.2rem; margin: 10px 0 12px; line-height: 1.25;">Трубы PE-RT тип II неизолированные (хлысты 12 м)</h1>
+      <p style="color: var(--text-secondary); max-width: 880px; line-height: 1.6; font-size: 1.05rem;">
+        Напорные трубы из термостойкого полиэтилена PE-RT тип II в прямых отрезках по 12 метров для систем отопления, теплоснабжения и горячего водоснабжения (ГВС). Рабочая температура теплоносителя до +95°С (аварийная кратковременная до +110°С). Монтаж методом стыковой или электромуфтовой сварки.
+      </p>
+
+      <!-- Панель ключевых инженерных характеристик -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 24px;">
+        <div style="background: rgba(11, 17, 32, 0.6); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 12px 16px;">
+          <div style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;">Диаметры</div>
+          <div style="font-size: 1.05rem; font-weight: 700; color: var(--text-white);">d25 – 630 мм</div>
+        </div>
+        <div style="background: rgba(11, 17, 32, 0.6); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 12px 16px;">
+          <div style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;">Давление</div>
+          <div style="font-size: 1.05rem; font-weight: 700; color: var(--text-white);">до 1.0 МПа (10 бар)</div>
+        </div>
+        <div style="background: rgba(11, 17, 32, 0.6); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 12px 16px;">
+          <div style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;">Форма выпуска</div>
+          <div style="font-size: 1.05rem; font-weight: 700; color: var(--text-white);">Отрезки по 12 м</div>
+        </div>
+        <div style="background: rgba(11, 17, 32, 0.6); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 12px 16px;">
+          <div style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;">Температура</div>
+          <div style="font-size: 1.05rem; font-weight: 700; color: var(--text-white);">Траб +95°С (пик +110°С)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Секция: Интерактивный конфигуратор и заказ спецификации -->
+  <section class="section" style="padding-top: 36px; padding-bottom: 48px;">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: 24px;">
+        <div class="section-header__subtitle">Интерактивный конфигуратор позиции</div>
+        <h2 class="section-header__title">Подбор параметров, расчет массы и добавление в спецификацию</h2>
+        <p class="section-header__desc">
+          Выберите типоразмер, класс давления SDR и требуемое количество. Система мгновенно рассчитает вес, погонные метры и артикул для сметной ведомости.
+        </p>
+      </div>
+
+      <!-- Контейнер карточки-конфигуратора для данной категории -->
+      <div id="catalog-configurators-container" data-single-family="uninsulated_bars"></div>
+    </div>
+  </section>
+
+  <!-- Секция: Нормативно-справочная таблица АТР 2026 -->
+  <section class="section section--alt" style="padding: 48px 0;">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-header__subtitle">Инженерный справочник</div>
+        <h2 class="section-header__title">Справочные геометрические параметры хлыстов (АТР 2026, Лист 14)</h2>
+      </div>
+
+      <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 24px; overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--border-medium); color: var(--text-muted); text-align: left;">
+              <th style="padding: 10px 14px;">Диаметр d, мм</th>
+              <th style="padding: 10px 14px;">Толщина SDR 7.4, мм</th>
+              <th style="padding: 10px 14px;">Вес 1м SDR 7.4, кг</th>
+              <th style="padding: 10px 14px;">Толщина SDR 11, мм</th>
+              <th style="padding: 10px 14px;">Вес 1м SDR 11, кг</th>
+              <th style="padding: 10px 14px;">Масса хлыста (12м), кг</th>
+            </tr>
+          </thead>
+          <tbody style="color: var(--text-secondary);">
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 10px 14px;">d32</td><td style="padding: 10px 14px;">4.4</td><td style="padding: 10px 14px;">0.38</td><td style="padding: 10px 14px;">3.0</td><td style="padding: 10px 14px;">0.27</td><td style="padding: 10px 14px;">4.56</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 10px 14px;">d40</td><td style="padding: 10px 14px;">5.5</td><td style="padding: 10px 14px;">0.60</td><td style="padding: 10px 14px;">3.7</td><td style="padding: 10px 14px;">0.42</td><td style="padding: 10px 14px;">7.20</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 10px 14px;">d50</td><td style="padding: 10px 14px;">6.9</td><td style="padding: 10px 14px;">0.93</td><td style="padding: 10px 14px;">4.6</td><td style="padding: 10px 14px;">0.65</td><td style="padding: 10px 14px;">11.16</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 10px 14px;">d63</td><td style="padding: 10px 14px;">8.6</td><td style="padding: 10px 14px;">1.47</td><td style="padding: 10px 14px;">5.8</td><td style="padding: 10px 14px;">1.04</td><td style="padding: 10px 14px;">17.64</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 10px 14px;">d75</td><td style="padding: 10px 14px;">10.3</td><td style="padding: 10px 14px;">2.09</td><td style="padding: 10px 14px;">6.8</td><td style="padding: 10px 14px;">1.46</td><td style="padding: 10px 14px;">25.08</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 10px 14px;">d90</td><td style="padding: 10px 14px;">12.3</td><td style="padding: 10px 14px;">2.99</td><td style="padding: 10px 14px;">8.2</td><td style="padding: 10px 14px;">2.10</td><td style="padding: 10px 14px;">35.88</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 10px 14px;">d110</td><td style="padding: 10px 14px;">15.1</td><td style="padding: 10px 14px;">4.49</td><td style="padding: 10px 14px;">10.0</td><td style="padding: 10px 14px;">3.13</td><td style="padding: 10px 14px;">53.88</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 10px 14px;">d125</td><td style="padding: 10px 14px;">17.1</td><td style="padding: 10px 14px;">5.76</td><td style="padding: 10px 14px;">11.4</td><td style="padding: 10px 14px;">4.06</td><td style="padding: 10px 14px;">69.12</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 10px 14px;">d160</td><td style="padding: 10px 14px;">21.9</td><td style="padding: 10px 14px;">9.45</td><td style="padding: 10px 14px;">14.6</td><td style="padding: 10px 14px;">6.64</td><td style="padding: 10px 14px;">113.40</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 10px 14px;">d200</td><td style="padding: 10px 14px;">27.4</td><td style="padding: 10px 14px;">14.77</td><td style="padding: 10px 14px;">18.2</td><td style="padding: 10px 14px;">10.36</td><td style="padding: 10px 14px;">177.24</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 10px 14px;">d225</td><td style="padding: 10px 14px;">30.8</td><td style="padding: 10px 14px;">18.66</td><td style="padding: 10px 14px;">20.5</td><td style="padding: 10px 14px;">13.11</td><td style="padding: 10px 14px;">223.92</td></tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 10px 14px;">d315</td><td style="padding: 10px 14px;">43.1</td><td style="padding: 10px 14px;">36.50</td><td style="padding: 10px 14px;">28.6</td><td style="padding: 10px 14px;">25.60</td><td style="padding: 10px 14px;">438.00</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Секция: Инженерные преимущества и стандарты монтажа -->
+  <section class="section" style="padding: 48px 0;">
+    <div class="container">
+      <div class="section-header section-header--center">
+        <div class="section-header__subtitle">Стандарты качества PipePrime</div>
+        <h2 class="section-header__title">Преимущества поставки по стандарту АТР 2026</h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+        <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 24px;">
+          <div style="color: var(--accent-primary); font-weight: 700; font-size: 1.1rem; margin-bottom: 8px;">100% заводской контроль</div>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+            Каждая партия проходит ультразвуковой контроль геометрии, термостабильности и адгезии ППУ слоя. Паспорта качества и сертификаты соответствия ГОСТ на каждый метр.
+          </p>
+        </div>
+        <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 24px;">
+          <div style="color: var(--accent-primary); font-weight: 700; font-size: 1.1rem; margin-bottom: 8px;">Аудит и раскрой трассы</div>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+            Инженеры PipePrime выполняют аудит проектных спецификаций и гидравлики. Подбираем точные длины хлыстов и бухт до 300 м без обрезков.
+          </p>
+        </div>
+        <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 24px;">
+          <div style="color: var(--accent-primary); font-weight: 700; font-size: 1.1rem; margin-bottom: 8px;">Отгрузка со склада за 24 часа</div>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+            Постоянный неснижаемый складской резерв ходовых диаметров d25–315 мм, фитингов и комплектов КЗС. Доставка длинномерами 12 м на объект.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Секция: Другие разделы каталога продукции -->
+  <section class="section section--alt" style="padding: 48px 0;">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-header__subtitle">Номенклатура поставок</div>
+        <h2 class="section-header__title">Другие товарные группы каталога</h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px;">
+        <a href="catalog-uninsulated-coils.html" style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 14px 18px; text-decoration: none; color: var(--text-white); display: flex; align-items: center; justify-content: space-between; font-weight: 600; font-size: 0.9rem; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--accent-primary)'; this.style.color='var(--accent-primary)';" onmouseout="this.style.borderColor='var(--border-subtle)'; this.style.color='var(--text-white)';">
+          <span>Трубы неизолированные (бухты)</span>
+          <span style="color: var(--accent-primary);">→</span>
+        </a>
+        <a href="catalog-insulated-ppu-pe.html" style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 14px 18px; text-decoration: none; color: var(--text-white); display: flex; align-items: center; justify-content: space-between; font-weight: 600; font-size: 0.9rem; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--accent-primary)'; this.style.color='var(--accent-primary)';" onmouseout="this.style.borderColor='var(--border-subtle)'; this.style.color='var(--text-white)';">
+          <span>Трубы в ППУ/ПЭ (подземные)</span>
+          <span style="color: var(--accent-primary);">→</span>
+        </a>
+        <a href="catalog-insulated-ppu-oc.html" style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 14px 18px; text-decoration: none; color: var(--text-white); display: flex; align-items: center; justify-content: space-between; font-weight: 600; font-size: 0.9rem; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--accent-primary)'; this.style.color='var(--accent-primary)';" onmouseout="this.style.borderColor='var(--border-subtle)'; this.style.color='var(--text-white)';">
+          <span>Трубы в ППУ/ОЦ (надземные)</span>
+          <span style="color: var(--accent-primary);">→</span>
+        </a>
+        <a href="catalog-insulated-flexible.html" style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 14px 18px; text-decoration: none; color: var(--text-white); display: flex; align-items: center; justify-content: space-between; font-weight: 600; font-size: 0.9rem; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--accent-primary)'; this.style.color='var(--accent-primary)';" onmouseout="this.style.borderColor='var(--border-subtle)'; this.style.color='var(--text-white)';">
+          <span>Гибкие трубы в гофре (бухты)</span>
+          <span style="color: var(--accent-primary);">→</span>
+        </a>
+        <a href="catalog-fittings-electro.html" style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 14px 18px; text-decoration: none; color: var(--text-white); display: flex; align-items: center; justify-content: space-between; font-weight: 600; font-size: 0.9rem; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--accent-primary)'; this.style.color='var(--accent-primary)';" onmouseout="this.style.borderColor='var(--border-subtle)'; this.style.color='var(--text-white)';">
+          <span>Фитинги электросварные</span>
+          <span style="color: var(--accent-primary);">→</span>
+        </a>
+        <a href="catalog-fittings-spigot.html" style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 14px 18px; text-decoration: none; color: var(--text-white); display: flex; align-items: center; justify-content: space-between; font-weight: 600; font-size: 0.9rem; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--accent-primary)'; this.style.color='var(--accent-primary)';" onmouseout="this.style.borderColor='var(--border-subtle)'; this.style.color='var(--text-white)';">
+          <span>Литые фитинги (спигот)</span>
+          <span style="color: var(--accent-primary);">→</span>
+        </a>
+        <a href="catalog-fittings-rastrub.html" style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 14px 18px; text-decoration: none; color: var(--text-white); display: flex; align-items: center; justify-content: space-between; font-weight: 600; font-size: 0.9rem; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--accent-primary)'; this.style.color='var(--accent-primary)';" onmouseout="this.style.borderColor='var(--border-subtle)'; this.style.color='var(--text-white)';">
+          <span>Раструбные фитинги и ИТП</span>
+          <span style="color: var(--accent-primary);">→</span>
+        </a>
+        <a href="catalog-fittings-ppu.html" style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 14px 18px; text-decoration: none; color: var(--text-white); display: flex; align-items: center; justify-content: space-between; font-weight: 600; font-size: 0.9rem; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--accent-primary)'; this.style.color='var(--accent-primary)';" onmouseout="this.style.borderColor='var(--border-subtle)'; this.style.color='var(--text-white)';">
+          <span>Фасонные изделия в ППУ</span>
+          <span style="color: var(--accent-primary);">→</span>
+        </a>
+        <a href="catalog-accessories-kzs.html" style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 14px 18px; text-decoration: none; color: var(--text-white); display: flex; align-items: center; justify-content: space-between; font-weight: 600; font-size: 0.9rem; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--accent-primary)'; this.style.color='var(--accent-primary)';" onmouseout="this.style.borderColor='var(--border-subtle)'; this.style.color='var(--text-white)';">
+          <span>Комплекты заделки стыков КЗС</span>
+          <span style="color: var(--accent-primary);">→</span>
+        </a>
+      </div>
+
+      <div style="text-align: center; margin-top: 36px;">
+        <a href="catalog.html" class="btn btn--outline btn--lg">
+          ← Вернуться в общий каталог продукции
+        </a>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block extra_scripts %}
+  <script src="assets/js/catalog.js?v=31"></script>
+{% endblock %}
