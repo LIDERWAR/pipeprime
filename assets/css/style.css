@@ -1966,3 +1966,26 @@ button, input, select, textarea {
  } 
   
  
+ . h e r o - b o t t o m - c a r d s   { 
+     d i s p l a y :   g r i d ; 
+     g r i d - t e m p l a t e - c o l u m n s :   r e p e a t ( 4 ,   1 f r ) ; 
+     g a p :   1 6 p x ; 
+     w i d t h :   1 0 0 % ; 
+     m a r g i n - t o p :   2 4 p x ; 
+     p o s i t i o n :   r e l a t i v e ; 
+     z - i n d e x :   2 ; 
+ } 
+ 
+ @ m e d i a   ( m a x - w i d t h :   1 0 8 0 p x )   { 
+     . h e r o - b o t t o m - c a r d s   { 
+         g r i d - t e m p l a t e - c o l u m n s :   r e p e a t ( 2 ,   1 f r ) ; 
+     } 
+ } 
+ 
+ @ m e d i a   ( m a x - w i d t h :   7 6 8 p x )   { 
+     . h e r o - b o t t o m - c a r d s   { 
+         g r i d - t e m p l a t e - c o l u m n s :   1 f r ; 
+     } 
+ } 
+  
+ 
