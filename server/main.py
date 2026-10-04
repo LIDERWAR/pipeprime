@@ -300,6 +300,12 @@ HTML_PAGES = {
     "catalog": PROJECT_ROOT / "catalog.html",
     "calculator": PROJECT_ROOT / "calculator.html",
     "engineering": PROJECT_ROOT / "engineering.html",
+    "solutions-steel-connection": PROJECT_ROOT / "solutions-steel-connection.html",
+    "solutions-fixed-anchors": PROJECT_ROOT / "solutions-fixed-anchors.html",
+    "solutions-heat-chambers": PROJECT_ROOT / "solutions-heat-chambers.html",
+    "solutions-aboveground-racks": PROJECT_ROOT / "solutions-aboveground-racks.html",
+    "solutions-casing-trenchless": PROJECT_ROOT / "solutions-casing-trenchless.html",
+    "solutions-snow-melting": PROJECT_ROOT / "solutions-snow-melting.html",
     "about": PROJECT_ROOT / "about.html",
     "delivery": PROJECT_ROOT / "delivery.html",
     "contacts": PROJECT_ROOT / "contacts.html",
@@ -319,12 +325,16 @@ async def serve_page(page_name: str):
     if clean_name in HTML_PAGES and HTML_PAGES[clean_name].exists():
         return FileResponse(HTML_PAGES[clean_name])
 
+    # Dynamic check for any HTML page in project root
+    direct_html = PROJECT_ROOT / f"{clean_name}.html"
+    if direct_html.exists():
+        return FileResponse(direct_html)
+
     # Allow SEO, manifest and icon root assets
     if page_name in {"robots.txt", "sitemap.xml", "favicon.ico", "site.webmanifest"}:
         target = PROJECT_ROOT / page_name
         if target.exists():
             return FileResponse(target)
-
 
     raise HTTPException(status_code=404, detail="Страница не найдена")
 
