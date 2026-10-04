@@ -1,0 +1,36 @@
+<!-- Drawer: Корзина спецификации -->
+  <div class="drawer-backdrop" id="spec-drawer">
+    <div class="drawer">
+      <div class="drawer__header">
+        <div>
+          <h3 style="font-size: 1.2rem; margin-bottom: 2px;">Спецификация поставки</h3>
+          <span style="font-size: 0.8rem; color: var(--text-muted);">Выбранные позиции для расчета КП</span>
+        </div>
+        <button id="close-spec-drawer" style="background: none; border: none; color: var(--text-muted); cursor: pointer;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <div class="drawer__body">
+        <div id="drawer-spec-empty" style="text-align: center; padding: 40px 0; color: var(--text-muted);">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom: 12px;"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line></svg>
+          <p>В спецификации пока нет позиций.<br>Выберите трубы или фитинги в каталоге.</p>
+          <a href="catalog.html" class="btn btn--outline btn--sm" style="margin-top: 16px;" onclick="App.closeDrawer()">Перейти в каталог</a>
+        </div>
+        <div id="drawer-spec-list"></div>
+      </div>
+
+      <div class="drawer__footer" id="drawer-spec-footer" style="display: none;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 16px; font-size: 0.95rem;">
+          <span>Расчетная масса партии:</span>
+          <strong id="drawer-spec-weight" style="color: var(--accent-primary);">0 кг</strong>
+        </div>
+        <button class="btn btn--primary" style="width: 100%; margin-bottom: 8px;" onclick="App.closeDrawer(); App.openModal('modal-quote');">
+          Запросить оптовый расчет КП
+        </button>
+        <button class="btn btn--outline btn--sm" style="width: 100%;" onclick="SpecCart.clear()">
+          Очистить список
+        </button>
+      </div>
+    </div>
+  </div>

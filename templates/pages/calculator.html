@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+
+{% block title %}Инженерный калькулятор теплотрассы — PipePrime{% endblock %}
+
+{% block meta_description %}Онлайн-калькулятор расчета параметров трубопроводов PE-RT тип II для отопления и ГВС. Расчет массы, количества хлыстов 12 м, муфт КЗС, объема для логистики и подбор автотранспорта.{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="assets/css/calculator.css?v=28">
+{% endblock %}
+
+{% block content %}
+<!-- Заголовок страницы -->
+  <div style="padding: 40px 0 20px; background: rgba(15, 23, 42, 0.4); border-bottom: 1px solid var(--border-subtle);">
+    <div class="container">
+      <div style="display: flex; gap: 8px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
+        <a href="index.html" style="color: var(--text-secondary);">Главная</a>
+        <span>/</span>
+        <span style="color: var(--accent-primary);">Инженерный калькулятор</span>
+      </div>
+      <h1 style="font-size: 2.2rem; margin-bottom: 8px;">Калькулятор потребности теплотрассы и логистики</h1>
+      <p style="color: var(--text-secondary); max-width: 800px;">
+        Профессиональный расчет по методике АТР 2026: подбор метража, расчет количества хлыстов 12 м, точный вес труб, муфт заделки стыков (КЗС) и подбор грузового автотранспорта.
+      </p>
+    </div>
+  </div>
+
+  <main class="section">
+    <div class="container">
+      <div class="calc-section-layout">
+        
+        <!-- Левая колонка: Форма параметров -->
+        <div class="calc-form-panel">
+          <h3 style="margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid var(--border-subtle);">
+            Параметры тепловой сети
+          </h3>
+
+          <div class="calc-input-row">
+            <div class="form-group">
+              <label class="form-label">Тип разводки системы</label>
+              <select id="calc-sys-type" class="form-control">
+                <option value="2" selected>2-трубная (Подающий + Обратный)</option>
+                <option value="4">4-трубная (Отопление Т1/Т2 + ГВС Т3/Т4)</option>
+                <option value="1">1-трубная магистраль</option>
+              </select>
+              <div class="calc-helper-note">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                Количество ниток в траншее
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Длина трассы по траншее <span class="hint">(м)</span></label>
+              <input type="number" id="calc-length" class="form-control" value="120" min="12" step="12">
+              <div class="calc-helper-note">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                Кратность стандартному хлысту 12 м
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Тип трубы и изоляции</label>
+            <select id="calc-pipe-type" class="form-control">
+              <option value="ppu_pe" selected>Предизолированная в ППУ/ПЭ (подземная бесканальная укладка)</option>
+              <option value="ppu_oc">Предизолированная в ППУ/ОЦ (надземная прокладка на эстакадах)</option>
+              <option value="uninsulated">Неизолированная труба PE-RT тип II (в канал или гильзу)</option>
+            </select>
+          </div>
+
+          <div class="calc-input-row">
+            <div class="form-group">
+              <label class="form-label">Наружный диаметр трубы (d)</label>
+              <select id="calc-diameter" class="form-control">
+                <option value="25">d25 мм (защитная оболочка D90)</option>
+                <option value="32">d32 мм (защитная оболочка D110)</option>
+                <option value="40">d40 мм (защитная оболочка D110)</option>
+                <option value="50">d50 мм (защитная оболочка D125)</option>
+                <option value="63">d63 мм (защитная оболочка D125)</option>
+                <option value="75">d75 мм (защитная оболочка D140)</option>
+                <option value="90">d90 мм (защитная оболочка D160)</option>
+                <option value="110" selected>d110 мм (защитная оболочка D180)</option>
+                <option value="125">d125 мм (защитная оболочка D200)</option>
+                <option value="140">d140 мм (защитная оболочка D225)</option>
+                <option value="160">d160 мм (защитная оболочка D250)</option>
+                <option value="180">d180 мм (защитная оболочка D280)</option>
+                <option value="200">d200 мм (защитная оболочка D315)</option>
+                <option value="225">d225 мм (защитная оболочка D315)</option>
+                <option value="250">d250 мм (защитная оболочка D355)</option>
+                <option value="280">d280 мм (защитная оболочка D400)</option>
+                <option value="315">d315 мм (защитная оболочка D450)</option>
+                <option value="355">d355 мм (защитная оболочка D500)</option>
+                <option value="400">d400 мм (защитная оболочка D560)</option>
+                <option value="450">d450 мм (защитная оболочка D630)</option>
+                <option value="500">d500 мм (защитная оболочка D670)</option>
+                <option value="560">d560 мм (защитная оболочка D710)</option>
+                <option value="630">d630 мм (защитная оболочка D800)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Размерное отношение (SDR)</label>
+              <select id="calc-sdr" class="form-control">
+                <option value="7.4" selected>SDR 7.4 (1.0 МПа / 10 бар)</option>
+                <option value="9">SDR 9 (0.8 МПа / 8 бар)</option>
+                <option value="11">SDR 11 (0.6 МПа / 6 бар)</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="background: rgba(11, 17, 32, 0.4); border-radius: var(--radius-md); padding: 18px; margin-top: 10px;">
+            <div style="font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Инженерная справка по АТР 2026:</div>
+            <ul style="font-size: 0.82rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 6px;">
+              <li>• Для подземных бесканальных сетей теплоснабжения рекомендуются трубы SDR 7.4 с проводниками ОДК.</li>
+              <li>• Комплекты заделки стыков (КЗС) включают радиационно-сшитую муфту и пенопакет А+Б.</li>
+              <li>• Расчетная температура теплоносителя: рабочая до +95°С, кратковременная аварийная до +110°С.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Правая колонка: Сводная ведомость -->
+        <div class="calc-result-panel">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h3 style="font-size: 1.3rem;">Сводная ведомость</h3>
+            <span class="calc-tag">Смета PipePrime</span>
+          </div>
+
+          <div class="calc-result-box">
+            <div class="calc-stat-row">
+              <span>Суммарный метраж:</span>
+              <strong id="res-total-meters" class="highlight">240 м</strong>
+            </div>
+            <div class="calc-stat-row">
+              <span>Стандартных хлыстов (12 м):</span>
+              <strong id="res-bars-count">20 шт</strong>
+            </div>
+            <div class="calc-stat-row">
+              <span>Расчетная масса труб:</span>
+              <strong id="res-total-weight">1.82 т</strong>
+            </div>
+            <div class="calc-stat-row">
+              <span>Муфт заделки стыков (КЗС):</span>
+              <strong id="res-joints-count">18 шт</strong>
+            </div>
+            <div class="calc-stat-row">
+              <span>Защитная оболочка:</span>
+              <strong id="res-casing-info">D180 мм</strong>
+            </div>
+            <div class="calc-stat-row">
+              <span>Объем для перевозки:</span>
+              <strong id="res-volume">~15 м³</strong>
+            </div>
+          </div>
+
+          <div class="transport-badge">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+            <div>
+              <strong>Рекомендуемый транспорт:</strong><br>
+              <span id="res-transport">Еврофура 13.6 м (до 20 т)</span>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <button class="btn btn--primary btn--lg" id="calc-add-to-cart">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+              Внести расчет в спецификацию
+            </button>
+            <button class="btn btn--outline" data-open-modal="modal-quote">
+              Запросить официальное КП с ценой
+            </button>
+            <button class="btn btn--secondary btn--sm" id="calc-download-pdf" style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              Скачать расчетное КП (PDF)
+            </button>
+            <button class="btn btn--outline btn--sm" onclick="window.print()" style="opacity: 0.7;">
+              Печать ведомости (Ctrl+P)
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Подвал -->
+{% endblock %}
+
+{% block extra_scripts %}
+  <script src="assets/js/calculator.js?v=28"></script>
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}Надземная прокладка труб PE-RT на эстакадах в ППУ-ОЦ — АТР 2026 | PipePrime{% endblock %}
+
+{% block meta_description %}Инженерные решения надземной прокладки трубопроводов PE-RT тип II в оцинкованной оболочке ППУ-ОЦ по эстакадам и опорам по АТР 2026. Таблицы подбора несущих швеллеров от провисания при +95°С, U-образные хомуты, расчет шага опор. Интерактивная ведомость BOM.{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="assets/css/solutions.css?v=28">
+{% endblock %}
+
+{% block content %}
+<!-- Заголовок страницы -->
+  <div style="padding: 40px 0 20px; background: rgba(15, 23, 42, 0.4); border-bottom: 1px solid var(--border-subtle);">
+    <div class="container">
+      <div style="display: flex; gap: 8px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
+        <a href="index.html" style="color: var(--text-secondary);">Главная</a>
+        <span>/</span>
+        <a href="engineering.html" style="color: var(--text-secondary);">Инженерные решения</a>
+        <span>/</span>
+        <span style="color: var(--accent-primary);">Надземная прокладка (ППУ-ОЦ)</span>
+      </div>
+      <h1 style="font-size: 2.2rem; margin-bottom: 8px;">Надземная прокладка труб PE-RT на эстакадах в ППУ-ОЦ</h1>
+      <p style="color: var(--text-secondary); max-width: 860px; line-height: 1.6;">
+        Проектирование и монтаж открытых участков тепловых сетей на эстакадах, опорах и мостах с применением защитных стальных швеллеров и оцинкованной оболочки ОЦ (Альбом АТР 2026, листы 82–92).
+      </p>
+    </div>
+  </div>
+
+  <main class="section">
+    <div class="container">
+
+      <!-- Пояснительная записка -->
+      <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 28px; margin-bottom: 40px;">
+        <div class="subheading-kicker">Инженерный регламент АТР 2026</div>
+        <h3 style="margin: 8px 0 12px;">Исключение провисания полимерных труб при рабочей температуре +95°С</h3>
+        <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
+          Термопластичные полимерные трубы при нагреве до +95°С снижают модуль упругости. При точечном опирании на эстакадах это может вызвать волнообразное провисание плети. Согласно регламенту АТР 2026 (листы 83–86), трубопроводы в спирально-навивной оцинкованной оболочке ППУ-ОЦ укладываются на <strong>непрерывную постель из стального прокатного швеллера</strong> и фиксируются U-образными хомутами с шагом 3–6 м.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; font-size: 0.88rem; color: var(--text-muted);">
+          <div>• Оболочка: <strong>спирально-навивная оцинкованная сталь 0.8–1.0 мм</strong></div>
+          <div>• Несущий профиль: <strong>стальной швеллер ГОСТ 8240-97</strong></div>
+          <div>• Крепление: <strong>хомуты U-образные М16–М24</strong></div>
+        </div>
+      </div>
+
+      <!-- ИНТЕРАКТИВНЫЙ УЗЕЛ ЭСТАКАДЫ -->
+      <div data-solution-id="aboveground-rack-oc"></div>
+
+      <!-- ТАБЛИЦА ПОДБОРА ШВЕЛЛЕРА -->
+      <div style="margin-top: 60px;">
+        <div class="section-header">
+          <div class="section-header__subtitle">Справочник проектировщика</div>
+          <h2 class="section-header__title">Подбор номера швеллера по диаметру оболочки (АТР стр. 86)</h2>
+        </div>
+
+        <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 24px; overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem;">
+            <thead>
+              <tr style="border-bottom: 1px solid var(--border-subtle); color: var(--text-muted); text-align: left;">
+                <th style="padding: 10px;">d трубы, мм</th>
+                <th style="padding: 10px;">D оболочки ОЦ, мм</th>
+                <th style="padding: 10px;">Рекомендуемый швеллер</th>
+                <th style="padding: 10px;">Ширина полки В, мм</th>
+                <th style="padding: 10px;">Резьба хомута U</th>
+                <th style="padding: 10px;">Предельный пролет L, м</th>
+              </tr>
+            </thead>
+            <tbody style="color: var(--text-secondary);">
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 10px; font-weight: 600;">50 / 63</td><td>125 мм</td><td>Швеллер 14П</td><td>58 мм</td><td>М16</td><td>4.5 м</td></tr>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 10px; font-weight: 600;">75</td><td>140 мм</td><td>Швеллер 16П</td><td>64 мм</td><td>М16</td><td>5.0 м</td></tr>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 10px; font-weight: 600;">90</td><td>160 мм</td><td>Швеллер 18П</td><td>70 мм</td><td>М16</td><td>5.5 м</td></tr>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 10px; font-weight: 600;">110</td><td>180 мм</td><td>Швеллер 20П</td><td>76 мм</td><td>М20</td><td>6.0 м</td></tr>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 10px; font-weight: 600;">125</td><td>200 мм</td><td>Швеллер 22П</td><td>82 мм</td><td>М20</td><td>6.0 м</td></tr>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 10px; font-weight: 600;">160</td><td>250 мм</td><td>Швеллер 27П</td><td>95 мм</td><td>М20</td><td>6.0 м</td></tr>
+              <tr><td style="padding: 10px; font-weight: 600;">200 / 225</td><td>315 мм</td><td>Швеллер 30П</td><td>100 мм</td><td>М24</td><td>6.0 м</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+{% endblock %}
+
+{% block extra_scripts %}
+  <script src="assets/js/solutions-data.js?v=28"></script>
+  <script src="assets/js/solutions.js?v=28"></script>
+{% endblock %}

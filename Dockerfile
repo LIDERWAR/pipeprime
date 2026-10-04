@@ -25,7 +25,12 @@ RUN pip install --no-cache-dir -r /app/server/requirements.txt
 COPY assets/ /app/assets/
 COPY *.html /app/
 COPY robots.txt sitemap.xml favicon.ico site.webmanifest /app/
+COPY templates/ /app/templates/
+COPY build_pages.py /app/
 COPY server/ /app/server/
+
+# Compile HTML pages from Jinja2 templates
+RUN python /app/build_pages.py
 
 
 # Ensure runtime directories exist

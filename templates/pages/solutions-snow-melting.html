@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block title %}Системы снеготаяния и подогрева футбольных полей — АТР 2026 | PipePrime{% endblock %}
+
+{% block meta_description %}Инженерный расчет и готовые комплекты систем снеготаяния и обогрева футбольных полей (105х68 м) на трубах PE-RT тип II по АТР 2026. Расчет тепловой мощности по закону Ньютона-Рихмана, распределительные коллекторы ø63–215 мм, шаг укладки 150 мм. Интерактивная смета.{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="assets/css/solutions.css?v=28">
+{% endblock %}
+
+{% block content %}
+<!-- Заголовок страницы -->
+  <div style="padding: 40px 0 20px; background: rgba(15, 23, 42, 0.4); border-bottom: 1px solid var(--border-subtle);">
+    <div class="container">
+      <div style="display: flex; gap: 8px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
+        <a href="index.html" style="color: var(--text-secondary);">Главная</a>
+        <span>/</span>
+        <a href="engineering.html" style="color: var(--text-secondary);">Инженерные решения</a>
+        <span>/</span>
+        <span style="color: var(--accent-primary);">Обогрев футбольных полей и снеготаяние</span>
+      </div>
+      <h1 style="font-size: 2.2rem; margin-bottom: 8px;">Системы снеготаяния и подогрева футбольных полей</h1>
+      <p style="color: var(--text-secondary); max-width: 860px; line-height: 1.6;">
+        Инженерный комплекс круглогодичного жидкостного обогрева спортивных газонов (стандарт FIFA/РФС 105 × 68 м), открытых пандусов и вертолетных площадок на базе напорных труб PE-RT тип II (АТР 2026, листы 103–112).
+      </p>
+    </div>
+  </div>
+
+  <main class="section">
+    <div class="container">
+
+      <!-- Пояснительная записка и формула Ньютона-Рихмана -->
+      <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 28px; margin-bottom: 40px;">
+        <div class="subheading-kicker">Теплотехнический расчет по АТР стр. 104</div>
+        <h3 style="margin: 8px 0 12px;">Расчет тепловой мощности контура снеготаяния</h3>
+        <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
+          Уточненный расчет мощности обогрева открытой поверхности спортивного поля производится согласно закону Ньютона-Рихмана по формуле:
+        </p>
+        <div style="background: #090d16; border: 1px solid var(--border-subtle); padding: 14px 20px; font-family: var(--font-mono, monospace); font-size: 1.05rem; color: var(--accent-primary); margin-bottom: 16px; border-radius: var(--radius-sm);">
+          Q = α × (t₁ - tн) × F × 10⁻⁶ [МВт]
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">
+          где <strong>α</strong> — суммарный коэффициент теплоотдачи поверхности к окружающему воздуху с учетом ветра (20–35 Вт/м²·°С); <strong>t₁</strong> — требуемая температура поверхности газона (+3...+5°С); <strong>tн</strong> — расчетная температура наружного воздуха наиболее холодной пятидневки; <strong>F</strong> — площадь поля (7140 м²).
+        </p>
+      </div>
+
+      <!-- ИНТЕРАКТИВНЫЙ УЗЕЛ ОБОГРЕВА ПОЛЯ -->
+      <div data-solution-id="snow-melting-field"></div>
+
+      <!-- ПОШАГОВАЯ ТЕХНОЛОГИЯ МОНТАЖА -->
+      <div style="margin-top: 60px;">
+        <div class="section-header">
+          <div class="section-header__subtitle">Технологическая карта АТР 2026</div>
+          <h2 class="section-header__title">Пошаговый регламент устройства греющего поля</h2>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+          <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 20px;">
+            <div style="font-family: var(--font-mono); color: var(--accent-primary); font-size: 0.8rem; font-weight: 700; margin-bottom: 8px;">ШАГ 1 // ПОДГОТОВКА</div>
+            <h4 style="margin-bottom: 8px;">Основание и магистрали</h4>
+            <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.5;">
+              Подготовка песчано-щебеночного дренирующего слоя. Укладка транзитных магистралей от ИТП и соединение их сваркой встык или электросварными муфтами.
+            </p>
+          </div>
+
+          <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 20px;">
+            <div style="font-family: var(--font-mono); color: var(--accent-primary); font-size: 0.8rem; font-weight: 700; margin-bottom: 8px;">ШАГ 2 // КОЛЛЕКТОРЫ</div>
+            <h4 style="margin-bottom: 8px;">Сборка коллекторных групп</h4>
+            <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.5;">
+              Монтаж секционных гребенок ø110–215 мм вдоль бровки поля (68 м) с направлением штуцеров d20 мм в сторону игрового поля с шагом 150 мм.
+            </p>
+          </div>
+
+          <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 20px;">
+            <div style="font-family: var(--font-mono); color: var(--accent-primary); font-size: 0.8rem; font-weight: 700; margin-bottom: 8px;">ШАГ 3 // РАСКЛАДКА</div>
+            <h4 style="margin-bottom: 8px;">Укладка петель PE-RT</h4>
+            <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.5;">
+              Раскатка цельных бухт PE-RT 20х2.0 мм с барьером EVOH. Фиксация в монтажные шины с шагом 150 мм. Длина каждой петли строго не более 110 м.
+            </p>
+          </div>
+
+          <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 20px;">
+            <div style="font-family: var(--font-mono); color: var(--accent-primary); font-size: 0.8rem; font-weight: 700; margin-bottom: 8px;">ШАГ 4 // ОПРЕССОВКА</div>
+            <h4 style="margin-bottom: 8px;">Гидравлические испытания</h4>
+            <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.5;">
+              Заполнение теплоносителем (этиленгликоль 40%) и опрессовка избыточным давлением 0.6 МПа в течение 24 часов до момента засыпки плодородного слоя.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+{% endblock %}
+
+{% block extra_scripts %}
+  <script src="assets/js/solutions-data.js?v=28"></script>
+  <script src="assets/js/solutions.js?v=28"></script>
+{% endblock %}

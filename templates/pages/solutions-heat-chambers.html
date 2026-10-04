@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Типовые тепловые камеры для труб PE-RT (Т1/Т2) — АТР 2026 | PipePrime{% endblock %}
+
+{% block meta_description %}Инженерная компоновка тепловых камер для напорных полимерных трубопроводов PE-RT тип II по АТР 2026: обвязка магистралей Т1/Т2, спускники, воздушники, герметизация стеновых вводов, спецификация оборудования. Интерактивная смета узла.{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="assets/css/solutions.css?v=28">
+{% endblock %}
+
+{% block content %}
+<!-- Заголовок страницы -->
+  <div style="padding: 40px 0 20px; background: rgba(15, 23, 42, 0.4); border-bottom: 1px solid var(--border-subtle);">
+    <div class="container">
+      <div style="display: flex; gap: 8px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
+        <a href="index.html" style="color: var(--text-secondary);">Главная</a>
+        <span>/</span>
+        <a href="engineering.html" style="color: var(--text-secondary);">Инженерные решения</a>
+        <span>/</span>
+        <span style="color: var(--accent-primary);">Тепловые камеры</span>
+      </div>
+      <h1 style="font-size: 2.2rem; margin-bottom: 8px;">Типовые распределительные тепловые камеры (Т1/Т2)</h1>
+      <p style="color: var(--text-secondary); max-width: 860px; line-height: 1.6;">
+        Проектные решения по обустройству железобетонных тепловых камер для двухтрубных сетей теплоснабжения из труб PE-RT тип II (Альбом АТР 2026, листы 100–102).
+      </p>
+    </div>
+  </div>
+
+  <main class="section">
+    <div class="container">
+
+      <!-- Пояснительная записка -->
+      <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 28px; margin-bottom: 40px;">
+        <div class="subheading-kicker">Нормативный регламент СП 124.13330.2012</div>
+        <h3 style="margin: 8px 0 12px;">Особенности компоновки тепловых камер для полимерных сетей</h3>
+        <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
+          В тепловых камерах сосредоточена секционирующая и спускная арматура магистралей Т1 и Т2. При использовании труб PE-RT тип II в камерах монтируются неизолированные переходы на стальные фланцевые краны через литые спиготы. Врезка дренажей и воздушников выполняется с помощью <strong>вварных раструбных седелок SDR 6</strong> без ослабления прочности несущей трубы.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; font-size: 0.88rem; color: var(--text-muted);">
+          <div>• Проходы в свету: <strong>не менее 600 мм до стены</strong></div>
+          <div>• Спускные штуцеры: <strong>Ду 25–40 с отводом в приямок</strong></div>
+          <div>• Герметизация вводов: <strong>эластомерные манжеты стенового ввода</strong></div>
+        </div>
+      </div>
+
+      <!-- ИНТЕРАКТИВНЫЙ УЗЕЛ ТЕПЛОВОЙ КАМЕРЫ -->
+      <div data-solution-id="heat-chamber-node"></div>
+
+    </div>
+  </main>
+{% endblock %}
+
+{% block extra_scripts %}
+  <script src="assets/js/solutions-data.js?v=28"></script>
+  <script src="assets/js/solutions.js?v=28"></script>
+{% endblock %}

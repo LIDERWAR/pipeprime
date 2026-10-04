@@ -5,8 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Каталог полимерных труб PE-RT тип II и фитингов — PipePrime</title>
   <meta name="description" content="Интерактивный каталог напорных труб PE-RT тип II (d25–630 мм), предизолированных труб в ППУ/ПЭ и ППУ/ОЦ, гибких систем в гофре, электросварных и литых фитингов по стандарту АТР 2026. Оптовые цены, технические характеристики, поставка по РФ.">
-  <link rel="stylesheet" href="assets/css/style.css?v=24">
-  <link rel="stylesheet" href="assets/css/catalog.css?v=27">
+
+  <!-- CSS Design System -->
+  <link rel="stylesheet" href="assets/css/style.css?v=33">
+  <link rel="stylesheet" href="assets/css/catalog.css?v=28">
+
   <!-- Favicons -->
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg?v=24">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
@@ -16,9 +19,7 @@
 </head>
 
 <body>
-
-  <!-- Шапка сайта -->
-  <header class="header">
+<header class="header">
     <div class="container header__inner">
       <a href="index.html" class="logo">
         <div class="logo__mark">
@@ -75,8 +76,8 @@
       </div>
     </div>
   </header>
-
-  <!-- Заголовок страницы каталога -->
+  <main>
+<!-- Заголовок страницы каталога -->
   <div style="padding: 40px 0 20px; background: rgba(15, 23, 42, 0.4); border-bottom: 1px solid var(--border-subtle);">
     <div class="container">
       <div style="display: flex; gap: 8px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
@@ -118,7 +119,9 @@
   </main>
 
   <!-- Подвал сайта -->
-  <footer class="footer">
+  </main>
+
+<footer class="footer">
     <div class="container">
       <div class="footer__grid">
         <div>
@@ -203,15 +206,13 @@
         </div>
       </div>
     </div>
-  </footer>
-
-  <!-- Drawer спецификаций -->
+  </footer><!-- Drawer: Корзина спецификации -->
   <div class="drawer-backdrop" id="spec-drawer">
     <div class="drawer">
       <div class="drawer__header">
         <div>
           <h3 style="font-size: 1.2rem; margin-bottom: 2px;">Спецификация поставки</h3>
-          <span style="font-size: 0.8rem; color: var(--text-muted);">Выбранные позиции</span>
+          <span style="font-size: 0.8rem; color: var(--text-muted);">Выбранные позиции для расчета КП</span>
         </div>
         <button id="close-spec-drawer" style="background: none; border: none; color: var(--text-muted); cursor: pointer;">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
@@ -221,7 +222,8 @@
       <div class="drawer__body">
         <div id="drawer-spec-empty" style="text-align: center; padding: 40px 0; color: var(--text-muted);">
           <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom: 12px;"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line></svg>
-          <p>В спецификации пока нет позиций.</p>
+          <p>В спецификации пока нет позиций.<br>Выберите трубы или фитинги в каталоге.</p>
+          <a href="catalog.html" class="btn btn--outline btn--sm" style="margin-top: 16px;" onclick="App.closeDrawer()">Перейти в каталог</a>
         </div>
         <div id="drawer-spec-list"></div>
       </div>
@@ -239,17 +241,38 @@
         </button>
       </div>
     </div>
-  </div>
-
-  <!-- Модалка быстрого просмотра -->
-  <div class="modal-backdrop" id="modal-quickview">
-    <div class="modal-card" style="max-width: 800px;">
+  </div><!-- Модальное окно: Заказ звонка -->
+  <div class="modal-backdrop" id="modal-callback">
+    <div class="modal-card">
       <button class="modal-close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
-      <div id="modal-quickview-body"></div>
+      <h3 style="margin-bottom: 6px;">Заказ обратного звонка</h3>
+      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 20px;">Инженер отдела поставок перезвонит вам в течение 10 минут</p>
+      
+      <form data-ajax-form>
+        <div class="form-group">
+          <label class="form-label">Ваше имя</label>
+          <input type="text" class="form-control" placeholder="Константин" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Телефон</label>
+          <input type="tel" class="form-control" placeholder="+7 (___) ___-__-__" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Интересующая продукция</label>
+          <select class="form-control">
+            <option>Трубы PE-RT неизолированные</option>
+            <option>Трубы предизолированные в ППУ/ПЭ</option>
+            <option>Трубы предизолированные в ППУ/ОЦ</option>
+            <option>Фитинги электросварные и литые</option>
+            <option>Комплексная поставка на объект</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn--primary" style="width: 100%;">Жду звонка</button>
+      </form>
     </div>
   </div>
 
-  <!-- Модалка запроса КП -->
+  <!-- Модальное окно: Запрос коммерческого предложения -->
   <div class="modal-backdrop" id="modal-quote">
     <div class="modal-card">
       <button class="modal-close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
@@ -258,13 +281,13 @@
       
       <form data-ajax-form>
         <div class="form-group">
-          <label class="form-label">Организация / ИНН</label>
-          <input type="text" class="form-control" placeholder="ООО «ТеплоСтрой»" required>
+          <label class="form-label">Ваша организация / ИНН</label>
+          <input type="text" class="form-control" placeholder="ООО «ТеплоСтройМонтаж»" required>
         </div>
         <div class="form-row">
           <div class="form-group">
             <label class="form-label">Контактное лицо</label>
-            <input type="text" class="form-control" placeholder="Иван Иванович" required>
+            <input type="text" class="form-control" placeholder="Сергей Николаевич" required>
           </div>
           <div class="form-group">
             <label class="form-label">Телефон</label>
@@ -272,26 +295,40 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="form-label">Email</label>
+          <label class="form-label">Email для получения КП</label>
           <input type="email" class="form-control" placeholder="snab@company.ru" required>
         </div>
-        <button type="submit" class="btn btn--primary" style="width: 100%;">Получить КП с ценами</button>
+        <div class="form-group">
+          <label class="form-label">Город доставки объекта</label>
+          <input type="text" class="form-control" placeholder="г. Казань" required>
+        </div>
+        <button type="submit" class="btn btn--primary" style="width: 100%;">Получить расчет с ценами</button>
       </form>
     </div>
   </div>
 
-  <!-- Модалка успеха -->
+  <!-- Модальное окно: Быстрый просмотр товара -->
+  <div class="modal-backdrop" id="modal-quickview">
+    <div class="modal-card" style="max-width: 800px;">
+      <button class="modal-close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+      <div id="modal-quickview-body"></div>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Успешная отправка -->
   <div class="modal-backdrop" id="modal-success">
     <div class="modal-card" style="text-align: center; padding: 40px 32px;">
       <div style="width: 64px; height: 64px; border-radius: 50%; background: rgba(16, 185, 129, 0.15); color: #10b981; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
       </div>
-      <h3 style="margin-bottom: 10px;">Заявка принята!</h3>
-      <p style="color: var(--text-secondary); margin-bottom: 24px;">Инженер отдела поставок свяжется с вами и пришлет спецификацию с ценами.</p>
-      <button class="btn btn--primary" onclick="App.closeAllModals()">Закрыть</button>
+      <h3 style="margin-bottom: 10px;">Заявка успешно принята!</h3>
+      <p style="color: var(--text-secondary); margin-bottom: 24px;">
+        Инженер PipePrime приступил к обработке вашей спецификации. Расчет оптовой стоимости и условий доставки будет направлен вам в течение 30 минут.
+      </p>
+      <button class="btn btn--primary" onclick="App.closeAllModals()">Понятно, спасибо</button>
     </div>
   </div>
-
+  <!-- Скрипты платформы -->
   <script src="assets/js/catalog-data.js?v=28"></script>
   <script src="assets/js/app.js?v=28"></script>
   <script src="assets/js/catalog.js?v=28"></script>

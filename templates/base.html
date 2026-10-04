@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}PipePrime — Поставка полимерных труб PE-RT тип II{% endblock %}</title>
+  <meta name="description" content="{% block meta_description %}Официальный дистрибьютор полимерных труб PE-RT тип II, предизолированных труб в ППУ/ПЭ и ППУ/ОЦ, фитингов и комплектующих для систем отопления и ГВС.{% endblock %}">
+  {% block extra_meta %}{% endblock %}
+
+  <!-- CSS Design System -->
+  <link rel="stylesheet" href="assets/css/style.css?v=33">
+  {% block extra_css %}{% endblock %}
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg?v=24">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png?v=24">
+  <link rel="manifest" href="site.webmanifest">
+</head>
+
+<body>
+  {% include "components/header.html" %}
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  {% include "components/footer.html" %}
+  {% include "components/spec_drawer.html" %}
+  {% include "components/modals.html" %}
+
+  <!-- Скрипты платформы -->
+  <script src="assets/js/catalog-data.js?v=28"></script>
+  <script src="assets/js/app.js?v=28"></script>
+  {% block extra_scripts %}{% endblock %}
+</body>
+</html>

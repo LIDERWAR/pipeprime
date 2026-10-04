@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Каталог полимерных труб PE-RT тип II и фитингов — PipePrime{% endblock %}
+
+{% block meta_description %}Интерактивный каталог напорных труб PE-RT тип II (d25–630 мм), предизолированных труб в ППУ/ПЭ и ППУ/ОЦ, гибких систем в гофре, электросварных и литых фитингов по стандарту АТР 2026. Оптовые цены, технические характеристики, поставка по РФ.{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="assets/css/catalog.css?v=28">
+{% endblock %}
+
+{% block content %}
+<!-- Заголовок страницы каталога -->
+  <div style="padding: 40px 0 20px; background: rgba(15, 23, 42, 0.4); border-bottom: 1px solid var(--border-subtle);">
+    <div class="container">
+      <div style="display: flex; gap: 8px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
+        <a href="index.html" style="color: var(--text-secondary);">Главная</a>
+        <span>/</span>
+        <span style="color: var(--accent-primary);">Каталог продукции</span>
+      </div>
+      <h1 style="font-size: 2.2rem; margin-bottom: 8px;">Каталог полимерных трубопроводных систем</h1>
+      <p style="color: var(--text-secondary); max-width: 800px;">
+        Полная номенклатура труб PE-RT тип II d25–630 мм (ГОСТ 32415-2013), предизолированных систем в ППУ/ПЭ и ППУ/ОЦ (ГОСТ Р 56730-2015), гибких труб в гофре, электросварных и литых фитингов по альбому АТР 2026.
+      </p>
+    </div>
+  </div>
+
+  <!-- Основной контент каталога с фильтрацией -->
+  <main class="section">
+    <div class="container">
+      
+      <!-- Панель фильтров и поиска -->
+      <div class="catalog-filter-bar">
+        <div class="filter-search-wrapper">
+          <svg class="filter-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="catalog-search-input" class="filter-search-input" placeholder="Поиск по категории, диаметру, SDR или названию (например: d110, SDR 7.4, отвод, муфта, ППУ)...">
+        </div>
+
+        <!-- Категории (чипсы) -->
+        <div class="filter-chips-container" id="filter-categories"></div>
+
+        <div class="filter-status-row">
+          <span id="catalog-results-count">Отображение: 10 товарных групп продукции (d25–630 мм)</span>
+          <button class="btn btn--outline btn--sm" id="catalog-reset-filters">Показать все группы</button>
+        </div>
+      </div>
+
+      <!-- Контейнер карточек-конфигураторов продукции -->
+      <div id="catalog-configurators-container"></div>
+
+    </div>
+  </main>
+
+  <!-- Подвал сайта -->
+{% endblock %}
+
+{% block extra_scripts %}
+  <script src="assets/js/catalog.js?v=28"></script>
+{% endblock %}

@@ -5,30 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Системы снеготаяния и подогрева футбольных полей — АТР 2026 | PipePrime</title>
   <meta name="description" content="Инженерный расчет и готовые комплекты систем снеготаяния и обогрева футбольных полей (105х68 м) на трубах PE-RT тип II по АТР 2026. Расчет тепловой мощности по закону Ньютона-Рихмана, распределительные коллекторы ø63–215 мм, шаг укладки 150 мм. Интерактивная смета.">
-  <link rel="canonical" href="https://pipeprime.ru/solutions-snow-melting.html">
-  <link rel="stylesheet" href="assets/css/style.css?v=24">
-  <link rel="stylesheet" href="assets/css/solutions.css?v=24">
+
+  <!-- CSS Design System -->
+  <link rel="stylesheet" href="assets/css/style.css?v=33">
+  <link rel="stylesheet" href="assets/css/solutions.css?v=28">
+
   <!-- Favicons -->
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg?v=24">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png?v=24">
   <link rel="manifest" href="site.webmanifest">
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "TechArticle",
-    "headline": "Система жидкостного обогрева спортивных полей и снеготаяния на трубах PE-RT тип II",
-    "description": "Техническое решение технологического обогрева открытых поверхностей и футбольных стадионов FIFA/РФС: методика расчета, готовые коллекторные группы и схемы раскладки петель.",
-    "author": { "@type": "Organization", "name": "PipePrime Engineering" },
-    "publisher": { "@type": "Organization", "name": "PipePrime" }
-  }
-  </script>
 </head>
 
 <body>
-
-  <!-- Шапка сайта -->
-  <header class="header">
+<header class="header">
     <div class="container header__inner">
       <a href="index.html" class="logo">
         <div class="logo__mark">
@@ -85,8 +76,8 @@
       </div>
     </div>
   </header>
-
-  <!-- Заголовок страницы -->
+  <main>
+<!-- Заголовок страницы -->
   <div style="padding: 40px 0 20px; background: rgba(15, 23, 42, 0.4); border-bottom: 1px solid var(--border-subtle);">
     <div class="container">
       <div style="display: flex; gap: 8px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
@@ -168,8 +159,9 @@
 
     </div>
   </main>
+  </main>
 
-  <footer class="footer">
+<footer class="footer">
     <div class="container">
       <div class="footer__grid">
         <div>
@@ -254,9 +246,7 @@
         </div>
       </div>
     </div>
-  </footer>
-
-  <!-- Drawer: Корзина спецификации -->
+  </footer><!-- Drawer: Корзина спецификации -->
   <div class="drawer-backdrop" id="spec-drawer">
     <div class="drawer">
       <div class="drawer__header">
@@ -268,13 +258,16 @@
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </button>
       </div>
+
       <div class="drawer__body">
         <div id="drawer-spec-empty" style="text-align: center; padding: 40px 0; color: var(--text-muted);">
           <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom: 12px;"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line></svg>
-          <p>В спецификации пока нет позиций.<br>Добавьте комплектующие из таблицы узла.</p>
+          <p>В спецификации пока нет позиций.<br>Выберите трубы или фитинги в каталоге.</p>
+          <a href="catalog.html" class="btn btn--outline btn--sm" style="margin-top: 16px;" onclick="App.closeDrawer()">Перейти в каталог</a>
         </div>
         <div id="drawer-spec-list"></div>
       </div>
+
       <div class="drawer__footer" id="drawer-spec-footer" style="display: none;">
         <div style="display: flex; justify-content: space-between; margin-bottom: 16px; font-size: 0.95rem;">
           <span>Расчетная масса партии:</span>
@@ -288,24 +281,53 @@
         </button>
       </div>
     </div>
+  </div><!-- Модальное окно: Заказ звонка -->
+  <div class="modal-backdrop" id="modal-callback">
+    <div class="modal-card">
+      <button class="modal-close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+      <h3 style="margin-bottom: 6px;">Заказ обратного звонка</h3>
+      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 20px;">Инженер отдела поставок перезвонит вам в течение 10 минут</p>
+      
+      <form data-ajax-form>
+        <div class="form-group">
+          <label class="form-label">Ваше имя</label>
+          <input type="text" class="form-control" placeholder="Константин" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Телефон</label>
+          <input type="tel" class="form-control" placeholder="+7 (___) ___-__-__" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Интересующая продукция</label>
+          <select class="form-control">
+            <option>Трубы PE-RT неизолированные</option>
+            <option>Трубы предизолированные в ППУ/ПЭ</option>
+            <option>Трубы предизолированные в ППУ/ОЦ</option>
+            <option>Фитинги электросварные и литые</option>
+            <option>Комплексная поставка на объект</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn--primary" style="width: 100%;">Жду звонка</button>
+      </form>
+    </div>
   </div>
 
-  <!-- Модальное окно: Запрос АТР 2026 -->
+  <!-- Модальное окно: Запрос коммерческого предложения -->
   <div class="modal-backdrop" id="modal-quote">
     <div class="modal-card">
       <button class="modal-close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
-      <h3 style="margin-bottom: 6px;">Запрос АТР 2026 для проекта</h3>
-      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 20px;">Предоставляем альбом технических решений проектным институтам и строительным организациям по ИНН</p>
+      <h3 style="margin-bottom: 6px;">Запрос коммерческого предложения</h3>
+      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 20px;">Подготовим расчет с учетом индивидуальных оптовых скидок и логистики</p>
       
       <form data-ajax-form>
         <div class="form-group">
           <label class="form-label">Ваша организация / ИНН</label>
-          <input type="text" class="form-control" placeholder="ООО «ПроектТеплоМонтаж» / ИНН 7701234567" required>
+          <input type="text" class="form-control" placeholder="ООО «ТеплоСтройМонтаж»" required>
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label class="form-label">Контактное лицо / Должность</label>
-            <input type="text" class="form-control" placeholder="ГИП / Инженер-проектировщик" required>
+            <label class="form-label">Контактное лицо</label>
+            <input type="text" class="form-control" placeholder="Сергей Николаевич" required>
           </div>
           <div class="form-group">
             <label class="form-label">Телефон</label>
@@ -313,18 +335,43 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="form-label">Корпоративный Email</label>
-          <input type="email" class="form-control" placeholder="pto@company.ru" required>
+          <label class="form-label">Email для получения КП</label>
+          <input type="email" class="form-control" placeholder="snab@company.ru" required>
         </div>
-        <button type="submit" class="btn btn--primary" style="width: 100%;">Запросить документацию АТР 2026</button>
+        <div class="form-group">
+          <label class="form-label">Город доставки объекта</label>
+          <input type="text" class="form-control" placeholder="г. Казань" required>
+        </div>
+        <button type="submit" class="btn btn--primary" style="width: 100%;">Получить расчет с ценами</button>
       </form>
     </div>
   </div>
 
-  <!-- Скрипты -->
-  <script src="assets/js/catalog-data.js?v=24"></script>
-  <script src="assets/js/solutions-data.js?v=24"></script>
-  <script src="assets/js/app.js?v=24"></script>
-  <script src="assets/js/solutions.js?v=24"></script>
+  <!-- Модальное окно: Быстрый просмотр товара -->
+  <div class="modal-backdrop" id="modal-quickview">
+    <div class="modal-card" style="max-width: 800px;">
+      <button class="modal-close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+      <div id="modal-quickview-body"></div>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Успешная отправка -->
+  <div class="modal-backdrop" id="modal-success">
+    <div class="modal-card" style="text-align: center; padding: 40px 32px;">
+      <div style="width: 64px; height: 64px; border-radius: 50%; background: rgba(16, 185, 129, 0.15); color: #10b981; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <h3 style="margin-bottom: 10px;">Заявка успешно принята!</h3>
+      <p style="color: var(--text-secondary); margin-bottom: 24px;">
+        Инженер PipePrime приступил к обработке вашей спецификации. Расчет оптовой стоимости и условий доставки будет направлен вам в течение 30 минут.
+      </p>
+      <button class="btn btn--primary" onclick="App.closeAllModals()">Понятно, спасибо</button>
+    </div>
+  </div>
+  <!-- Скрипты платформы -->
+  <script src="assets/js/catalog-data.js?v=28"></script>
+  <script src="assets/js/app.js?v=28"></script>
+  <script src="assets/js/solutions-data.js?v=28"></script>
+  <script src="assets/js/solutions.js?v=28"></script>
 </body>
 </html>

@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+{% block title %}Узлы подключения труб PE-RT к стали и арматуре (Фланцы, НСПС) — АТР 2026 | PipePrime{% endblock %}
+
+{% block meta_description %}Типовые технические решения сопряжения напорных труб PE-RT тип II со стальными теплосетями и запорной арматурой по АТР 2026: фланцевые переходы, неразъемные соединения пластик-сталь (НСПС), регламент сварки по СП 40-102-2000. Интерактивная спецификация комплектующих.{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="assets/css/solutions.css?v=28">
+{% endblock %}
+
+{% block content %}
+<!-- Заголовок страницы -->
+  <div style="padding: 40px 0 20px; background: rgba(15, 23, 42, 0.4); border-bottom: 1px solid var(--border-subtle);">
+    <div class="container">
+      <div style="display: flex; gap: 8px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
+        <a href="index.html" style="color: var(--text-secondary);">Главная</a>
+        <span>/</span>
+        <a href="engineering.html" style="color: var(--text-secondary);">Инженерные решения</a>
+        <span>/</span>
+        <span style="color: var(--accent-primary);">Переход на сталь и арматуру</span>
+      </div>
+      <h1 style="font-size: 2.2rem; margin-bottom: 8px;">Узлы подключения труб PE-RT к стали и запорной арматуре</h1>
+      <p style="color: var(--text-secondary); max-width: 860px; line-height: 1.6;">
+        Инженерный регламент сопряжения напорных трубопроводов PE-RT тип II со стальными магистралями, задвижками, дисковыми затворами и тепловыми пунктами на основании Альбома технических решений (АТР 2026, листы 67–74, 159–162).
+      </p>
+    </div>
+  </div>
+
+  <main class="section">
+    <div class="container">
+
+      <!-- Вводный блок и нормативная база -->
+      <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 28px; margin-bottom: 40px;">
+        <div class="subheading-kicker">Нормативный регламент проектирования</div>
+        <h3 style="margin: 8px 0 12px;">Требования СП 40-102-2000 и ГОСТ 32415-2013 к переходам «полимер–сталь»</h3>
+        <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
+          Согласно п. 3.3.4 СП 40-102-2000, разъемные соединения полимерных трубопроводов со стальными трубами и арматурой предусматриваются исключительно <strong>в колодцах, тепловых камерах или помещениях</strong> (ИТП, ЦТП). Прямое подземное соединение в грунте допускается выполнять <strong>только неразъемными соединениями (НСПС)</strong> с последующей изоляцией стыка термоусаживаемыми муфтами КЗС и пенополиуретаном.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; font-size: 0.88rem; color: var(--text-muted);">
+          <div>• Фланцевый переход: <strong>в камерах и узлах учета</strong></div>
+          <div>• Переход НСПС: <strong>подземная бесканальная прокладка</strong></div>
+          <div>• Срок службы узла: <strong>не менее 50 лет</strong></div>
+        </div>
+      </div>
+
+      <!-- ИНТЕРАКТИВНЫЙ УЗЕЛ 1: ФЛАНЦЕВЫЙ ПЕРЕХОД -->
+      <div data-solution-id="steel-flanged"></div>
+
+      <!-- ИНТЕРАКТИВНЫЙ УЗЕЛ 2: ПЕРЕХОД НСПС -->
+      <div style="margin-top: 60px;" data-solution-id="steel-nsps"></div>
+
+      <!-- ИНЖЕНЕРНЫЕ ТАБЛИЦЫ ИЗ АТР 2026 -->
+      <div style="margin-top: 60px;">
+        <div class="section-header">
+          <div class="section-header__subtitle">Справочные таблицы АТР 2026</div>
+          <h2 class="section-header__title">Соответствие диаметров и параметров крепежа</h2>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 24px;">
+          <!-- Таблица фланцев -->
+          <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 24px;">
+            <h4 style="color: var(--accent-primary); margin-bottom: 14px;">Параметры фланцевого крепежа (АТР стр. 162)</h4>
+            <div style="overflow-x: auto;">
+              <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+                <thead>
+                  <tr style="border-bottom: 1px solid var(--border-subtle); color: var(--text-muted); text-align: left;">
+                    <th style="padding: 8px;">d трубы, мм</th>
+                    <th style="padding: 8px;">Ду фланца</th>
+                    <th style="padding: 8px;">К-во болтов</th>
+                    <th style="padding: 8px;">Резьба</th>
+                    <th style="padding: 8px;">Момент</th>
+                  </tr>
+                </thead>
+                <tbody style="color: var(--text-secondary);">
+                  <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 8px;">32 / 40</td><td style="padding: 8px;">25 / 32</td><td style="padding: 8px;">4 шт.</td><td style="padding: 8px;">M12 / M16</td><td style="padding: 8px;">35–45 Н·м</td></tr>
+                  <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 8px;">50 / 63</td><td style="padding: 8px;">40 / 50</td><td style="padding: 8px;">4 шт.</td><td style="padding: 8px;">M16</td><td style="padding: 8px;">60–75 Н·м</td></tr>
+                  <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 8px;">75 / 90</td><td style="padding: 8px;">65 / 80</td><td style="padding: 8px;">4 / 8 шт.</td><td style="padding: 8px;">M16</td><td style="padding: 8px;">85–90 Н·м</td></tr>
+                  <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 8px;">110 / 125</td><td style="padding: 8px;">100</td><td style="padding: 8px;">8 шт.</td><td style="padding: 8px;">M16</td><td style="padding: 8px;">110 Н·м</td></tr>
+                  <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 8px;">160</td><td style="padding: 8px;">150</td><td style="padding: 8px;">8 шт.</td><td style="padding: 8px;">M20</td><td style="padding: 8px;">170 Н·м</td></tr>
+                  <tr><td style="padding: 8px;">200 / 225</td><td style="padding: 8px;">200</td><td style="padding: 8px;">8 шт.</td><td style="padding: 8px;">M20</td><td style="padding: 8px;">210 Н·м</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Таблица НСПС -->
+          <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 24px;">
+            <h4 style="color: var(--accent-primary); margin-bottom: 14px;">Диаметры патрубков НСПС (АТР стр. 136)</h4>
+            <div style="overflow-x: auto;">
+              <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+                <thead>
+                  <tr style="border-bottom: 1px solid var(--border-subtle); color: var(--text-muted); text-align: left;">
+                    <th style="padding: 8px;">Диаметр PE-RT, мм</th>
+                    <th style="padding: 8px;">Стальная труба (ГОСТ 8732)</th>
+                    <th style="padding: 8px;">Сталь марки</th>
+                  </tr>
+                </thead>
+                <tbody style="color: var(--text-secondary);">
+                  <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 8px;">32 / 40 мм</td><td style="padding: 8px;">32х3.0 / 38х3.0 мм</td><td style="padding: 8px;">Сталь 20</td></tr>
+                  <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 8px;">50 / 63 мм</td><td style="padding: 8px;">45х3.5 / 57х3.5 мм</td><td style="padding: 8px;">Сталь 20</td></tr>
+                  <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 8px;">75 / 90 мм</td><td style="padding: 8px;">76х3.5 / 89х4.0 мм</td><td style="padding: 8px;">Сталь 20</td></tr>
+                  <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 8px;">110 / 125 мм</td><td style="padding: 8px;">108х4.0 / 133х4.5 мм</td><td style="padding: 8px;">Сталь 20</td></tr>
+                  <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 8px;">160 мм</td><td style="padding: 8px;">159х4.5 мм</td><td style="padding: 8px;">Сталь 20</td></tr>
+                  <tr><td style="padding: 8px;">200 / 225 мм</td><td style="padding: 8px;">219х6.0 мм</td><td style="padding: 8px;">Сталь 20</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ для проектировщиков -->
+      <div style="margin-top: 50px;">
+        <h3 style="margin-bottom: 20px;">Вопросы и ответы по монтажу узлов сопряжения</h3>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div style="background: rgba(30, 41, 59, 0.4); padding: 18px; border-left: 3px solid var(--accent-primary);">
+            <strong>Как предотвратить оплавление полимерного патрубка НСПС при сварке со стальной трубой?</strong>
+            <p style="color: var(--text-secondary); margin-top: 6px; font-size: 0.9rem;">
+              Согласно п. 2.4 технологического регламента АТР 2026, при электродуговой сварке стального конца НСПС на полимерную часть накладывается смоченный асбестовый шнур или влажная термостойкая ткань, а корпус непрерывно охлаждается водой. Температура полиэтилена не должна превышать +50°С.
+            </p>
+          </div>
+          <div style="background: rgba(30, 41, 59, 0.4); padding: 18px; border-left: 3px solid var(--accent-primary);">
+            <strong>Почему нельзя использовать стандартные нерасточенные фланцы ГОСТ 12820?</strong>
+            <p style="color: var(--text-secondary); margin-top: 6px; font-size: 0.9rem;">
+              Наружный диаметр трубного бурта полимерной втулки PE-RT больше наружного диаметра стальной трубы соответствующего Ду. Для посадки на бурт внутренний диаметр фланца растачивается на станке до размера $d_1$ по таблице АТР стр. 69. Использование обычных фланцев приводит к закусыванию или деформации бурта.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+{% endblock %}
+
+{% block extra_scripts %}
+  <script src="assets/js/solutions-data.js?v=28"></script>
+  <script src="assets/js/solutions.js?v=28"></script>
+{% endblock %}
