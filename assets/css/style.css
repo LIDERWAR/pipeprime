@@ -2423,17 +2423,24 @@ body.no-scroll {
    Мобильное меню навигации (Mobile Nav Drawer)
    ========================================================================== */
 .mobile-nav {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  visibility: hidden;
-  pointer-events: none;
-  transition: visibility 0.3s ease;
+  display: none !important;
 }
 
-.mobile-nav.active {
-  visibility: visible;
-  pointer-events: auto;
+@media (max-width: 768px) {
+  .mobile-nav {
+    display: block !important;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    visibility: hidden;
+    pointer-events: none;
+    transition: visibility 0.3s ease;
+  }
+
+  .mobile-nav.active {
+    visibility: visible;
+    pointer-events: auto;
+  }
 }
 
 .mobile-nav__backdrop {
