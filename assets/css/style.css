@@ -1307,68 +1307,282 @@ button, input, select, textarea {
 }
 
 /* ==========================================================================
-   Сравнение материалов (PE-RT vs Сталь vs PEX)
+/* ==========================================================================
+   Технико-экономический реестр сравнения (Unboxed Engineering Spec)
    ========================================================================== */
-.comparison-table-wrapper {
-  background: var(--bg-card);
-  border: 1px solid var(--border-medium);
-  border-radius: var(--radius-xl);
-  overflow-x: auto;
-  box-shadow: var(--shadow-lg);
-  backdrop-filter: blur(12px);
-}
-
-.comparison-table {
+.unboxed-compare {
   width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-  min-width: 680px;
+  margin-top: 20px;
 }
 
-.comparison-table th, .comparison-table td {
-  padding: 18px 24px;
-  border-bottom: 1px solid var(--border-subtle);
+/* Верхняя статусная шкала / заголовки колонок на десктопе */
+.unboxed-compare__header {
+  display: grid;
+  grid-template-columns: 280px 1.25fr 1fr;
+  gap: 32px;
+  padding: 0 0 16px 0;
+  border-bottom: 2px solid rgba(148, 163, 184, 0.2);
+  align-items: flex-end;
 }
 
-.comparison-table th {
-  background: rgba(11, 17, 32, 0.6);
+.unboxed-compare__col-title {
   font-family: var(--font-heading);
+  font-size: 0.78rem;
   font-weight: 700;
-  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+}
+
+.unboxed-compare__col-title--primary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
   color: var(--text-white);
 }
 
-.comparison-table th.col-highlight {
-  background: rgba(255, 107, 0, 0.12);
+.unboxed-compare__brand {
   color: var(--accent-primary);
-  border-left: 2px solid var(--accent-primary);
-  border-right: 2px solid var(--accent-primary);
-  border-top: 2px solid var(--accent-primary);
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
 }
 
-.comparison-table td.col-highlight {
-  background: rgba(255, 107, 0, 0.05);
+.unboxed-compare__badge-flag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
   font-weight: 600;
+  color: var(--accent-secondary);
+  background: rgba(255, 107, 0, 0.1);
+  border: 1px solid rgba(255, 107, 0, 0.25);
+  border-radius: 4px;
+  padding: 2px 8px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.unboxed-compare__col-title--analogs {
+  color: #64748b;
+}
+
+/* Строки реестра сравнения */
+.unboxed-compare__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.compare-row {
+  display: grid;
+  grid-template-columns: 280px 1.25fr 1fr;
+  gap: 32px;
+  padding: 32px 0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+  align-items: flex-start;
+  transition: background-color 0.25s ease;
+  position: relative;
+}
+
+.compare-row:hover {
+  background: rgba(255, 255, 255, 0.015);
+}
+
+/* Левая часть: Мета-информация критерия */
+.compare-row__meta {
+  display: flex;
+  flex-direction: column;
+  padding-right: 12px;
+}
+
+.compare-row__code {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--accent-primary);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.compare-row__title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
   color: var(--text-white);
-  border-left: 2px solid var(--accent-primary);
-  border-right: 2px solid var(--accent-primary);
+  line-height: 1.3;
+  margin: 0 0 6px 0;
 }
 
-.comparison-table tr:last-child td.col-highlight {
-  border-bottom: 2px solid var(--accent-primary);
+.compare-row__desc {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
 }
 
-.val-good {
-  color: var(--success);
+/* Центральная доминанта: PipePrime PE-RT II */
+.compare-row__primary {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-left: 20px;
+  border-left: 2px solid rgba(255, 107, 0, 0.4);
+}
+
+.compare-row__metric-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.compare-row__metric {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text-white);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.compare-row__metric-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-secondary);
+}
+
+.compare-row__primary-text {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+  margin: 0;
+}
+
+.compare-row__primary-text strong {
+  color: var(--text-white);
+  font-weight: 700;
+}
+
+/* Правая часть: Ограничения традиционных аналогов */
+.compare-row__analogs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-left: 8px;
+}
+
+.analog-note {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.analog-note__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.analog-note__tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 2px 6px;
+  border-radius: 3px;
+  line-height: 1.2;
+}
+
+.analog-note--danger .analog-note__tag {
+  color: #f87171;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.analog-note--warning .analog-note__tag {
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.analog-note--neutral .analog-note__tag {
+  color: #94a3b8;
+  background: rgba(148, 163, 184, 0.1);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.analog-note__stat {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
   font-weight: 600;
+  color: var(--text-muted);
 }
 
-.val-bad {
-  color: var(--danger);
+.analog-note--danger .analog-note__stat {
+  color: #f87171;
 }
 
-.val-mid {
-  color: var(--warning);
+.analog-note__desc {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Адаптивность для планшетов и мобильных устройств */
+@media (max-width: 1024px) {
+  .unboxed-compare__header {
+    display: none;
+  }
+
+  .compare-row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 28px 0;
+  }
+
+  .compare-row__meta {
+    padding-right: 0;
+  }
+
+  .compare-row__primary {
+    padding-left: 16px;
+  }
+
+  .compare-row__analogs {
+    padding-left: 0;
+    padding-top: 6px;
+    border-top: 1px dashed rgba(148, 163, 184, 0.12);
+  }
+}
+
+@media (max-width: 640px) {
+  .compare-row {
+    padding: 24px 0;
+    gap: 16px;
+  }
+
+  .compare-row__metric {
+    font-size: 1.45rem;
+  }
+
+  .compare-row__title {
+    font-size: 1.05rem;
+  }
+
+  .compare-row__primary-text {
+    font-size: 0.88rem;
+  }
+
+  .analog-note__desc {
+    font-size: 0.8rem;
+  }
 }
 
 /* ==========================================================================

@@ -387,71 +387,198 @@
   </section>
 
   <!-- Секция: Сравнение материалов (PE-RT vs Сталь vs PEX) -->
-  <section class="section section--alt">
+  <section class="section section--alt" id="comparison-section">
     <div class="container">
       <div class="section-header section-header--center">
         <div class="section-header__subtitle">Технико-экономическое сравнение</div>
         <h2 class="section-header__title">Почему PE-RT тип II вытесняет Сталь и PEX</h2>
         <p class="section-header__desc">
-          Полиэтилен повышенной термостойкости (PE-RT тип II) сочетает долговечность полимеров и возможность термической сварки, исключая дорогие механические надвижные гильзы PEX и коррозию стали.
+          Полиэтилен повышенной термостойкости сочетает 50-летний ресурс полимеров и монолитную термическую сварку, исключая дорогую надвижную фасонину PEX и коррозию стальных труб.
         </p>
       </div>
 
-      <div class="comparison-table-wrapper">
-        <table class="comparison-table">
-          <thead>
-            <tr>
-              <th>Параметр сравнения</th>
-              <th class="col-highlight">PipePrime (PE-RT тип II)</th>
-              <th>Стальные трубы в ППУ</th>
-              <th>Сшитый полиэтилен (PEX)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Срок службы</td>
-              <td class="col-highlight val-good">50+ лет (гарантированно)</td>
-              <td class="val-bad">10–15 лет (склонны к коррозии)</td>
-              <td class="val-good">50 лет</td>
-            </tr>
-            <tr>
-              <td>Стоимость соединительных фитингов</td>
-              <td class="col-highlight val-good">Низкая (электросварка / стык)</td>
-              <td class="val-mid">Средняя (ручная дуговая сварка)</td>
-              <td class="val-bad">Очень высокая (латунные надвижные гильзы)</td>
-            </tr>
-            <tr>
-              <td>Зарастание и гидродинамическое сопротивление</td>
-              <td class="col-highlight val-good">Идеально гладкая стенка (k=0.007 мм)</td>
-              <td class="val-bad">Зарастает отложениями, ржавеет</td>
-              <td class="val-good">Гладкая стенка</td>
-            </tr>
-            <tr>
-              <td>Вес трубы (на примере d110 мм)</td>
-              <td class="col-highlight val-good">4.73 кг/м (в 6 раз легче стали)</td>
-              <td class="val-bad">~28.5 кг/м (требует спецкранов)</td>
-              <td class="val-good">~4.8 кг/м</td>
-            </tr>
-            <tr>
-              <td>Возможность поставки в бухтах до 500 м</td>
-              <td class="col-highlight val-good">Да (до d110 мм включительно)</td>
-              <td class="val-bad">Нет (только хлысты 6–12 м)</td>
-              <td class="val-good">Да (до d110 мм)</td>
-            </tr>
-            <tr>
-              <td>Необходимость компенсаторов расширения</td>
-              <td class="col-highlight val-good">Самокомпенсирующиеся (ППУ в грунте)</td>
-              <td class="val-bad">Обязательны сильфонные компенсаторы</td>
-              <td class="val-good">Самокомпенсирующиеся</td>
-            </tr>
-            <tr>
-              <td>Итоговая экономия на объекте</td>
-              <td class="col-highlight val-good">До 35–40% с учетом монтажа</td>
-              <td class="val-bad">Базовый уровень (высокие затраты ТО)</td>
-              <td class="val-bad">На 25–45% дороже из-за фитингов</td>
-            </tr>
-          </tbody>
-        </table>
+      <!-- Архитектурный реестр инженерных дифференциалов без карточек -->
+      <div class="unboxed-compare">
+        <div class="unboxed-compare__header">
+          <div class="unboxed-compare__col-title unboxed-compare__col-title--meta">Инженерный критерий</div>
+          <div class="unboxed-compare__col-title unboxed-compare__col-title--primary">
+            <span class="unboxed-compare__brand">PipePrime (PE-RT тип II)</span>
+            <span class="unboxed-compare__badge-flag">Стандарт теплосетей</span>
+          </div>
+          <div class="unboxed-compare__col-title unboxed-compare__col-title--analogs">Традиционные аналоги (Сталь / PEX)</div>
+        </div>
+
+        <div class="unboxed-compare__list">
+          <!-- 01: Ресурс и коррозия -->
+          <div class="compare-row">
+            <div class="compare-row__meta">
+              <span class="compare-row__code">01 / РЕСУРС И КОРРОЗИЯ</span>
+              <h3 class="compare-row__title">Срок службы и гидродинамика</h3>
+              <p class="compare-row__desc">Поведение внутренней стенки при контакте с теплоносителем до 95°C.</p>
+            </div>
+            <div class="compare-row__primary">
+              <div class="compare-row__metric-wrap">
+                <span class="compare-row__metric">50+ лет</span>
+                <span class="compare-row__metric-tag">Гарантированный ресурс</span>
+              </div>
+              <p class="compare-row__primary-text">
+                Абсолютная коррозионная стойкость. Коэффициент шероховатости <strong>k=0.007 мм</strong> обеспечивает стабильную пропускную способность без отложений, заиливания и шлама.
+              </p>
+            </div>
+            <div class="compare-row__analogs">
+              <div class="analog-note analog-note--danger">
+                <div class="analog-note__header">
+                  <span class="analog-note__tag">Сталь в ППУ</span>
+                  <span class="analog-note__stat">10–15 лет</span>
+                </div>
+                <div class="analog-note__desc">Электрохимическая и кислородная коррозия. Зарастание просвета ржавчиной, риск свищей и регулярные аварийные ремонты.</div>
+              </div>
+              <div class="analog-note analog-note--neutral">
+                <div class="analog-note__header">
+                  <span class="analog-note__tag">PEX (Сшитый полиэтилен)</span>
+                  <span class="analog-note__stat">50 лет</span>
+                </div>
+                <div class="analog-note__desc">Гладкая полимерная стенка без коррозии, но требует кислородного барьера EVOH и чувствителен к механическим заломам.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 02: Экономика сметы и соединений -->
+          <div class="compare-row">
+            <div class="compare-row__meta">
+              <span class="compare-row__code">02 / ЭКОНОМИКА ОБЪЕКТА</span>
+              <h3 class="compare-row__title">Стоимость соединений и фитингов</h3>
+              <p class="compare-row__desc">Доля соединительной и фасонной арматуры в общей смете строительства теплосети.</p>
+            </div>
+            <div class="compare-row__primary">
+              <div class="compare-row__metric-wrap">
+                <span class="compare-row__metric">До –40%</span>
+                <span class="compare-row__metric-tag">Экономия сметы</span>
+              </div>
+              <p class="compare-row__primary-text">
+                Термическая сварка стандартными электромуфтами и стыковая сварка. Стоимость фасонных элементов в <strong>3–4 раза ниже</strong> механических латунных гильз при 100% герметичности.
+              </p>
+            </div>
+            <div class="compare-row__analogs">
+              <div class="analog-note analog-note--warning">
+                <div class="analog-note__header">
+                  <span class="analog-note__tag">Сталь в ППУ</span>
+                  <span class="analog-note__stat">Базовая смета</span>
+                </div>
+                <div class="analog-note__desc">Ручная электродуговая сварка. Высокие расходы на сварщиков НАКС, дефектоскопию (УЗК/РК) и последующую антикоррозию стыков.</div>
+              </div>
+              <div class="analog-note analog-note--danger">
+                <div class="analog-note__header">
+                  <span class="analog-note__tag">PEX (Сшитый полиэтилен)</span>
+                  <span class="analog-note__stat">+25...45% к смете</span>
+                </div>
+                <div class="analog-note__desc">Критически дорогие механические надвижные гильзы и пресс-фитинги из тяжелой латуни. Стоимость соединений часто превышает цену трубы.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 03: Технология сварки и надежность стыка -->
+          <div class="compare-row">
+            <div class="compare-row__meta">
+              <span class="compare-row__code">03 / ТЕХНОЛОГИЯ СТЫКА</span>
+              <h3 class="compare-row__title">Монолитность узла соединения</h3>
+              <p class="compare-row__desc">Поведение сопряжения при гидравлических ударах и циклических температурных нагрузках.</p>
+            </div>
+            <div class="compare-row__primary">
+              <div class="compare-row__metric-wrap">
+                <span class="compare-row__metric">100% монолит</span>
+                <span class="compare-row__metric-tag">Диффузия полимера</span>
+              </div>
+              <p class="compare-row__primary-text">
+                Термическое плавление образует единую молекулярную решетку. Сварной стык имеет прочность выше тела трубы, протоколируется сварочным аппаратом со штрихкодом.
+              </p>
+            </div>
+            <div class="compare-row__analogs">
+              <div class="analog-note analog-note--warning">
+                <div class="analog-note__header">
+                  <span class="analog-note__tag">Сталь в ППУ</span>
+                  <span class="analog-note__stat">Человеческий фактор</span>
+                </div>
+                <div class="analog-note__desc">Зона термического влияния сварного шва — наиболее уязвимое место для ускоренной подшламовой коррозии и протечек.</div>
+              </div>
+              <div class="analog-note analog-note--danger">
+                <div class="analog-note__header">
+                  <span class="analog-note__tag">PEX (Сшитый полиэтилен)</span>
+                  <span class="analog-note__stat">Механический обжим</span>
+                </div>
+                <div class="analog-note__desc">PEX не поддается термической сварке. Соединение держится исключительно за счет механического натяжения гильзы, склонного к ослаблению.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 04: Вес и скорость укладки -->
+          <div class="compare-row">
+            <div class="compare-row__meta">
+              <span class="compare-row__code">04 / ЛОГИСТИКА И МОНТАЖ</span>
+              <h3 class="compare-row__title">Длина плети и вес на погонный метр</h3>
+              <p class="compare-row__desc">Трудозатраты бригады, потребность в строительной спецтехнике и ширина траншеи.</p>
+            </div>
+            <div class="compare-row__primary">
+              <div class="compare-row__metric-wrap">
+                <span class="compare-row__metric">4.73 кг/м</span>
+                <span class="compare-row__metric-tag">В 6 раз легче стали</span>
+              </div>
+              <p class="compare-row__primary-text">
+                Поставка в цельных гибких <strong>бухтах до 500 метров</strong> (до d110 мм) или хлыстах до 13.5 м. Быстрая раскатка в траншею силами бригады без кранов и тяжелой техники.
+              </p>
+            </div>
+            <div class="compare-row__analogs">
+              <div class="analog-note analog-note--danger">
+                <div class="analog-note__header">
+                  <span class="analog-note__tag">Сталь в ППУ</span>
+                  <span class="analog-note__stat">~28.5 кг/м (d110)</span>
+                </div>
+                <div class="analog-note__desc">Поставка исключительно хлыстами по 6–12 м. Стык каждые 12 метров, обязательный наем автокранов и длинномерных трубовозов.</div>
+              </div>
+              <div class="analog-note analog-note--neutral">
+                <div class="analog-note__header">
+                  <span class="analog-note__tag">PEX (Сшитый полиэтилен)</span>
+                  <span class="analog-note__stat">~4.8 кг/м</span>
+                </div>
+                <div class="analog-note__desc">Аналогичный легкий вес и поставка в бухтах, однако высокая жесткость сшитого полимера требует большего усилия при раскатке на холоде.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 05: Температурное расширение -->
+          <div class="compare-row">
+            <div class="compare-row__meta">
+              <span class="compare-row__code">05 / ТЕМПЕРАТУРНЫЕ НАПРЯЖЕНИЯ</span>
+              <h3 class="compare-row__title">Самокомпенсация в грунте</h3>
+              <p class="compare-row__desc">Поведение при пуске отопления и перепадах температуры теплоносителя от +5°C до +95°C.</p>
+            </div>
+            <div class="compare-row__primary">
+              <div class="compare-row__metric-wrap">
+                <span class="compare-row__metric">Без сильфонов</span>
+                <span class="compare-row__metric-tag">Защемление грунтом</span>
+              </div>
+              <p class="compare-row__primary-text">
+                Низкий модуль упругости PE-RT тип II и адгезия ППУ-изоляции с грунтом полностью компенсируют осевые температурные напряжения. Не требуются П-образные компенсаторы.
+              </p>
+            </div>
+            <div class="compare-row__analogs">
+              <div class="analog-note analog-note--danger">
+                <div class="analog-note__header">
+                  <span class="analog-note__tag">Сталь в ППУ</span>
+                  <span class="analog-note__stat">Высокие нагрузки</span>
+                </div>
+                <div class="analog-note__desc">Огромные осевые усилия требуют обязательной установки дорогостоящих сильфонных компенсаторов и бетонных неподвижных щитовых опор (НОП).</div>
+              </div>
+              <div class="analog-note analog-note--neutral">
+                <div class="analog-note__header">
+                  <span class="analog-note__tag">PEX (Сшитый полиэтилен)</span>
+                  <span class="analog-note__stat">Самокомпенсирующийся</span>
+                </div>
+                <div class="analog-note__desc">Эластичен и самокомпенсируется в песчаной подушке, но требует аккуратного монтажа фиксирующих гильз на вводах в тепловые камеры.</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
