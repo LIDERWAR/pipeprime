@@ -7,7 +7,7 @@
   <meta name="description" content="Официальный дистрибьютор полимерных труб PE-RT тип II, предизолированных труб в ППУ/ПЭ и ППУ/ОЦ, фитингов и комплектующих для систем отопления и ГВС. Комплектация объектов под ключ, оптовые цены, доставка по всей России.">
 
   <!-- CSS Design System -->
-  <link rel="stylesheet" href="assets/css/style.css?v=39">
+  <link rel="stylesheet" href="assets/css/style.css?v=40">
   <link rel="stylesheet" href="assets/css/catalog.css?v=28">
   <link rel="stylesheet" href="assets/css/solutions.css?v=29">
 
@@ -454,195 +454,249 @@
     </div>
   </section>
 
-  <!-- Секция: Сравнение материалов (PE-RT vs Сталь vs PEX) -->
+  <!-- Секция: Технико-экономический компаратор -->
   <section class="section section--alt" id="comparison-section">
     <div class="container">
       <div class="section-header section-header--center">
-        <div class="section-header__subtitle">Технико-экономическое сравнение</div>
-        <h2 class="section-header__title">Почему PE-RT тип II вытесняет Сталь и PEX</h2>
+        <div class="section-header__subtitle">Инженерный бенчмарк</div>
+        <h2 class="section-header__title">Почему PE-RT тип II вытесняет аналоги</h2>
         <p class="section-header__desc">
-          Полиэтилен повышенной термостойкости сочетает 50-летний ресурс полимеров и монолитную термическую сварку, исключая дорогую надвижную фасонину PEX и коррозию стальных труб.
+          Выберите технологию для сравнения характеристик, стоимости монтажа и надежности с полимерными трубами PipePrime.
         </p>
       </div>
 
-      <!-- Архитектурный реестр инженерных дифференциалов без карточек -->
-      <div class="unboxed-compare">
-        <div class="unboxed-compare__header">
-          <div class="unboxed-compare__col-title unboxed-compare__col-title--meta">Инженерный критерий</div>
-          <div class="unboxed-compare__col-title unboxed-compare__col-title--primary">
-            <span class="unboxed-compare__brand">PipePrime (PE-RT тип II)</span>
-            <span class="unboxed-compare__badge-flag">Стандарт теплосетей</span>
-          </div>
-          <div class="unboxed-compare__col-title unboxed-compare__col-title--analogs">Традиционные аналоги (Сталь / PEX)</div>
+      <!-- Интерактивный компаратор -->
+      <div class="comparator">
+        <!-- Переключатель технологий -->
+        <div class="comparator__nav">
+          <button type="button" class="comparator__tab is-active" data-compare="steel">
+            <span class="comparator__tab-code">01</span>
+            <span class="comparator__tab-name">Сравнение со Сталью в ППУ</span>
+            <span class="comparator__tab-desc">Коррозия, вес, компенсаторы</span>
+          </button>
+          <div class="comparator__vs">VS</div>
+          <button type="button" class="comparator__tab" data-compare="pex">
+            <span class="comparator__tab-code">02</span>
+            <span class="comparator__tab-name">Сравнение с PEX (сшитый полиэтилен)</span>
+            <span class="comparator__tab-desc">Дорогая надвижная фасонина</span>
+          </button>
         </div>
 
-        <div class="unboxed-compare__list">
-          <!-- 01: Ресурс и коррозия -->
-          <div class="compare-row">
-            <div class="compare-row__meta">
-              <span class="compare-row__code">01 / РЕСУРС И КОРРОЗИЯ</span>
-              <h3 class="compare-row__title">Срок службы и гидродинамика</h3>
-              <p class="compare-row__desc">Поведение внутренней стенки при контакте с теплоносителем до 95°C.</p>
-            </div>
-            <div class="compare-row__primary">
-              <div class="compare-row__metric-wrap">
-                <span class="compare-row__metric">50+ лет</span>
-                <span class="compare-row__metric-tag">Гарантированный ресурс</span>
-              </div>
-              <p class="compare-row__primary-text">
-                Абсолютная коррозионная стойкость. Коэффициент шероховатости <strong>k=0.007 мм</strong> обеспечивает стабильную пропускную способность без отложений, заиливания и шлама.
-              </p>
-            </div>
-            <div class="compare-row__analogs">
-              <div class="analog-note analog-note--danger">
-                <div class="analog-note__header">
-                  <span class="analog-note__tag">Сталь в ППУ</span>
-                  <span class="analog-note__stat">10–15 лет</span>
-                </div>
-                <div class="analog-note__desc">Электрохимическая и кислородная коррозия. Зарастание просвета ржавчиной, риск свищей и регулярные аварийные ремонты.</div>
-              </div>
-              <div class="analog-note analog-note--neutral">
-                <div class="analog-note__header">
-                  <span class="analog-note__tag">PEX (Сшитый полиэтилен)</span>
-                  <span class="analog-note__stat">50 лет</span>
-                </div>
-                <div class="analog-note__desc">Гладкая полимерная стенка без коррозии, но требует кислородного барьера EVOH и чувствителен к механическим заломам.</div>
-              </div>
+        <!-- Матрица сравнения: Против Стали -->
+        <div class="comparator__panel is-active" id="compare-panel-steel">
+          <div class="comparator__header">
+            <div class="comparator__col-label comparator__col-label--crit">Критерий оценки</div>
+            <div class="comparator__col-label comparator__col-label--bad">Стальные трубы в ППУ</div>
+            <div class="comparator__col-label comparator__col-label--good">
+              <span class="comparator__flag">Стандарт</span>
+              PipePrime (PE-RT тип II)
             </div>
           </div>
 
-          <!-- 02: Экономика сметы и соединений -->
-          <div class="compare-row">
-            <div class="compare-row__meta">
-              <span class="compare-row__code">02 / ЭКОНОМИКА ОБЪЕКТА</span>
-              <h3 class="compare-row__title">Стоимость соединений и фитингов</h3>
-              <p class="compare-row__desc">Доля соединительной и фасонной арматуры в общей смете строительства теплосети.</p>
-            </div>
-            <div class="compare-row__primary">
-              <div class="compare-row__metric-wrap">
-                <span class="compare-row__metric">До –40%</span>
-                <span class="compare-row__metric-tag">Экономия сметы</span>
+          <div class="comparator__body">
+            <div class="comparator__item">
+              <div class="comparator__crit">
+                <span class="comparator__crit-num">01</span>
+                <strong>Срок службы</strong>
+                <span>Коррозионная стойкость</span>
               </div>
-              <p class="compare-row__primary-text">
-                Термическая сварка стандартными электромуфтами и стыковая сварка. Стоимость фасонных элементов в <strong>3–4 раза ниже</strong> механических латунных гильз при 100% герметичности.
-              </p>
-            </div>
-            <div class="compare-row__analogs">
-              <div class="analog-note analog-note--warning">
-                <div class="analog-note__header">
-                  <span class="analog-note__tag">Сталь в ППУ</span>
-                  <span class="analog-note__stat">Базовая смета</span>
-                </div>
-                <div class="analog-note__desc">Ручная электродуговая сварка. Высокие расходы на сварщиков НАКС, дефектоскопию (УЗК/РК) и последующую антикоррозию стыков.</div>
+              <div class="comparator__val comparator__val--bad">
+                <div class="comparator__val-main">10–15 лет</div>
+                <div class="comparator__val-sub">Электрохимическая коррозия, зарастание ржавчиной</div>
               </div>
-              <div class="analog-note analog-note--danger">
-                <div class="analog-note__header">
-                  <span class="analog-note__tag">PEX (Сшитый полиэтилен)</span>
-                  <span class="analog-note__stat">+25...45% к смете</span>
-                </div>
-                <div class="analog-note__desc">Критически дорогие механические надвижные гильзы и пресс-фитинги из тяжелой латуни. Стоимость соединений часто превышает цену трубы.</div>
+              <div class="comparator__val comparator__val--good">
+                <div class="comparator__val-main">50+ лет гарантированно</div>
+                <div class="comparator__val-sub">Идеально гладкая стенка (k=0.007 мм), нет шлама</div>
+              </div>
+            </div>
+
+            <div class="comparator__item">
+              <div class="comparator__crit">
+                <span class="comparator__crit-num">02</span>
+                <strong>Вес погонного метра</strong>
+                <span>На примере диаметра d110</span>
+              </div>
+              <div class="comparator__val comparator__val--bad">
+                <div class="comparator__val-main">~28.5 кг/м</div>
+                <div class="comparator__val-sub">Требует тяжелых автокранов для монтажа</div>
+              </div>
+              <div class="comparator__val comparator__val--good">
+                <div class="comparator__val-main">4.73 кг/м (в 6 раз легче)</div>
+                <div class="comparator__val-sub">Ручная укладка в траншею силами бригады</div>
+              </div>
+            </div>
+
+            <div class="comparator__item">
+              <div class="comparator__crit">
+                <span class="comparator__crit-num">03</span>
+                <strong>Формат поставки</strong>
+                <span>Количество стыков на трассе</span>
+              </div>
+              <div class="comparator__val comparator__val--bad">
+                <div class="comparator__val-main">Хлысты 6–12 м</div>
+                <div class="comparator__val-sub">Сварной шов каждые 12 метров, риск протечки</div>
+              </div>
+              <div class="comparator__val comparator__val--good">
+                <div class="comparator__val-main">Бухты до 500 метров</div>
+                <div class="comparator__val-sub">Цельная бесшовная плеть прямо в траншею</div>
+              </div>
+            </div>
+
+            <div class="comparator__item">
+              <div class="comparator__crit">
+                <span class="comparator__crit-num">04</span>
+                <strong>Компенсаторы</strong>
+                <span>Температурные расширения</span>
+              </div>
+              <div class="comparator__val comparator__val--bad">
+                <div class="comparator__val-main">Обязательны сильфоны</div>
+                <div class="comparator__val-sub">Громоздкие сильфонные узлы и бетонные щиты НОП</div>
+              </div>
+              <div class="comparator__val comparator__val--good">
+                <div class="comparator__val-main">Без компенсаторов</div>
+                <div class="comparator__val-sub">Самокомпенсация за счет защемления грунтом</div>
+              </div>
+            </div>
+
+            <div class="comparator__item">
+              <div class="comparator__crit">
+                <span class="comparator__crit-num">05</span>
+                <strong>Технология стыка</strong>
+                <span>Трудоемкость и контроль</span>
+              </div>
+              <div class="comparator__val comparator__val--bad">
+                <div class="comparator__val-main">Ручная дуговая сварка</div>
+                <div class="comparator__val-sub">Сварщики НАКС, дорогой рентген/УЗК контроль</div>
+              </div>
+              <div class="comparator__val comparator__val--good">
+                <div class="comparator__val-main">Термическая электросварка</div>
+                <div class="comparator__val-sub">Автоматический протокол стыка по штрихкоду</div>
+              </div>
+            </div>
+
+            <div class="comparator__item comparator__item--highlight">
+              <div class="comparator__crit">
+                <span class="comparator__crit-num">06</span>
+                <strong>Экономика объекта</strong>
+                <span>Итоговая смета с монтажом</span>
+              </div>
+              <div class="comparator__val comparator__val--bad">
+                <div class="comparator__val-main">Высокие затраты на ТО</div>
+                <div class="comparator__val-sub">Дорогая логистика, частые раскопки и ремонт</div>
+              </div>
+              <div class="comparator__val comparator__val--good">
+                <div class="comparator__val-main">Экономия до 35–40%</div>
+                <div class="comparator__val-sub">За счет скорости укладки и безаварийности</div>
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- 03: Технология сварки и надежность стыка -->
-          <div class="compare-row">
-            <div class="compare-row__meta">
-              <span class="compare-row__code">03 / ТЕХНОЛОГИЯ СТЫКА</span>
-              <h3 class="compare-row__title">Монолитность узла соединения</h3>
-              <p class="compare-row__desc">Поведение сопряжения при гидравлических ударах и циклических температурных нагрузках.</p>
-            </div>
-            <div class="compare-row__primary">
-              <div class="compare-row__metric-wrap">
-                <span class="compare-row__metric">100% монолит</span>
-                <span class="compare-row__metric-tag">Диффузия полимера</span>
-              </div>
-              <p class="compare-row__primary-text">
-                Термическое плавление образует единую молекулярную решетку. Сварной стык имеет прочность выше тела трубы, протоколируется сварочным аппаратом со штрихкодом.
-              </p>
-            </div>
-            <div class="compare-row__analogs">
-              <div class="analog-note analog-note--warning">
-                <div class="analog-note__header">
-                  <span class="analog-note__tag">Сталь в ППУ</span>
-                  <span class="analog-note__stat">Человеческий фактор</span>
-                </div>
-                <div class="analog-note__desc">Зона термического влияния сварного шва — наиболее уязвимое место для ускоренной подшламовой коррозии и протечек.</div>
-              </div>
-              <div class="analog-note analog-note--danger">
-                <div class="analog-note__header">
-                  <span class="analog-note__tag">PEX (Сшитый полиэтилен)</span>
-                  <span class="analog-note__stat">Механический обжим</span>
-                </div>
-                <div class="analog-note__desc">PEX не поддается термической сварке. Соединение держится исключительно за счет механического натяжения гильзы, склонного к ослаблению.</div>
-              </div>
+        <!-- Матрица сравнения: Против PEX -->
+        <div class="comparator__panel" id="compare-panel-pex">
+          <div class="comparator__header">
+            <div class="comparator__col-label comparator__col-label--crit">Критерий оценки</div>
+            <div class="comparator__col-label comparator__col-label--bad">Сшитый полиэтилен (PEX)</div>
+            <div class="comparator__col-label comparator__col-label--good">
+              <span class="comparator__flag">Стандарт</span>
+              PipePrime (PE-RT тип II)
             </div>
           </div>
 
-          <!-- 04: Вес и скорость укладки -->
-          <div class="compare-row">
-            <div class="compare-row__meta">
-              <span class="compare-row__code">04 / ЛОГИСТИКА И МОНТАЖ</span>
-              <h3 class="compare-row__title">Длина плети и вес на погонный метр</h3>
-              <p class="compare-row__desc">Трудозатраты бригады, потребность в строительной спецтехнике и ширина траншеи.</p>
-            </div>
-            <div class="compare-row__primary">
-              <div class="compare-row__metric-wrap">
-                <span class="compare-row__metric">4.73 кг/м</span>
-                <span class="compare-row__metric-tag">В 6 раз легче стали</span>
+          <div class="comparator__body">
+            <div class="comparator__item">
+              <div class="comparator__crit">
+                <span class="comparator__crit-num">01</span>
+                <strong>Стоимость фитингов</strong>
+                <span>Фасонные элементы и гильзы</span>
               </div>
-              <p class="compare-row__primary-text">
-                Поставка в цельных гибких <strong>бухтах до 500 метров</strong> (до d110 мм) или хлыстах до 13.5 м. Быстрая раскатка в траншею силами бригады без кранов и тяжелой техники.
-              </p>
-            </div>
-            <div class="compare-row__analogs">
-              <div class="analog-note analog-note--danger">
-                <div class="analog-note__header">
-                  <span class="analog-note__tag">Сталь в ППУ</span>
-                  <span class="analog-note__stat">~28.5 кг/м (d110)</span>
-                </div>
-                <div class="analog-note__desc">Поставка исключительно хлыстами по 6–12 м. Стык каждые 12 метров, обязательный наем автокранов и длинномерных трубовозов.</div>
+              <div class="comparator__val comparator__val--bad">
+                <div class="comparator__val-main">Очень высокая (+40%)</div>
+                <div class="comparator__val-sub">Дорогие латунные надвижные гильзы и пресс-узлы</div>
               </div>
-              <div class="analog-note analog-note--neutral">
-                <div class="analog-note__header">
-                  <span class="analog-note__tag">PEX (Сшитый полиэтилен)</span>
-                  <span class="analog-note__stat">~4.8 кг/м</span>
-                </div>
-                <div class="analog-note__desc">Аналогичный легкий вес и поставка в бухтах, однако высокая жесткость сшитого полимера требует большего усилия при раскатке на холоде.</div>
+              <div class="comparator__val comparator__val--good">
+                <div class="comparator__val-main">В 3–4 раза дешевле</div>
+                <div class="comparator__val-sub">Стандартные электросварные муфты и литые фитинги</div>
               </div>
             </div>
-          </div>
 
-          <!-- 05: Температурное расширение -->
-          <div class="compare-row">
-            <div class="compare-row__meta">
-              <span class="compare-row__code">05 / ТЕМПЕРАТУРНЫЕ НАПРЯЖЕНИЯ</span>
-              <h3 class="compare-row__title">Самокомпенсация в грунте</h3>
-              <p class="compare-row__desc">Поведение при пуске отопления и перепадах температуры теплоносителя от +5°C до +95°C.</p>
-            </div>
-            <div class="compare-row__primary">
-              <div class="compare-row__metric-wrap">
-                <span class="compare-row__metric">Без сильфонов</span>
-                <span class="compare-row__metric-tag">Защемление грунтом</span>
+            <div class="comparator__item">
+              <div class="comparator__crit">
+                <span class="comparator__crit-num">02</span>
+                <strong>Тип соединения</strong>
+                <span>Физика узла стыка</span>
               </div>
-              <p class="compare-row__primary-text">
-                Низкий модуль упругости PE-RT тип II и адгезия ППУ-изоляции с грунтом полностью компенсируют осевые температурные напряжения. Не требуются П-образные компенсаторы.
-              </p>
-            </div>
-            <div class="compare-row__analogs">
-              <div class="analog-note analog-note--danger">
-                <div class="analog-note__header">
-                  <span class="analog-note__tag">Сталь в ППУ</span>
-                  <span class="analog-note__stat">Высокие нагрузки</span>
-                </div>
-                <div class="analog-note__desc">Огромные осевые усилия требуют обязательной установки дорогостоящих сильфонных компенсаторов и бетонных неподвижных щитовых опор (НОП).</div>
+              <div class="comparator__val comparator__val--bad">
+                <div class="comparator__val-main">Механический обжим</div>
+                <div class="comparator__val-sub">Не сваривается термически, риск ослабления гильзы</div>
               </div>
-              <div class="analog-note analog-note--neutral">
-                <div class="analog-note__header">
-                  <span class="analog-note__tag">PEX (Сшитый полиэтилен)</span>
-                  <span class="analog-note__stat">Самокомпенсирующийся</span>
-                </div>
-                <div class="analog-note__desc">Эластичен и самокомпенсируется в песчаной подушке, но требует аккуратного монтажа фиксирующих гильз на вводах в тепловые камеры.</div>
+              <div class="comparator__val comparator__val--good">
+                <div class="comparator__val-main">100% монолитная сварка</div>
+                <div class="comparator__val-sub">Молекулярная диффузия, прочность выше тела трубы</div>
+              </div>
+            </div>
+
+            <div class="comparator__item">
+              <div class="comparator__crit">
+                <span class="comparator__crit-num">03</span>
+                <strong>Монтаж на холоде</strong>
+                <span>Эластичность полимера</span>
+              </div>
+              <div class="comparator__val comparator__val--bad">
+                <div class="comparator__val-main">Жесткий материал</div>
+                <div class="comparator__val-sub">Сшивка PEX усложняет гибку и раскатку при низких t°</div>
+              </div>
+              <div class="comparator__val comparator__val--good">
+                <div class="comparator__val-main">Высокая эластичность</div>
+                <div class="comparator__val-sub">Легко огибает препятствия и укладывается в мороз</div>
+              </div>
+            </div>
+
+            <div class="comparator__item">
+              <div class="comparator__crit">
+                <span class="comparator__crit-num">04</span>
+                <strong>Диапазон диаметров</strong>
+                <span>Сортамент магистралей</span>
+              </div>
+              <div class="comparator__val comparator__val--bad">
+                <div class="comparator__val-main">Ограничен малыми d</div>
+                <div class="comparator__val-sub">Трудности производства диаметров свыше 160 мм</div>
+              </div>
+              <div class="comparator__val comparator__val--good">
+                <div class="comparator__val-main">Полная линейка d20–d630</div>
+                <div class="comparator__val-sub">От внутриквартальных вводов до магистралей ТЭЦ</div>
+              </div>
+            </div>
+
+            <div class="comparator__item">
+              <div class="comparator__crit">
+                <span class="comparator__crit-num">05</span>
+                <strong>Сварочный инструмент</strong>
+                <span>Монтажное оснащение бригады</span>
+              </div>
+              <div class="comparator__val comparator__val--bad">
+                <div class="comparator__val-main">Специфический пресс</div>
+                <div class="comparator__val-sub">Требует редких гидравлических натяжных кареток</div>
+              </div>
+              <div class="comparator__val comparator__val--good">
+                <div class="comparator__val-main">Стандартные аппараты</div>
+                <div class="comparator__val-sub">Любые электромуфтовые и стыковые аппараты для ПНД</div>
+              </div>
+            </div>
+
+            <div class="comparator__item comparator__item--highlight">
+              <div class="comparator__crit">
+                <span class="comparator__crit-num">06</span>
+                <strong>Итоговая смета</strong>
+                <span>Стоимость трубы с фасониной</span>
+              </div>
+              <div class="comparator__val comparator__val--bad">
+                <div class="comparator__val-main">На 25–45% дороже</div>
+                <div class="comparator__val-sub">За счет критической дороговизны латунной арматуры</div>
+              </div>
+              <div class="comparator__val comparator__val--good">
+                <div class="comparator__val-main">Оптимальная цена проекта</div>
+                <div class="comparator__val-sub">Максимальная рентабельность для монтажной компании</div>
               </div>
             </div>
           </div>
@@ -1280,5 +1334,25 @@
   <script src="assets/js/catalog-data.js?v=28"></script>
   <script src="assets/js/app.js?v=28"></script>
   <script src="assets/js/calculator.js?v=28"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const tabs = document.querySelectorAll('.comparator__tab');
+      tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+          const target = this.getAttribute('data-compare');
+          tabs.forEach(function(t) { t.classList.remove('is-active'); });
+          this.classList.add('is-active');
+
+          document.querySelectorAll('.comparator__panel').forEach(function(panel) {
+            panel.classList.remove('is-active');
+          });
+          const activePanel = document.getElementById('compare-panel-' + target);
+          if (activePanel) {
+            activePanel.classList.add('is-active');
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
