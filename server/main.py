@@ -298,6 +298,16 @@ if assets_dir.exists():
 HTML_PAGES = {
     "index": PROJECT_ROOT / "index.html",
     "catalog": PROJECT_ROOT / "catalog.html",
+    "catalog-uninsulated-bars": PROJECT_ROOT / "catalog-uninsulated-bars.html",
+    "catalog-uninsulated-coils": PROJECT_ROOT / "catalog-uninsulated-coils.html",
+    "catalog-insulated-ppu-pe": PROJECT_ROOT / "catalog-insulated-ppu-pe.html",
+    "catalog-insulated-ppu-oc": PROJECT_ROOT / "catalog-insulated-ppu-oc.html",
+    "catalog-insulated-flexible": PROJECT_ROOT / "catalog-insulated-flexible.html",
+    "catalog-fittings-electro": PROJECT_ROOT / "catalog-fittings-electro.html",
+    "catalog-fittings-spigot": PROJECT_ROOT / "catalog-fittings-spigot.html",
+    "catalog-fittings-rastrub": PROJECT_ROOT / "catalog-fittings-rastrub.html",
+    "catalog-fittings-ppu": PROJECT_ROOT / "catalog-fittings-ppu.html",
+    "catalog-accessories-kzs": PROJECT_ROOT / "catalog-accessories-kzs.html",
     "calculator": PROJECT_ROOT / "calculator.html",
     "engineering": PROJECT_ROOT / "engineering.html",
     "solutions-steel-connection": PROJECT_ROOT / "solutions-steel-connection.html",
@@ -309,7 +319,6 @@ HTML_PAGES = {
     "about": PROJECT_ROOT / "about.html",
     "delivery": PROJECT_ROOT / "delivery.html",
     "contacts": PROJECT_ROOT / "contacts.html",
-    "favicon-preview": PROJECT_ROOT / "favicon-preview.html",
 }
 
 @app.get("/", tags=["Pages"])
