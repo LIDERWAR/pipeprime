@@ -710,7 +710,7 @@
 
             <div style="margin-top: 10px;">
               <a href="calculator.html" style="font-size: 0.9rem; color: var(--accent-primary); text-decoration: underline;">
-                Перейти в расширенный инженерный калькулятор →
+                Перейти в расширенный инженерный калькулятор &rarr;
               </a>
             </div>
           </div>
@@ -746,8 +746,8 @@
               <br><small style="color: var(--text-muted)">Расчетный объем груза: <span id="res-volume">~18 м³</span>. Оболочка: <span id="res-casing-info">D180 мм</span>.</small>
             </div>
 
-            <div style="display: flex; gap: 12px; margin-top: auto;">
-              <button class="btn btn--primary" id="calc-add-to-cart" style="flex-grow: 1;">
+            <div class="calc-results__actions">
+              <button class="btn btn--primary" id="calc-add-to-cart">
                 Добавить комплект в спецификацию
               </button>
               <button class="btn btn--outline" data-open-modal="modal-quote">
@@ -962,7 +962,7 @@
           <img src="assets/images/project_trench.jpg" alt="Укладка гибкой теплотрассы в траншею" style="width: 100%; height: auto; max-height: 380px; aspect-ratio: 16/10; object-fit: cover; display: block;">
         </div>
 
-        <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 32px;">
+        <div class="geo-experience-card" style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl);">
           <h3 style="margin-bottom: 16px;">Комплексные поставки на объекты</h3>
           <ul style="display: flex; flex-direction: column; gap: 14px; font-size: 0.95rem;">
             <li style="display: flex; gap: 12px;">
@@ -1056,7 +1056,7 @@
 {% endblock %}
 
 {% block extra_scripts %}
-  <script src="assets/js/calculator.js?v=28"></script>
+  <script src="assets/js/calculator.js?v=29"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const tabs = document.querySelectorAll('.comparator__tab');

@@ -177,3 +177,31 @@
     font-size: 1.1rem;
   }
 }
+
+@media (max-width: 380px) {
+  .calc-form-panel,
+  .calc-result-panel {
+    padding: 14px 10px;
+  }
+  .calc-result-box {
+    padding: 12px 10px;
+  }
+  .transport-badge {
+    padding: 10px 8px;
+    gap: 8px;
+  }
+  .transport-badge svg {
+    width: 22px !important;
+    height: 22px !important;
+  }
+  .calc-stat-row {
+    font-size: 0.76rem;
+    padding: 8px 0;
+  }
+  .calc-stat-row strong {
+    font-size: 0.88rem;
+  }
+  .calc-stat-row strong.highlight {
+    font-size: 1.0rem;
+  }
+}
