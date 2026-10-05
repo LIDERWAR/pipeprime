@@ -2354,39 +2354,400 @@ select.form-control option {
 }
 
 /* ==========================================================================
+   Вспомогательные адаптивные классы и сетки
+   ========================================================================== */
+body.no-scroll {
+  overflow: hidden !important;
+  touch-action: none;
+}
+
+.grid-2col-split {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.solutions-2col-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  gap: 24px;
+}
+
+/* Адаптивные таблицы */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 24px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-card);
+}
+
+.data-table {
+  width: 100%;
+  min-width: 620px;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  text-align: left;
+}
+
+.data-table th,
+.data-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.data-table th {
+  background: rgba(30, 41, 59, 0.7);
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.data-table tbody tr:hover td {
+  background: rgba(255, 107, 0, 0.04);
+}
+
+/* ==========================================================================
+   Мобильное меню навигации (Mobile Nav Drawer)
+   ========================================================================== */
+.mobile-nav {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  visibility: hidden;
+  pointer-events: none;
+  transition: visibility 0.3s ease;
+}
+
+.mobile-nav.active {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.mobile-nav__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(7, 11, 20, 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-nav.active .mobile-nav__backdrop {
+  opacity: 1;
+}
+
+.mobile-nav__panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 86%;
+  max-width: 360px;
+  background: var(--bg-secondary);
+  border-left: 1px solid var(--border-medium);
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.65);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mobile-nav.active .mobile-nav__panel {
+  transform: translateX(0);
+}
+
+.mobile-nav__header {
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-subtle);
+  background: rgba(15, 23, 42, 0.6);
+  flex-shrink: 0;
+}
+
+.mobile-nav__close {
+  background: transparent;
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.mobile-nav__close:hover,
+.mobile-nav__close:active {
+  color: var(--text-white);
+  border-color: var(--accent-primary);
+  background: rgba(255, 107, 0, 0.12);
+}
+
+.mobile-nav__content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 16px 18px 24px;
+}
+
+.mobile-nav__menu {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 24px;
+}
+
+.mobile-nav__link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  text-decoration: none;
+}
+
+.mobile-nav__link svg {
+  color: var(--accent-primary);
+  flex-shrink: 0;
+}
+
+.mobile-nav__link:hover,
+.mobile-nav__link:active {
+  background: rgba(30, 41, 59, 0.55);
+  color: var(--accent-primary);
+  border-color: var(--border-subtle);
+}
+
+.mobile-nav__accordion {
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin-bottom: 2px;
+}
+
+.mobile-nav__accordion-btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.mobile-nav__link-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mobile-nav__link-title svg {
+  color: var(--accent-primary);
+  flex-shrink: 0;
+}
+
+.mobile-nav__accordion-arrow {
+  transition: transform 0.25s ease;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.mobile-nav__accordion-btn.open {
+  color: var(--accent-primary);
+  background: rgba(255, 107, 0, 0.08);
+  border-color: rgba(255, 107, 0, 0.25);
+}
+
+.mobile-nav__accordion-btn.open .mobile-nav__accordion-arrow {
+  transform: rotate(180deg);
+  color: var(--accent-primary);
+}
+
+.mobile-nav__accordion-body {
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+  padding: 6px 0 8px 14px;
+  border-left: 2px solid rgba(255, 107, 0, 0.35);
+  margin: 4px 0 8px 12px;
+}
+
+.mobile-nav__accordion-body.open {
+  display: flex;
+}
+
+.mobile-nav__sublink {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  padding: 7px 10px;
+  border-radius: var(--radius-sm);
+  line-height: 1.35;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.mobile-nav__sublink:hover,
+.mobile-nav__sublink:active {
+  color: var(--accent-primary);
+  background: rgba(30, 41, 59, 0.4);
+}
+
+.mobile-nav__sublink--all {
+  font-weight: 700;
+  color: var(--accent-primary);
+}
+
+.mobile-nav__footer {
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.mobile-nav__contact-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.mobile-nav__contact-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  color: var(--text-white);
+  text-decoration: none;
+}
+
+.mobile-nav__contact-phone svg {
+  color: var(--accent-primary);
+}
+
+.mobile-nav__worktime {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+.drawer__close-btn {
+  background: transparent;
+  border: 1px solid var(--border-medium);
+  color: var(--text-secondary);
+  cursor: pointer;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.drawer__close-btn:hover,
+.drawer__close-btn:active {
+  color: var(--text-white);
+  border-color: var(--accent-primary);
+  background: rgba(255, 107, 0, 0.12);
+}
+
+/* ==========================================================================
    Адаптивность (Media Queries)
    ========================================================================== */
+
+/* 1. Ноутбуки и планшеты в горизонтальной ориентации (<= 1080px) */
 @media (max-width: 1080px) {
   .hero {
-    padding: 60px 0;
+    padding: 60px 0 40px;
+    min-height: auto;
   }
   .hero__grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 36px;
   }
   .hero__content {
     padding-right: 0;
+    max-width: 100%;
   }
   .hero-stats-panel {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
-    margin-top: 36px;
+    margin-top: 32px;
+  }
+  .hero-bottom-cards {
+    grid-template-columns: repeat(2, 1fr);
   }
   .hero__bg-img {
     width: 100%;
-    opacity: 0.18;
+    opacity: 0.15;
   }
   .atr-banner {
     grid-template-columns: 1fr;
+    gap: 32px;
   }
   .calc-grid {
     grid-template-columns: 1fr;
+    gap: 28px;
   }
   .footer__grid {
     grid-template-columns: 1fr 1fr;
+    gap: 32px;
   }
 }
 
+/* 2. Планшеты (<= 992px) */
+@media (max-width: 992px) {
+  .grid-2col-split {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .calc-section-layout {
+    grid-template-columns: 1fr;
+  }
+  .calc-result-panel {
+    position: static;
+  }
+}
+
+/* 3. Горизонтальные телефоны и портретные планшеты (<= 768px) */
 @media (max-width: 768px) {
   .top-bar {
     display: none;
@@ -2395,38 +2756,171 @@ select.form-control option {
     display: none;
   }
   .burger-btn {
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    color: var(--text-white);
+    padding: 0;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
   }
-  .hero-stats-panel {
+  .burger-btn:hover,
+  .burger-btn:active {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+  }
+
+  /* Предотвращение зума на iOS при фокусе в поле ввода */
+  .form-control,
+  select.form-control,
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"],
+  input[type="number"],
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+
+  .form-row {
     grid-template-columns: 1fr;
     gap: 14px;
-    margin-top: 28px;
   }
-  .hero-cards-grid,
-  .hero-matrix__grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
+
+  .hero {
+    padding: 36px 0 32px;
   }
-  .footer__grid {
+  .hero__title {
+    font-size: clamp(1.85rem, 5.5vw, 2.6rem);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .hero__lead {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+  .hero-features-strip {
     grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-top: 18px;
   }
   .hero__actions {
     flex-direction: column;
+    width: 100%;
+    gap: 12px;
   }
   .hero__actions .btn {
     width: 100%;
+    justify-content: center;
+  }
+
+  .hero-cards-grid,
+  .hero-matrix__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .hero-bottom-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .hero-stats-panel {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .section {
+    padding: 44px 0;
+  }
+  .section-header {
+    margin-bottom: 24px;
+  }
+  .section-header__title {
+    font-size: clamp(1.45rem, 5vw, 2rem);
+  }
+
+  .lead-form-card,
+  .calc-card,
+  .calc-form-panel,
+  .calc-result-panel {
+    padding: 24px 18px;
+    border-radius: var(--radius-lg);
+  }
+  .file-dropzone {
+    padding: 24px 16px;
+  }
+
+  .footer {
+    padding: 48px 0 24px;
+  }
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-bottom: 36px;
+  }
+  .footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding-top: 20px;
+  }
+
+  /* Компаратор на мобильных */
+  .comparator__val--bad::before {
+    content: 'Традиционный аналог:';
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #ef4444;
+    margin-bottom: 4px;
+  }
+  .comparator__val--good::before {
+    content: 'PipePrime (PE-RT II):';
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent-primary);
+    margin-bottom: 4px;
   }
 }
 
+/* 4. Смартфоны (<= 576px) */
 @media (max-width: 576px) {
-  .header-phone span {
+  .header {
+    height: 62px;
+  }
+  .header__inner {
+    gap: 10px;
+  }
+  .logo {
+    gap: 8px;
+  }
+  .logo__mark {
+    width: 36px;
+    height: 36px;
+  }
+  .logo__title {
+    font-size: 1.25rem;
+  }
+  .logo__desc {
     display: none;
   }
-  .header-divider {
-    display: none;
-  }
+
   .header__actions {
-    gap: 12px;
+    gap: 8px;
   }
   .header-phone {
     width: 38px;
@@ -2438,9 +2932,180 @@ select.form-control option {
     border: 1px solid var(--border-medium);
     border-radius: var(--radius-md);
     padding: 0;
+    text-decoration: none;
+  }
+  .header-phone span,
+  .header-phone__text {
+    display: none;
+  }
+  .header-divider {
+    display: none;
+  }
+
+  .spec-cart-btn {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    position: relative;
+  }
+  .spec-cart-btn > span:not(.badge),
+  .spec-cart-btn__text {
+    display: none;
+  }
+  .spec-cart-btn .badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    padding: 1px 5px;
+    font-size: 0.7rem;
+    min-width: 18px;
+    height: 18px;
+    line-height: 16px;
+    border-radius: 9px;
+  }
+
+  .burger-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .hero-cards-grid,
+  .hero-matrix__grid,
+  .hero-bottom-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .hero-prod-card {
+    padding: 10px 10px 8px;
+  }
+  .hero-prod-card__title {
+    font-size: 0.8rem;
+    line-height: 1.25;
+  }
+  .hero-prod-card__arrow {
+    display: none;
+  }
+
+  .grid-2col {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .category-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Drawer на мобильных */
+  .drawer {
+    width: 100%;
+    max-width: 100%;
+  }
+  .drawer__header,
+  .drawer__footer {
+    padding: 16px;
+  }
+  .drawer__body {
+    padding: 16px;
+  }
+  .cart-item {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 12px 0;
+  }
+  .cart-item__info {
+    width: 100%;
+  }
+  .cart-item__actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  /* Модальные окна */
+  .modal-backdrop {
+    padding: 10px;
+    align-items: center;
+  }
+  .modal-card {
+    padding: 22px 16px 20px;
+    border-radius: var(--radius-lg);
+    max-height: 94vh;
+  }
+  .modal-close {
+    top: 14px;
+    right: 14px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .atr-banner {
+    padding: 22px 16px;
+    border-radius: var(--radius-lg);
+  }
+  .atr-features {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin: 16px 0 20px;
+  }
+  .atr-preview__book {
+    max-width: 220px;
   }
 }
 
+/* 5. Ультракомпактные экраны (<= 380px: iPhone SE, Galaxy Fold cover, etc.) */
+@media (max-width: 380px) {
+  .header {
+    height: 58px;
+  }
+  .header__inner {
+    gap: 6px;
+  }
+  .logo__mark {
+    width: 32px;
+    height: 32px;
+  }
+  .logo__title {
+    font-size: 1.1rem;
+  }
+  .header__actions {
+    gap: 6px;
+  }
+  .header-phone,
+  .spec-cart-btn,
+  .burger-btn {
+    width: 34px;
+    height: 34px;
+  }
+  .header-phone svg,
+  .spec-cart-btn svg,
+  .burger-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+  .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .hero-cards-grid,
+  .hero-bottom-cards {
+    grid-template-columns: 1fr;
+  }
+}
 
 .hero-catalog-link {
   display: inline-flex;
@@ -2463,25 +3128,4 @@ select.form-control option {
 
 .hero-catalog-link:hover svg {
   transform: translateX(4px);
-}
-
-.hero-bottom-cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  width: 100%;
-  position: relative;
-  z-index: 2;
-}
-
-@media (max-width: 1080px) {
-  .hero-bottom-cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .hero-bottom-cards {
-    grid-template-columns: 1fr;
-  }
 }

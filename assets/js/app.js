@@ -289,13 +289,13 @@
       const modal = document.getElementById(id);
       if (modal) {
         modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        document.body.classList.add('no-scroll');
       }
     },
 
     closeAllModals() {
       document.querySelectorAll('.modal-backdrop').forEach(m => m.classList.remove('active'));
-      document.body.style.overflow = '';
+      document.body.classList.remove('no-scroll');
     },
 
     openSuccessModal(title, desc, actionHtml = '') {
@@ -347,7 +347,7 @@
       if (drawer) {
         SpecCart.updateUI();
         drawer.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        document.body.classList.add('no-scroll');
       }
     },
 
@@ -355,18 +355,79 @@
       const drawer = document.getElementById('spec-drawer');
       if (drawer) {
         drawer.classList.remove('active');
-        document.body.style.overflow = '';
+        document.body.classList.remove('no-scroll');
       }
     },
 
+    openSpecDrawer() {
+      this.openDrawer();
+    },
+
+    closeSpecDrawer() {
+      this.closeDrawer();
+    },
+
     initMobileMenu() {
-      const burgerBtn = document.querySelector('.burger-btn');
+      const burgerBtn = document.getElementById('burger-btn') || document.querySelector('.burger-btn');
       const mobileNav = document.getElementById('mobile-nav');
-      if (burgerBtn && mobileNav) {
-        burgerBtn.addEventListener('click', () => {
-          mobileNav.classList.toggle('active');
+      if (!burgerBtn || !mobileNav) return;
+
+      const backdrop = document.getElementById('mobile-nav-backdrop');
+      const closeBtn = document.getElementById('mobile-nav-close');
+      const catalogBtn = document.getElementById('mobile-nav-catalog-btn');
+      const catalogBody = document.getElementById('mobile-nav-catalog-body');
+
+      const openNav = () => {
+        mobileNav.classList.add('active');
+        mobileNav.setAttribute('aria-hidden', 'false');
+        burgerBtn.classList.add('active');
+        burgerBtn.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('no-scroll');
+      };
+
+      const closeNav = () => {
+        mobileNav.classList.remove('active');
+        mobileNav.setAttribute('aria-hidden', 'true');
+        burgerBtn.classList.remove('active');
+        burgerBtn.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('no-scroll');
+      };
+
+      burgerBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (mobileNav.classList.contains('active')) {
+          closeNav();
+        } else {
+          openNav();
+        }
+      });
+
+      if (closeBtn) closeBtn.addEventListener('click', closeNav);
+      if (backdrop) backdrop.addEventListener('click', closeNav);
+
+      // Аккордеон каталога в мобильном меню
+      if (catalogBtn && catalogBody) {
+        catalogBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const isOpen = catalogBody.classList.toggle('open');
+          catalogBtn.classList.toggle('open', isOpen);
+          catalogBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         });
       }
+
+      // Закрытие при клике на любую ссылку в меню
+      mobileNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          closeNav();
+        });
+      });
+
+      // Закрытие при нажатии Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+          closeNav();
+        }
+      });
     },
 
     initForms() {
