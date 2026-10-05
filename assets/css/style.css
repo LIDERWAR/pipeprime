@@ -761,8 +761,8 @@ button, input, select, textarea {
 .hero__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  align-items: stretch;
+  gap: 20px;
+  align-items: start;
 }
 
 .hero__content {
@@ -910,7 +910,7 @@ button, input, select, textarea {
 .hero-matrix__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  gap: 12px;
   width: 100%;
 }
 
@@ -923,13 +923,13 @@ button, input, select, textarea {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(148, 163, 184, 0.16);
-  border-radius: 16px;
-  padding: 16px 16px 14px;
+  border-radius: 14px;
+  padding: 12px 14px 12px;
   text-decoration: none;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
   box-shadow: 
-    0 16px 36px rgba(0, 0, 0, 0.35),
+    0 14px 32px rgba(0, 0, 0, 0.35),
     inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
@@ -1011,12 +1011,12 @@ button, input, select, textarea {
 .hero-prod-card__visual,
 .hero-matrix-card__visual {
   width: 100%;
-  aspect-ratio: 4/3;
+  aspect-ratio: 16/10;
   height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
+  border-radius: 8px;
   overflow: hidden;
   background: rgba(11, 17, 32, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.04);
@@ -2462,7 +2462,7 @@ body.no-scroll {
   display: none !important;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1140px) {
   .mobile-nav {
     display: block !important;
     position: fixed;
@@ -2736,19 +2736,68 @@ body.no-scroll {
    Адаптивность (Media Queries)
    ========================================================================== */
 
-/* 1. Ноутбуки и планшеты в горизонтальной ориентации (<= 1080px) */
-@media (max-width: 1080px) {
+/* 0. Большие планшеты и компактные ноутбуки (<= 1240px) */
+@media (max-width: 1240px) {
+  .nav-menu {
+    gap: 16px;
+  }
+  .nav-link {
+    font-size: 0.88rem;
+    padding: 8px 0;
+  }
+  .header__actions {
+    gap: 12px;
+  }
+  .header-phone {
+    font-size: 0.95rem;
+  }
+  .spec-cart-btn {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+}
+
+/* 1. Ноутбуки и планшеты в горизонтальной ориентации (<= 1140px) */
+@media (max-width: 1140px) {
+  .nav-menu {
+    display: none !important;
+  }
+  .burger-btn {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    color: var(--text-white);
+    padding: 0;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+  }
+  .burger-btn:hover,
+  .burger-btn:active {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+  }
   .hero {
-    padding: 60px 0 40px;
+    padding: 50px 0 36px;
     min-height: auto;
   }
   .hero__grid {
     grid-template-columns: 1fr;
-    gap: 36px;
+    gap: 32px;
   }
   .hero__content {
     padding-right: 0;
     max-width: 100%;
+  }
+  .hero-cards-grid,
+  .hero-matrix__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
   }
   .hero-stats-panel {
     grid-template-columns: repeat(3, 1fr);
