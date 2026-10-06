@@ -1180,6 +1180,12 @@ button, input, select, textarea {
   margin-bottom: 16px;
 }
 
+.section-header__title .highlight {
+  background: linear-gradient(90deg, #ff8533 0%, #ff6b00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .section-header__desc {
   max-width: 680px;
   font-size: 1.05rem;
