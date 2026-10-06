@@ -21,6 +21,7 @@
   
   /* Брендовый акцент: Инженерный Оранжевый (тепло, энергия, трубы) */
   --accent-primary: #ff6b00;
+  --accent-secondary: #ff8533;
   --accent-hover: #ff8533;
   --accent-light: rgba(255, 107, 0, 0.12);
   --accent-glow: rgba(255, 107, 0, 0.35);
@@ -1773,15 +1774,28 @@ select.form-control option {
 .flow-pipeline__step {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  padding: 10px 16px;
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: var(--radius-md);
+  position: relative;
+  transition: all 0.25s ease;
 }
 
 .flow-pipeline__num {
-  font-family: var(--font-heading);
-  font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(148, 163, 184, 0.1);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  color: #94a3b8;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .flow-pipeline__label {
@@ -1789,16 +1803,49 @@ select.form-control option {
   font-size: 0.82rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--text-white);
+  letter-spacing: 0.06em;
+  color: #e2e8f0;
 }
 
+/* Step 1: Заводы (Industrial Blue) */
+.flow-pipeline__step:first-child,
+.flow-pipeline__step--factories {
+  border-left: 3px solid #3b82f6;
+}
+.flow-pipeline__step:first-child .flow-pipeline__num,
+.flow-pipeline__step--factories .flow-pipeline__num {
+  background: rgba(37, 99, 235, 0.15);
+  border-color: rgba(59, 130, 246, 0.4);
+  color: #60a5fa;
+}
+
+/* Step 2: Hub (Brand Orange Highlight) */
+.flow-pipeline__step--hub {
+  background: linear-gradient(135deg, rgba(255, 107, 0, 0.1) 0%, rgba(15, 23, 42, 0.8) 100%);
+  border-color: rgba(255, 107, 0, 0.35);
+  border-left: 3px solid var(--accent-primary);
+  box-shadow: 0 4px 18px rgba(255, 107, 0, 0.12);
+}
 .flow-pipeline__step--hub .flow-pipeline__num {
+  background: rgba(255, 107, 0, 0.2);
+  border-color: rgba(255, 107, 0, 0.55);
   color: var(--accent-primary);
+  box-shadow: 0 0 10px rgba(255, 107, 0, 0.25);
+}
+.flow-pipeline__step--hub .flow-pipeline__label {
+  color: #ff944d;
 }
 
-.flow-pipeline__step--hub .flow-pipeline__label {
-  color: var(--accent-secondary);
+/* Step 3: Строительный объект (Engineering Emerald) */
+.flow-pipeline__step:last-child,
+.flow-pipeline__step--site {
+  border-left: 3px solid #10b981;
+}
+.flow-pipeline__step:last-child .flow-pipeline__num,
+.flow-pipeline__step--site .flow-pipeline__num {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.4);
+  color: #34d399;
 }
 
 .flow-pipeline__pipe {
@@ -1811,18 +1858,22 @@ select.form-control option {
 .flow-pipeline__line {
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, rgba(148, 163, 184, 0.2), rgba(255, 107, 0, 0.5));
+  background: linear-gradient(90deg, rgba(59, 130, 246, 0.4), rgba(255, 107, 0, 0.6));
 }
 
 .flow-pipeline__pipe:last-of-type .flow-pipeline__line {
-  background: linear-gradient(90deg, rgba(255, 107, 0, 0.5), rgba(148, 163, 184, 0.2));
+  background: linear-gradient(90deg, rgba(255, 107, 0, 0.6), rgba(16, 185, 129, 0.4));
 }
 
 .flow-pipeline__arrow {
   position: absolute;
-  color: var(--accent-secondary);
+  color: var(--accent-primary);
   font-size: 11px;
   line-height: 1;
+}
+
+.flow-pipeline__pipe:last-of-type .flow-pipeline__arrow {
+  color: #34d399;
 }
 
 /* 3 Unboxed Columns separated by hairlines */
@@ -1861,9 +1912,112 @@ select.form-control option {
 
 .flow-col__header {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 16px;
-  margin-bottom: 20px;
+  padding: 18px 20px;
+  border-radius: var(--radius-lg);
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  margin-bottom: 22px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.flow-col__header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 3px;
+  background: rgba(148, 163, 184, 0.4);
+}
+
+/* Column 1: Заводы (Industrial Blue) */
+.flow-col:first-child .flow-col__header,
+.flow-col--factories .flow-col__header {
+  border-color: rgba(59, 130, 246, 0.28);
+  background: linear-gradient(135deg, rgba(30, 58, 138, 0.12) 0%, rgba(15, 23, 42, 0.75) 100%);
+}
+.flow-col:first-child .flow-col__header::before,
+.flow-col--factories .flow-col__header::before {
+  background: #3b82f6;
+}
+.flow-col:first-child .flow-col__icon,
+.flow-col--factories .flow-col__icon {
+  background: rgba(37, 99, 235, 0.15);
+  border-color: rgba(59, 130, 246, 0.4);
+  color: #60a5fa;
+  box-shadow: 0 0 16px rgba(37, 99, 235, 0.18);
+}
+.flow-col:first-child .flow-col__subtitle,
+.flow-col--factories .flow-col__subtitle {
+  color: #60a5fa;
+}
+.flow-col:first-child .flow-col__spec-indicator,
+.flow-col--factories .flow-col__spec-indicator {
+  background: rgba(37, 99, 235, 0.1);
+  border-color: rgba(59, 130, 246, 0.3);
+  color: #60a5fa;
+}
+
+/* Column 2: PipePrime Hub (Highlighted Core) */
+.flow-col--hub .flow-col__header {
+  border-color: rgba(255, 107, 0, 0.4);
+  background: linear-gradient(135deg, rgba(255, 107, 0, 0.12) 0%, rgba(15, 23, 42, 0.8) 100%);
+  box-shadow: 0 4px 24px rgba(255, 107, 0, 0.12);
+}
+.flow-col--hub .flow-col__header::before {
+  background: var(--accent-primary);
+  box-shadow: 0 0 8px var(--accent-primary);
+}
+.flow-col--hub .flow-col__icon {
+  background: rgba(255, 107, 0, 0.2);
+  border-color: rgba(255, 107, 0, 0.55);
+  color: var(--accent-primary);
+  box-shadow: 0 0 20px rgba(255, 107, 0, 0.28);
+}
+.flow-col--hub .flow-col__subtitle {
+  color: var(--accent-primary);
+}
+.flow-col--hub .flow-col__title {
+  background: linear-gradient(135deg, #ffffff 40%, #ffaa66 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.flow-col--hub .flow-col__spec-indicator {
+  background: rgba(255, 107, 0, 0.12);
+  border-color: rgba(255, 107, 0, 0.35);
+  color: var(--accent-secondary);
+}
+
+/* Column 3: Площадка (Engineering Emerald) */
+.flow-col:last-child .flow-col__header,
+.flow-col--site .flow-col__header {
+  border-color: rgba(16, 185, 129, 0.28);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(15, 23, 42, 0.75) 100%);
+}
+.flow-col:last-child .flow-col__header::before,
+.flow-col--site .flow-col__header::before {
+  background: #10b981;
+}
+.flow-col:last-child .flow-col__icon,
+.flow-col--site .flow-col__icon {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.4);
+  color: #34d399;
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.18);
+}
+.flow-col:last-child .flow-col__subtitle,
+.flow-col--site .flow-col__subtitle {
+  color: #34d399;
+}
+.flow-col:last-child .flow-col__spec-indicator,
+.flow-col--site .flow-col__spec-indicator {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: #34d399;
 }
 
 .flow-col__icon {
@@ -1884,33 +2038,28 @@ select.form-control option {
   height: 22px;
 }
 
-.flow-col--hub .flow-col__icon {
-  background: rgba(255, 107, 0, 0.12);
-  border-color: rgba(255, 107, 0, 0.35);
-  color: var(--accent-primary);
-}
-
 .flow-col__title-wrap {
   flex: 1;
+}
+
+.flow-col__subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: block;
+  margin-bottom: 4px;
 }
 
 .flow-col__title {
   font-family: var(--font-heading);
   font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--text-white);
-  margin: 0 0 4px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
   line-height: 1.25;
   letter-spacing: -0.01em;
-}
-
-.flow-col__subtitle {
-  font-size: 0.8rem;
-  color: var(--accent-secondary);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  display: block;
 }
 
 .flow-col__lead {
@@ -1953,12 +2102,6 @@ select.form-control option {
 .flow-col__spec-indicator svg {
   width: 13px;
   height: 13px;
-}
-
-.flow-col--hub .flow-col__spec-indicator {
-  background: rgba(255, 107, 0, 0.12);
-  border-color: rgba(255, 107, 0, 0.3);
-  color: var(--accent-secondary);
 }
 
 .flow-col__spec-content {
