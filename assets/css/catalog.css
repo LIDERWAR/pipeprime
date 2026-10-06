@@ -472,7 +472,8 @@
 }
 
 .btn-add-spec {
-  flex: 1 1 200px;
+  flex: 1 1 auto;
+  min-width: 180px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -698,9 +699,12 @@
     flex-direction: column;
     gap: 8px;
   }
-  .btn-add-spec,
-  .btn-toggle-table {
+  .config-actions-row .btn,
+  .config-actions-row .btn-add-spec,
+  .config-actions-row .btn-toggle-table {
     width: 100%;
+    flex: none;
+    min-height: 44px;
     justify-content: center;
   }
   .config-table-collapse {
