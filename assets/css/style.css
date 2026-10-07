@@ -2171,23 +2171,56 @@ select.form-control option {
 .atr-features {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin: 24px 0 32px;
+  gap: 14px 28px;
+  margin: 22px 0 30px;
 }
 
 .atr-feature-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 0.9rem;
+  font-size: 0.94rem;
+  font-weight: 500;
   color: var(--text-primary);
+  line-height: 1.4;
+  border-left: 2px solid var(--accent-primary);
+  padding: 4px 0 4px 12px;
 }
 
-.atr-feature-item svg {
-  width: 20px;
-  height: 20px;
+.atr-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+
+.atr-node-links {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  align-items: center;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 14px;
+}
+
+.atr-node-links__label {
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.atr-node-links a {
   color: var(--accent-primary);
-  flex-shrink: 0;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.atr-node-links a:hover {
+  text-decoration: underline;
+}
+
+.atr-node-links a:not(:last-child)::after {
+  content: "•";
+  color: var(--text-muted);
+  margin-left: 12px;
 }
 
 .atr-preview {
@@ -3412,7 +3445,20 @@ body.no-scroll {
   .atr-features {
     grid-template-columns: 1fr;
     gap: 10px;
-    margin: 16px 0 20px;
+    margin: 16px 0 22px;
+  }
+  .atr-feature-item {
+    font-size: 0.88rem;
+    padding: 3px 0 3px 10px;
+  }
+  .atr-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+  .atr-actions .btn {
+    width: 100%;
+    justify-content: center;
   }
   .atr-preview__book {
     max-width: 220px;
