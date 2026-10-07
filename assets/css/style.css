@@ -822,78 +822,6 @@ button, input, select, textarea {
   max-width: 660px;
 }
 
-.hero-features-strip {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: auto;
-  margin-bottom: 30px;
-  padding-top: 22px;
-  border-top: 1px solid rgba(148, 163, 184, 0.12);
-}
-
-.hero-feature-card {
-  display: flex;
-  flex-direction: column;
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  padding: 0;
-  box-shadow: none;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-}
-
-.hero-feature-card__icon {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  background: rgba(255, 107, 0, 0.12);
-  border: 1px solid rgba(255, 107, 0, 0.25);
-  color: var(--accent-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 12px;
-  flex-shrink: 0;
-  transition: all 0.2s ease;
-}
-
-.hero-feature-card__icon svg {
-  width: 17px;
-  height: 17px;
-}
-
-.hero-feature-card:hover .hero-feature-card__icon {
-  background: rgba(255, 107, 0, 0.22);
-  border-color: var(--accent-primary);
-  transform: translateY(-2px);
-}
-
-.hero-feature-card__title {
-  font-family: var(--font-heading);
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--text-white);
-  line-height: 1.3;
-  margin-bottom: 6px;
-  letter-spacing: -0.01em;
-}
-
-.hero-feature-card__desc {
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-  margin: 0;
-}
-
-@media (max-width: 640px) {
-  .hero-features-strip {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    padding-top: 18px;
-  }
-}
 
 .hero__actions {
   display: flex;
@@ -1041,6 +969,113 @@ button, input, select, textarea {
 .hero-prod-card:hover .hero-prod-card__visual img,
 .hero-matrix-card:hover .hero-matrix-card__visual img {
   transform: scale(1.06);
+}
+
+/* ==========================================================================
+   Hero Cards Footer Link (Ссылка на полный каталог)
+   ========================================================================== */
+.hero-cards-footer {
+  margin-top: 12px;
+  width: 100%;
+}
+
+.hero-catalog-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 13px 18px;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-catalog-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #ff6b00, #ff8533);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-catalog-link:hover {
+  background: rgba(26, 38, 62, 0.85);
+  border-color: rgba(255, 107, 0, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 16px 36px rgba(0, 0, 0, 0.45),
+    0 0 24px rgba(255, 107, 0, 0.15);
+}
+
+.hero-catalog-link:hover::before {
+  width: 100%;
+}
+
+.hero-catalog-link__label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-white);
+  transition: color 0.2s ease;
+}
+
+.hero-catalog-link__label svg {
+  color: var(--accent-primary);
+  flex-shrink: 0;
+}
+
+.hero-catalog-link:hover .hero-catalog-link__label {
+  color: var(--accent-primary);
+}
+
+.hero-catalog-link__hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+}
+
+.hero-catalog-link__hint svg {
+  color: var(--text-muted);
+  transition: transform 0.2s ease, color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.hero-catalog-link:hover .hero-catalog-link__hint {
+  color: var(--text-primary);
+}
+
+.hero-catalog-link:hover .hero-catalog-link__hint svg {
+  color: var(--accent-primary);
+  transform: translateX(3px);
+}
+
+@media (max-width: 540px) {
+  .hero-catalog-link {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 12px 14px;
+  }
+  .hero-catalog-link__hint {
+    width: 100%;
+    justify-content: space-between;
+  }
 }
 
 /* ==========================================================================
@@ -3185,12 +3220,6 @@ body.no-scroll {
     font-size: 1rem;
     line-height: 1.6;
     margin-bottom: 24px;
-  }
-  .hero-features-strip {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    margin-bottom: 24px;
-    padding-top: 18px;
   }
   .hero__actions {
     flex-direction: column;
