@@ -133,6 +133,7 @@
       this.initForms();
       this.initMobileMenu();
       this.initHeroSlider();
+      this.initScrollToTop();
       SpecCart.init();
     },
 
@@ -256,6 +257,30 @@
           header.classList.remove('scrolled');
         }
       }, { passive: true });
+    },
+
+    initScrollToTop() {
+      const btn = document.getElementById('scroll-to-top');
+      if (!btn) return;
+
+      const onScroll = () => {
+        if (window.scrollY > 300) {
+          btn.classList.add('visible');
+        } else {
+          btn.classList.remove('visible');
+        }
+      };
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
     },
 
     initModals() {
