@@ -20,6 +20,7 @@ from server.models import (
     PdfCalcRequest
 )
 from server.services.telegram import telegram_service
+from server.services.email_service import email_service
 from server.services.atr_service import atr_service
 from server.services.pdf_service import pdf_generator
 
@@ -95,6 +96,24 @@ async def create_specification_lead(payload: SpecificationLeadRequest):
 
     await telegram_service.send_message("\n".join(tg_lines))
 
+    # Send Corporate Email Notification
+    await email_service.send_lead_email(
+        subject=f"Новая спецификация {lead['order_number']} — {payload.name} ({payload.company or 'Физлицо'})",
+        lead_type_title="Новая заказная спецификация",
+        order_number=lead["order_number"],
+        fields=[
+            ("Клиент", payload.name),
+            ("Телефон", payload.phone),
+            ("Email", payload.email or "не указан"),
+            ("Компания", payload.company or "не указана"),
+            ("ИНН", payload.inn or "—"),
+            ("Адрес доставки", payload.delivery_address or "Самовывоз / Уточнить"),
+            ("Комментарий", payload.comment or "—"),
+            ("Общий вес", f"{payload.total_weight_kg:.1f} кг ({(payload.total_weight_kg/1000):.2f} т)"),
+        ],
+        items=items_dicts
+    )
+
     return LeadResponse(
         order_number=lead["order_number"],
         message="Спецификация успешно принята в обработку. Номер вашего заказа: " + lead["order_number"],
@@ -163,6 +182,24 @@ async def upload_estimate_file(
 
     await telegram_service.send_document(target_path, caption)
 
+    # Send Corporate Email Notification with Attached File
+    await email_service.send_lead_email(
+        subject=f"Проектная смета на расчет {lead['order_number']} — {name} ({company or 'Заказчик'})",
+        lead_type_title="Проектная смета на инженерный расчет",
+        order_number=lead["order_number"],
+        fields=[
+            ("Заказчик", name),
+            ("Телефон", phone),
+            ("Email", email or "—"),
+            ("Компания", company or "—"),
+            ("ИНН", inn or "—"),
+            ("Файл", f"{file.filename} ({(len(contents)/1024/1024):.2f} МБ)"),
+            ("Комментарий", comment or "—"),
+        ],
+        attachment_path=target_path,
+        attachment_filename=file.filename
+    )
+
     return LeadResponse(
         order_number=lead["order_number"],
         message=f"Файл «{file.filename}» успешно передан в инженерный отдел. Номер заявки: {lead['order_number']}",
@@ -190,6 +227,19 @@ async def request_callback(payload: CallbackLeadRequest):
         f"<b>Комментарий:</b> {payload.comment or '—'}"
     )
     await telegram_service.send_message(tg_text)
+
+    # Send Corporate Email Notification
+    await email_service.send_lead_email(
+        subject=f"Заказ звонка {lead['order_number']} — {payload.name} ({payload.phone})",
+        lead_type_title="Запрос обратного звонка",
+        order_number=lead["order_number"],
+        fields=[
+            ("Имя", payload.name),
+            ("Телефон", payload.phone),
+            ("Тема", payload.topic or "Консультация инженера"),
+            ("Комментарий", payload.comment or "—"),
+        ]
+    )
 
     return LeadResponse(
         order_number=lead["order_number"],
@@ -233,6 +283,22 @@ async def request_atr_access(payload: ATRRequest):
         f"<i>Сгенерирован временный токен доступа (24ч):</i> <code>{token[:12]}...</code>"
     )
     await telegram_service.send_message(tg_text)
+
+    # Send Corporate Email Notification
+    await email_service.send_lead_email(
+        subject=f"Запрос доступа к АТР 2026 {lead['order_number']} — {payload.company} (ИНН {payload.inn})",
+        lead_type_title="Запрос доступа к АТР 2026",
+        order_number=lead["order_number"],
+        fields=[
+            ("Компания", payload.company),
+            ("ИНН", payload.inn),
+            ("Контактное лицо", payload.name),
+            ("Телефон", payload.phone),
+            ("Email", payload.email),
+            ("Цель запроса", payload.purpose or "Проектирование"),
+            ("Статус доступа", "Временный токен выдан на 24ч"),
+        ]
+    )
 
     return ATRResponse(
         order_number=lead["order_number"],
