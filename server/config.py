@@ -23,6 +23,10 @@ class Settings:
     TELEGRAM_BOT_TOKEN: str = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
     TELEGRAM_CHAT_ID: str = os.getenv("TELEGRAM_CHAT_ID", "").strip()
 
+    # MAX Messenger (max.ru)
+    MAX_BOT_TOKEN: str = os.getenv("MAX_BOT_TOKEN", "").strip()
+    MAX_CHAT_ID: str = os.getenv("MAX_CHAT_ID", "").strip()
+
     # SMTP Settings (optional)
     SMTP_SERVER: str = os.getenv("SMTP_SERVER", "").strip()
     SMTP_PORT: int = int(os.getenv("SMTP_PORT", "587"))

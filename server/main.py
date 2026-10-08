@@ -20,6 +20,7 @@ from server.models import (
     PdfCalcRequest
 )
 from server.services.telegram import telegram_service
+from server.services.max_service import max_service
 from server.services.email_service import email_service
 from server.services.atr_service import atr_service
 from server.services.pdf_service import pdf_generator
@@ -95,6 +96,7 @@ async def create_specification_lead(payload: SpecificationLeadRequest):
             tg_lines.append(f"{idx}. <b>{itm.display_name}</b> | {itm.display_qty} шт./хлыст (Арт: {itm.article or '—'})")
 
     await telegram_service.send_message("\n".join(tg_lines))
+    await max_service.send_message("\n".join(tg_lines))
 
     # Send Corporate Email Notification
     await email_service.send_lead_email(
@@ -181,6 +183,7 @@ async def upload_estimate_file(
     )
 
     await telegram_service.send_document(target_path, caption)
+    await max_service.send_document(target_path, caption)
 
     # Send Corporate Email Notification with Attached File
     await email_service.send_lead_email(
@@ -227,6 +230,7 @@ async def request_callback(payload: CallbackLeadRequest):
         f"<b>Комментарий:</b> {payload.comment or '—'}"
     )
     await telegram_service.send_message(tg_text)
+    await max_service.send_message(tg_text)
 
     # Send Corporate Email Notification
     await email_service.send_lead_email(
@@ -283,6 +287,7 @@ async def request_atr_access(payload: ATRRequest):
         f"<i>Сгенерирован временный токен доступа (24ч):</i> <code>{token[:12]}...</code>"
     )
     await telegram_service.send_message(tg_text)
+    await max_service.send_message(tg_text)
 
     # Send Corporate Email Notification
     await email_service.send_lead_email(
