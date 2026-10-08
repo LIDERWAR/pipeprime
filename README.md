@@ -91,6 +91,11 @@ python -m uvicorn server.main:app --host 0.0.0.0 --port 8000 --reload
 👉 **[DEPLOYMENT.md](file:///d:/pipeprime/DEPLOYMENT.md)**
 
 
+## 🗺 Дорожная карта (Roadmap)
+
+План развития платформы, статус реализации и список задач, ожидающих согласования с заказчиком (включая настройку Telegram-бота и корпоративного почтового сервера):
+👉 **[ROADMAP.md](ROADMAP.md)**
+
 ---
 
 ## 📄 Лицензия
