@@ -56,9 +56,15 @@ def init_db():
         cursor.execute("PRAGMA table_info(leads)")
         columns = [row[1] for row in cursor.fetchall()]
         if 'manager' not in columns:
-            cursor.execute("ALTER TABLE leads ADD COLUMN manager TEXT")
+            try:
+                cursor.execute("ALTER TABLE leads ADD COLUMN manager TEXT")
+            except sqlite3.OperationalError:
+                pass
         if 'updated_at' not in columns:
-            cursor.execute("ALTER TABLE leads ADD COLUMN updated_at TIMESTAMP")
+            try:
+                cursor.execute("ALTER TABLE leads ADD COLUMN updated_at TIMESTAMP")
+            except sqlite3.OperationalError:
+                pass
 
         conn.commit()
 
