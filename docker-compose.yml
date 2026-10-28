@@ -5,6 +5,8 @@ services:
       dockerfile: Dockerfile
     container_name: pipeprime-app
     restart: unless-stopped
+    extra_hosts:
+      - "api.telegram.org:149.154.167.220"
     ports:
       - "8000:8000"
     environment:
