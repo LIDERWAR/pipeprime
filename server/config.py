@@ -22,6 +22,7 @@ class Settings:
     # Telegram Bot
     TELEGRAM_BOT_TOKEN: str = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
     TELEGRAM_CHAT_ID: str = os.getenv("TELEGRAM_CHAT_ID", "").strip()
+    TELEGRAM_API_BASE: str = os.getenv("TELEGRAM_API_BASE", "https://api.telegram.org").rstrip("/")
 
     # MAX Messenger (max.ru)
     MAX_BOT_TOKEN: str = os.getenv("MAX_BOT_TOKEN", "").strip()

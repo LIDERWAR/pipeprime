@@ -11,7 +11,8 @@ class TelegramService:
     def __init__(self):
         self.bot_token = settings.TELEGRAM_BOT_TOKEN
         self.chat_id = settings.TELEGRAM_CHAT_ID
-        self.base_url = f"https://api.telegram.org/bot{self.bot_token}"
+        self.api_base = settings.TELEGRAM_API_BASE
+        self.base_url = f"{self.api_base}/bot{self.bot_token}"
 
     @property
     def is_configured(self) -> bool:
