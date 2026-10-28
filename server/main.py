@@ -4,13 +4,20 @@ from datetime import datetime
 from pathlib import Path
 from typing import Optional
 
-from fastapi import FastAPI, UploadFile, File, Form, HTTPException, Depends, status
+from fastapi import FastAPI, UploadFile, File, Form, HTTPException, Depends, status, Request
 from fastapi.responses import FileResponse, Response, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
 from server.config import settings, PROJECT_ROOT
-from server.database import init_db, create_lead
+from server.database import (
+    init_db,
+    create_lead,
+    update_lead_status,
+    get_lead_by_order_number,
+    get_recent_leads,
+    get_daily_stats
+)
 from server.models import (
     SpecificationLeadRequest,
     CallbackLeadRequest,
@@ -43,9 +50,13 @@ app.add_middleware(
 )
 
 @app.on_event("startup")
-def on_startup():
-    """Initialize SQLite database and directory structures on server start."""
+async def on_startup():
+    """Initialize SQLite database, directory structures, and bot commands."""
     init_db()
+    try:
+        await telegram_service.set_bot_commands()
+    except Exception:
+        pass
 
 @app.get("/api/health", tags=["System"])
 async def health_check():
@@ -95,7 +106,8 @@ async def create_specification_lead(payload: SpecificationLeadRequest):
         for idx, itm in enumerate(payload.items, start=1):
             tg_lines.append(f"{idx}. <b>{itm.display_name}</b> | {itm.display_qty} шт./хлыст (Арт: {itm.article or '—'})")
 
-    await telegram_service.send_message("\n".join(tg_lines))
+    lead_keyboard = telegram_service.build_lead_inline_keyboard(lead['order_number'], payload.phone)
+    await telegram_service.send_message("\n".join(tg_lines), reply_markup=lead_keyboard)
     await max_service.send_message("\n".join(tg_lines))
 
     # Send Corporate Email Notification
@@ -182,7 +194,8 @@ async def upload_estimate_file(
         f"<b>Комментарий:</b> {comment or '—'}"
     )
 
-    await telegram_service.send_document(target_path, caption)
+    lead_keyboard = telegram_service.build_lead_inline_keyboard(lead['order_number'], phone)
+    await telegram_service.send_document(target_path, caption, reply_markup=lead_keyboard)
     await max_service.send_document(target_path, caption)
 
     # Send Corporate Email Notification with Attached File
@@ -229,7 +242,8 @@ async def request_callback(payload: CallbackLeadRequest):
         f"<b>Тема:</b> {payload.topic or 'Консультация инженера'}\n"
         f"<b>Комментарий:</b> {payload.comment or '—'}"
     )
-    await telegram_service.send_message(tg_text)
+    lead_keyboard = telegram_service.build_lead_inline_keyboard(lead['order_number'], payload.phone)
+    await telegram_service.send_message(tg_text, reply_markup=lead_keyboard)
     await max_service.send_message(tg_text)
 
     # Send Corporate Email Notification
@@ -286,7 +300,8 @@ async def request_atr_access(payload: ATRRequest):
         f"<b>Цель:</b> {payload.purpose or 'Проектирование'}\n\n"
         f"<i>Сгенерирован временный токен доступа (24ч):</i> <code>{token[:12]}...</code>"
     )
-    await telegram_service.send_message(tg_text)
+    lead_keyboard = telegram_service.build_lead_inline_keyboard(lead['order_number'], payload.phone)
+    await telegram_service.send_message(tg_text, reply_markup=lead_keyboard)
     await max_service.send_message(tg_text)
 
     # Send Corporate Email Notification
@@ -334,6 +349,175 @@ async def download_atr_protected(token: str):
             "Cache-Control": "private, no-cache, no-store, must-revalidate"
         }
     )
+
+# --- 4.1. Telegram Interactive Bot Webhook ---
+@app.post("/api/telegram/webhook", tags=["Telegram Bot"])
+async def telegram_webhook(request: Request):
+    """
+    Интерактивный вебхук Telegram бота: обработка команд (/start, /leads, /stats, /id)
+    и callback-кнопок под заявками («Взять в работу», «Завершить»).
+    """
+    try:
+        data = await request.json()
+    except Exception:
+        return {"ok": False}
+
+    # 1. Обработка нажатий Inline-кнопок под карточками заказов
+    if "callback_query" in data:
+        cq = data["callback_query"]
+        cq_id = cq.get("id")
+        cq_data = cq.get("data", "")
+        from_user = cq.get("from", {})
+        message = cq.get("message", {})
+        chat = message.get("chat", {})
+        chat_id = chat.get("id")
+        message_id = message.get("message_id")
+
+        manager_first = from_user.get("first_name", "Менеджер")
+        username = from_user.get("username")
+        manager_label = f"{manager_first} (@{username})" if username else manager_first
+
+        if cq_data.startswith("take_"):
+            order_number = cq_data.replace("take_", "")
+            lead = get_lead_by_order_number(order_number)
+            update_lead_status(order_number, "in_progress", manager_label)
+            await telegram_service.answer_callback_query(
+                cq_id,
+                text=f"Заявка {order_number} закреплена за вами!",
+                show_alert=False
+            )
+            phone = lead.get("phone") if lead else None
+            new_markup = telegram_service.build_taken_inline_keyboard(order_number, phone, manager_label)
+            if chat_id and message_id:
+                await telegram_service.edit_message_reply_markup(chat_id, message_id, new_markup)
+
+        elif cq_data.startswith("done_"):
+            order_number = cq_data.replace("done_", "")
+            update_lead_status(order_number, "completed")
+            await telegram_service.answer_callback_query(
+                cq_id,
+                text=f"Заказ {order_number} отмечен как выполненный!",
+                show_alert=False
+            )
+            new_markup = telegram_service.build_done_inline_keyboard(order_number)
+            if chat_id and message_id:
+                await telegram_service.edit_message_reply_markup(chat_id, message_id, new_markup)
+
+        elif cq_data.startswith("info_"):
+            order_number = cq_data.replace("info_", "")
+            lead = get_lead_by_order_number(order_number)
+            info_txt = f"Заказ: {order_number}\nСтатус: {lead.get('status') if lead else 'Не найден'}"
+            if lead and lead.get("manager"):
+                info_txt += f"\nВ работе у: {lead['manager']}"
+            await telegram_service.answer_callback_query(cq_id, text=info_txt, show_alert=True)
+
+        return {"ok": True}
+
+    # 2. Обработка входящих текстовых команд и кнопок постоянного меню
+    if "message" in data:
+        msg = data["message"]
+        chat = msg.get("chat", {})
+        chat_id = chat.get("id")
+        from_user = msg.get("from", {})
+        user_id = from_user.get("id")
+        user_first = from_user.get("first_name", "Коллега")
+        text = (msg.get("text") or "").strip()
+
+        if not text or not chat_id:
+            return {"ok": True}
+
+        # Команда /start
+        if text.startswith("/start"):
+            welcome_text = (
+                f"👋 <b>Здравствуйте, {user_first}!</b>\n\n"
+                f"Ваш личный Telegram ID: <code>{user_id}</code> <i>(нажмите, чтобы скопировать)</i>.\n\n"
+                f"Это официальный рабочий бот платформы <b>PipePrime.ru</b>.\n"
+                f"Сюда поступают все заявки на поставку полимерных труб PE-RT II, ППУ/ПЭ и ППУ/ОЦ, "
+                f"расчеты инженерного калькулятора и проектные сметы.\n\n"
+                f"Используйте интерактивное меню ниже для быстрого доступа к заявкам и аналитике."
+            )
+            await telegram_service.send_message(
+                welcome_text,
+                reply_markup=telegram_service.build_main_reply_keyboard(),
+                target_chat_id=chat_id
+            )
+
+        # Команда /id или кнопка «🆔 Мой Telegram ID»
+        elif text in ("/id", "🆔 Мой Telegram ID"):
+            id_text = (
+                f"🆔 <b>Ваш Telegram ID:</b> <code>{user_id}</code>\n\n"
+                f"<i>Передайте этот идентификатор администратору для добавления в список получателей заявок PipePrime.</i>"
+            )
+            await telegram_service.send_message(
+                id_text,
+                reply_markup=telegram_service.build_main_reply_keyboard(),
+                target_chat_id=chat_id
+            )
+
+        # Команда /stats или кнопка «📊 Статистика за сегодня»
+        elif text in ("/stats", "📊 Статистика за сегодня"):
+            stats = get_daily_stats()
+            by_type = stats.get("by_type", {})
+            stats_text = (
+                f"📊 <b>СТАТИСТИКА ЗА СЕГОДНЯ ({stats['date']})</b>\n\n"
+                f"Всего заявок: <b>{stats['total_count']}</b>\n"
+                f"Общий тоннаж труб: <b>{(stats['total_weight_kg']/1000):.2f} т</b> ({stats['total_weight_kg']:.1f} кг)\n\n"
+                f"<b>Разбивка по типам:</b>\n"
+                f"• Спецификации калькулятора: {by_type.get('specification', 0)}\n"
+                f"• Проектные сметы (файлы): {by_type.get('estimate', 0)}\n"
+                f"• Запросы звонка: {by_type.get('callback', 0)}\n"
+                f"• Доступы к АТР 2026: {by_type.get('atr_request', 0)}"
+            )
+            await telegram_service.send_message(
+                stats_text,
+                reply_markup=telegram_service.build_main_reply_keyboard(),
+                target_chat_id=chat_id
+            )
+
+        # Команда /leads или кнопка «📋 Свежие заявки»
+        elif text in ("/leads", "📋 Свежие заявки"):
+            recent = get_recent_leads(limit=5)
+            if not recent:
+                leads_text = "📋 <b>Свежие заявки</b>\n\nЗаявок в базе пока нет."
+            else:
+                leads_lines = ["📋 <b>ПОСЛЕДНИЕ 5 ЗАЯВОК:</b>\n"]
+                for itm in recent:
+                    status_badge = {
+                        "new": "🆕 Новая",
+                        "in_progress": "🟡 В работе",
+                        "completed": "🟢 Выполнена"
+                    }.get(itm.get("status"), "Новая")
+                    mgr = f" ({itm['manager']})" if itm.get("manager") else ""
+                    leads_lines.append(
+                        f"• <b>{itm['order_number']}</b> [{status_badge}{mgr}]\n"
+                        f"  {itm['client_name']} | {itm['phone']}\n"
+                        f"  Организация: {itm.get('company') or '—'}\n"
+                    )
+                leads_text = "\n".join(leads_lines)
+
+            await telegram_service.send_message(
+                leads_text,
+                reply_markup=telegram_service.build_main_reply_keyboard(),
+                target_chat_id=chat_id
+            )
+
+        # «❓ Справка» или /help
+        elif text in ("/help", "❓ Справка"):
+            help_text = (
+                f"ℹ️ <b>Справка по боту PipePrime</b>\n\n"
+                f"• <b>Под каждой заявкой</b> есть кнопки быстрого набора телефона, перехода в WhatsApp "
+                f"и взятия в работу менеджером.\n"
+                f"• <b>Команда /stats</b> показывает сводку по входящим заказам за текущие сутки.\n"
+                f"• <b>Команда /leads</b> выводит список последних 5 заявок и их статусы.\n"
+                f"• <b>Команда /id</b> показывает ваш уникальный цифровой ID Telegram."
+            )
+            await telegram_service.send_message(
+                help_text,
+                reply_markup=telegram_service.build_main_reply_keyboard(),
+                target_chat_id=chat_id
+            )
+
+    return {"ok": True}
 
 # --- 5. Commercial Offer PDF Generator ---
 @app.post("/api/calculator/generate-pdf", tags=["Calculator & Quotes"])
