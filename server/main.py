@@ -2,7 +2,7 @@ import uuid
 import re
 from datetime import datetime
 from pathlib import Path
-from typing import Optional
+from typing import Optional, List, Dict, Any, Union
 
 from fastapi import FastAPI, UploadFile, File, Form, HTTPException, Depends, status, Request
 from fastapi.responses import FileResponse, Response, JSONResponse
