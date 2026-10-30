@@ -172,9 +172,9 @@
   color: var(--accent-primary);
 }
 
-/* Чертежная панель (Blueprint Canvas) */
+/* Чертежная и 3D панель (Blueprint & 3D WebGL Canvas) */
 .blueprint-card {
-  padding: 24px 28px;
+  padding: 16px 20px 20px;
   background: #090d16;
   background-image: 
     linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
@@ -183,13 +183,56 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  min-height: 380px;
+}
+
+.blueprint-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 14px;
+  z-index: 5;
+}
+
+.view-switch-tabs {
+  display: flex;
+  gap: 4px;
+  background: rgba(15, 23, 42, 0.9);
+  padding: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-xs, 2px);
+}
+
+.view-tab-btn {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-xs, 2px);
+  padding: 5px 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.view-tab-btn:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.view-tab-btn.active {
+  color: var(--accent-primary, #ff6b00);
+  background: rgba(255, 107, 0, 0.12);
+  border-color: rgba(255, 107, 0, 0.4);
 }
 
 .blueprint-badge {
-  position: absolute;
-  top: 14px;
-  right: 18px;
   font-family: var(--font-mono, monospace);
   font-size: 0.72rem;
   text-transform: uppercase;
@@ -198,17 +241,17 @@
   border: 1px solid rgba(255, 255, 255, 0.12);
   padding: 4px 8px;
   background: rgba(15, 23, 42, 0.85);
-  z-index: 2;
+  border-radius: var(--radius-xs, 2px);
 }
 
 .blueprint-svg-container {
   width: 100%;
   max-width: 900px;
-  margin: 0 auto;
+  margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 240px;
+  min-height: 260px;
 }
 
 .blueprint-svg {
@@ -216,6 +259,122 @@
   height: auto;
   max-height: 380px;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+}
+
+/* 3D WebGL контейнер и инструменты */
+.blueprint-3d-container {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.webgl-canvas-wrapper {
+  width: 100%;
+  height: 310px;
+  min-height: 280px;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 50%, rgba(30, 41, 59, 0.3) 0%, rgba(9, 13, 22, 0.8) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-xs, 2px);
+  cursor: grab;
+}
+
+.webgl-canvas-wrapper:active {
+  cursor: grabbing;
+}
+
+.webgl-canvas-wrapper canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.viewer-3d-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-xs, 2px);
+}
+
+.viewer-tools-group {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.viewer-tool-btn {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-xs, 2px);
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.viewer-tool-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.viewer-tool-btn.active {
+  color: var(--accent-primary, #ff6b00);
+  background: rgba(255, 107, 0, 0.18);
+  border-color: var(--accent-primary, #ff6b00);
+}
+
+.viewer-hint-text {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.viewer-3d-tooltip {
+  position: absolute;
+  pointer-events: none;
+  background: rgba(9, 13, 22, 0.94);
+  border: 1px solid rgba(56, 189, 248, 0.6);
+  padding: 6px 10px;
+  border-radius: var(--radius-xs, 2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  z-index: 20;
+}
+
+.viewer-3d-tooltip .tip-pos {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #38bdf8;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.viewer-3d-tooltip .tip-title {
+  font-size: 0.78rem;
+  color: #ffffff;
+  line-height: 1.3;
+}
+
+.highlight-bom-row {
+  background: rgba(56, 189, 248, 0.18) !important;
+  transition: background 0.3s ease;
 }
 
 /* ==========================================================================

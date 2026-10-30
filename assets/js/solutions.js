@@ -21,7 +21,8 @@
         if (sol) {
           this.activeStates[id] = {
             diameter: sol.defaultDiameter || 110,
-            sdr: sol.defaultSdr || 7.4
+            sdr: sol.defaultSdr || 7.4,
+            viewMode: '2d'
           };
           this.renderSolution(el, sol);
         }
@@ -30,16 +31,55 @@
 
     setDiameter(solutionId, diam) {
       if (!this.activeStates[solutionId]) return;
-      this.activeStates[solutionId].diameter = parseInt(diam);
+      const parsedDiam = parseInt(diam);
+      this.activeStates[solutionId].diameter = parsedDiam;
       const container = document.querySelector(`[data-solution-id="${solutionId}"]`);
       const sol = window.SOLUTIONS_DATA[solutionId];
       if (container && sol) {
+        const currentMode = this.activeStates[solutionId].viewMode || '2d';
         this.renderSolution(container, sol);
+        if (currentMode === '3d') {
+          this.switchView(solutionId, '3d');
+        }
+      }
+    },
+
+    switchView(solutionId, mode) {
+      if (!this.activeStates[solutionId]) return;
+      this.activeStates[solutionId].viewMode = mode;
+
+      const card = document.getElementById(`view-card-${solutionId}`);
+      if (!card) return;
+
+      const tabs = card.querySelectorAll('.view-tab-btn');
+      tabs.forEach(t => {
+        t.classList.toggle('active', t.getAttribute('data-tab') === mode);
+      });
+
+      const container2D = document.getElementById(`container-2d-${solutionId}`);
+      const container3D = document.getElementById(`container-3d-${solutionId}`);
+      const badge = document.getElementById(`badge-${solutionId}`);
+      const state = this.activeStates[solutionId];
+
+      if (mode === '3d') {
+        if (container2D) container2D.style.display = 'none';
+        if (container3D) container3D.style.display = 'block';
+        if (badge) badge.textContent = `3D WEBGL // dn ${state.diameter} мм // АТР 2026`;
+
+        const canvasWrap = document.getElementById(`webgl-${solutionId}`);
+        if (canvasWrap && window.Solutions3DEngine) {
+          window.Solutions3DEngine.initViewer(solutionId, canvasWrap, state.diameter);
+        }
+      } else {
+        if (container2D) container2D.style.display = 'flex';
+        if (container3D) container3D.style.display = 'none';
+        if (badge) badge.textContent = `СХЕМА АТР 2026: М 1:10 // dn ${state.diameter} мм`;
       }
     },
 
     renderSolution(container, sol) {
-      const state = this.activeStates[sol.id] || { diameter: sol.defaultDiameter, sdr: sol.defaultSdr };
+      const state = this.activeStates[sol.id] || { diameter: sol.defaultDiameter, sdr: sol.defaultSdr, viewMode: '2d' };
+      if (!state.viewMode) state.viewMode = '2d';
       const bomItems = sol.getBOM(state.diameter, state.sdr);
 
       // Генерация SVG чертежа в зависимости от узла
@@ -123,11 +163,45 @@
               </div>
             </div>
 
-            <!-- 2. Чертежная область (Интерактивная CAD Схема АТР) -->
-            <div class="blueprint-card">
-              <div class="blueprint-badge">СХЕМА АТР 2026: М 1:10 // dn ${state.diameter} мм</div>
-              <div class="blueprint-svg-container">
+            <!-- 2. Чертежная и 3D область (Интерактивная CAD Схема / WebGL 3D) -->
+            <div class="blueprint-card" id="view-card-${sol.id}">
+              <div class="blueprint-topbar">
+                <div class="view-switch-tabs" role="tablist">
+                  <button type="button" class="view-tab-btn ${state.viewMode !== '3d' ? 'active' : ''}" data-tab="2d" onclick="SolutionsEngine.switchView('${sol.id}', '2d')">
+                    2D ЧЕРТЕЖ
+                  </button>
+                  <button type="button" class="view-tab-btn ${state.viewMode === '3d' ? 'active' : ''}" data-tab="3d" onclick="SolutionsEngine.switchView('${sol.id}', '3d')">
+                    3D МОДЕЛЬ
+                  </button>
+                </div>
+                <div class="blueprint-badge" id="badge-${sol.id}">
+                  ${state.viewMode === '3d' ? `3D WEBGL // dn ${state.diameter} мм // АТР 2026` : `СХЕМА АТР 2026: М 1:10 // dn ${state.diameter} мм`}
+                </div>
+              </div>
+
+              <!-- 2D SVG Схема -->
+              <div class="blueprint-svg-container" id="container-2d-${sol.id}" style="${state.viewMode === '3d' ? 'display: none;' : ''}">
                 ${svgGraphic}
+              </div>
+
+              <!-- 3D WebGL Модель -->
+              <div class="blueprint-3d-container" id="container-3d-${sol.id}" style="${state.viewMode === '3d' ? 'display: block;' : 'display: none;'}">
+                <div class="webgl-canvas-wrapper" id="webgl-${sol.id}"></div>
+                <div class="viewer-3d-toolbar">
+                  <div class="viewer-tools-group">
+                    <button type="button" class="viewer-tool-btn" id="btn-exploded-${sol.id}" onclick="Solutions3DEngine.toggleExploded('${sol.id}')" title="Разнести компоненты узла вдоль оси">
+                      ВЗРЫВ-СХЕМА
+                    </button>
+                    <button type="button" class="viewer-tool-btn" id="btn-section-${sol.id}" onclick="Solutions3DEngine.toggleSection('${sol.id}')" title="Продольный разрез трубы и изоляции">
+                      РАЗРЕЗ
+                    </button>
+                    <button type="button" class="viewer-tool-btn" onclick="Solutions3DEngine.resetCamera('${sol.id}')" title="Сбросить ракурс камеры">
+                      СБРОС ВИДА
+                    </button>
+                  </div>
+                  <div class="viewer-hint-text">ЛКМ: Вращение • ПКМ: Панорама • Колесо: Зум</div>
+                </div>
+                <div class="viewer-3d-tooltip" id="tooltip-3d-${sol.id}" style="display: none;"></div>
               </div>
             </div>
           </div>
@@ -178,6 +252,10 @@
           </div>
         </div>
       `;
+
+      if (state.viewMode === '3d') {
+        setTimeout(() => this.switchView(sol.id, '3d'), 10);
+      }
     },
 
     addItemToSpec(solutionId, pos) {
