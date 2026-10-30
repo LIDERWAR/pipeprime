@@ -6,6 +6,44 @@
 (function() {
   'use strict';
 
+  // Сквозной сбор и сохранение UTM-меток маркетинговых кампаний
+  const UTMTracker = {
+    STORAGE_KEY: 'pipeprime_utm_data',
+
+    init() {
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+        const hasUtm = utmKeys.some(k => urlParams.has(k));
+
+        if (hasUtm) {
+          const utmData = {};
+          utmKeys.forEach(k => {
+            if (urlParams.has(k)) utmData[k] = urlParams.get(k);
+          });
+          utmData.landing_page = window.location.pathname;
+          utmData.referrer = document.referrer || '';
+          utmData.captured_at = new Date().toISOString();
+          sessionStorage.setItem(this.STORAGE_KEY, JSON.stringify(utmData));
+          localStorage.setItem(this.STORAGE_KEY, JSON.stringify(utmData));
+        }
+      } catch (e) {}
+    },
+
+    getData() {
+      try {
+        const s = sessionStorage.getItem(this.STORAGE_KEY) || localStorage.getItem(this.STORAGE_KEY);
+        const data = s ? JSON.parse(s) : {};
+        if (!data.landing_page) data.landing_page = window.location.pathname;
+        if (!data.referrer) data.referrer = document.referrer || '';
+        return data;
+      } catch (e) {
+        return {};
+      }
+    }
+  };
+  window.UTMTracker = UTMTracker;
+
   // Состояние спецификации (корзины)
   const SpecCart = {
     items: [],
@@ -127,6 +165,8 @@
   // Главный контроллер интерфейса
   const App = {
     init() {
+      UTMTracker.init();
+      this.initAnalyticsListeners();
       this.initHeaderScroll();
       this.initModals();
       this.initDrawer();
@@ -135,6 +175,15 @@
       this.initHeroSlider();
       this.initScrollToTop();
       SpecCart.init();
+    },
+
+    initAnalyticsListeners() {
+      document.addEventListener('click', (e) => {
+        const phoneLink = e.target.closest('a[href^="tel:"]');
+        if (phoneLink && typeof window.reachGoal === 'function') {
+          window.reachGoal('phone_click', { phone: phoneLink.getAttribute('href') });
+        }
+      });
     },
 
     initHeroSlider() {
@@ -497,12 +546,22 @@
               if (!formData.get('name')) formData.append('name', 'Инженер/Заказчик');
               if (!formData.get('phone')) formData.append('phone', 'Не указан');
 
+              // Прикрепляем UTM-метки
+              const utm = UTMTracker.getData();
+              Object.keys(utm).forEach(k => {
+                if (utm[k]) formData.append(k, utm[k]);
+              });
+
               const res = await fetch(`${API_BASE}/api/leads/estimate`, {
                 method: 'POST',
                 body: formData
               });
               const data = await res.json();
               if (!res.ok) throw new Error(data.detail || 'Ошибка загрузки сметы');
+
+              if (typeof window.reachGoal === 'function') {
+                window.reachGoal('estimate_uploaded', { order_number: data.order_number });
+              }
 
               form.reset();
               const dropTitle = form.querySelector('.file-dropzone__title');
@@ -545,10 +604,12 @@
                 inn = '7728168971';
               }
 
+              const utm = UTMTracker.getData();
               const res = await fetch(`${API_BASE}/api/atr/request`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
+                  ...utm,
                   name: name || 'Инженер-проектировщик',
                   phone: phone || '+7 (999) 000-00-00',
                   email: email || 'pto@company.ru',
@@ -559,6 +620,10 @@
               });
               const data = await res.json();
               if (!res.ok) throw new Error(data.detail || 'Ошибка валидации заявки АТР');
+
+              if (typeof window.reachGoal === 'function') {
+                window.reachGoal('atr_requested', { order_number: data.order_number, company: company || 'Проектная' });
+              }
 
               form.reset();
               const actionBtn = `
@@ -594,10 +659,12 @@
                 else if (ph.includes('контакт') || ph.includes('имя')) name = val;
               });
 
+              const utm = UTMTracker.getData();
               const res = await fetch(`${API_BASE}/api/leads/specification`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
+                  ...utm,
                   name: name || 'Заказчик',
                   phone: phone || '—',
                   email: email || null,
@@ -611,6 +678,10 @@
               if (!res.ok) throw new Error(data.detail || 'Ошибка отправки спецификации');
 
               const count = SpecCart.getCount();
+              if (typeof window.reachGoal === 'function') {
+                window.reachGoal('spec_lead_sent', { order_number: data.order_number, items_count: count });
+              }
+
               SpecCart.clear();
               form.reset();
               App.openSuccessModal(
@@ -634,10 +705,12 @@
               else if (inp.tagName === 'SELECT') topic = val;
             });
 
+            const utm = UTMTracker.getData();
             const res = await fetch(`${API_BASE}/api/leads/callback`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
+                ...utm,
                 name: name || 'Специалист',
                 phone: phone || '+7 (999) 000-00-00',
                 topic: topic
@@ -645,6 +718,10 @@
             });
             const data = await res.json();
             if (!res.ok) throw new Error(data.detail || 'Ошибка отправки заявки');
+
+            if (typeof window.reachGoal === 'function') {
+              window.reachGoal('callback_sent', { order_number: data.order_number });
+            }
 
             form.reset();
             App.openSuccessModal(

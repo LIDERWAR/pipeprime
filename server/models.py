@@ -27,7 +27,16 @@ class CartItem(BaseModel):
     def display_qty(self) -> int:
         return self.qty or self.quantity or 1
 
-class SpecificationLeadRequest(BaseModel):
+class UTMBase(BaseModel):
+    utm_source: Optional[str] = None
+    utm_medium: Optional[str] = None
+    utm_campaign: Optional[str] = None
+    utm_content: Optional[str] = None
+    utm_term: Optional[str] = None
+    referrer: Optional[str] = None
+    landing_page: Optional[str] = None
+
+class SpecificationLeadRequest(UTMBase):
     name: Optional[str] = "Заказчик"
     phone: Optional[str] = "Не указан"
     email: Optional[str] = None
@@ -40,7 +49,7 @@ class SpecificationLeadRequest(BaseModel):
 
     model_config = ConfigDict(extra="allow")
 
-class CallbackLeadRequest(BaseModel):
+class CallbackLeadRequest(UTMBase):
     name: Optional[str] = "Специалист"
     phone: Optional[str] = "+7 (999) 000-00-00"
     topic: Optional[str] = "Консультация инженера"
@@ -48,7 +57,7 @@ class CallbackLeadRequest(BaseModel):
 
     model_config = ConfigDict(extra="allow")
 
-class ATRRequest(BaseModel):
+class ATRRequest(UTMBase):
     name: Optional[str] = "Инженер-проектировщик"
     phone: Optional[str] = "+7 (999) 000-00-00"
     email: str = Field(..., description="Корпоративный e-mail")

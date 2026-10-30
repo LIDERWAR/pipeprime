@@ -39,9 +39,42 @@
     </svg>
   </button>
 
+  <!-- Яндекс.Метрика и Сквозная Аналитика -->
+  <script type="text/javascript">
+    // Идентификатор счетчика Яндекс.Метрики PipePrime (может быть переопределен)
+    window.YM_COUNTER_ID = window.YM_COUNTER_ID || null;
+
+    if (window.YM_COUNTER_ID) {
+      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+      m[i].l=1*new Date();
+      for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+      k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+      ym(window.YM_COUNTER_ID, "init", {
+        clickmap: true,
+        trackLinks: true,
+        accurateTrackBounce: true,
+        webvisor: true
+      });
+    }
+
+    // Универсальный вызов коммерческих целей
+    window.reachGoal = function(target, params) {
+      if (window.YM_COUNTER_ID && typeof window.ym === 'function') {
+        try {
+          window.ym(window.YM_COUNTER_ID, 'reachGoal', target, params);
+        } catch(e) {}
+      }
+      if (window.console && window.console.log) {
+        console.log('[PipePrime Goal]', target, params || {});
+      }
+    };
+  </script>
+
   <!-- Скрипты платформы -->
   <script src="assets/js/catalog-data.js?v=28"></script>
-  <script src="assets/js/app.js?v=53"></script>
+  <script src="assets/js/app.js?v=54"></script>
   {% block extra_scripts %}{% endblock %}
 </body>
 </html>

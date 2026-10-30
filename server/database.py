@@ -52,7 +52,7 @@ def init_db():
             )
         """)
 
-        # Ensure 'manager' and 'updated_at' columns exist
+        # Ensure 'manager', 'updated_at' and UTM columns exist
         cursor.execute("PRAGMA table_info(leads)")
         columns = [row[1] for row in cursor.fetchall()]
         if 'manager' not in columns:
@@ -65,6 +65,12 @@ def init_db():
                 cursor.execute("ALTER TABLE leads ADD COLUMN updated_at TIMESTAMP")
             except sqlite3.OperationalError:
                 pass
+        for utm_col in ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'referrer', 'landing_page']:
+            if utm_col not in columns:
+                try:
+                    cursor.execute(f"ALTER TABLE leads ADD COLUMN {utm_col} TEXT")
+                except sqlite3.OperationalError:
+                    pass
 
         conn.commit()
 
@@ -95,7 +101,14 @@ def create_lead(
     comment: Optional[str] = None,
     items: Optional[List[Dict[str, Any]]] = None,
     total_weight_kg: float = 0.0,
-    file_path: Optional[str] = None
+    file_path: Optional[str] = None,
+    utm_source: Optional[str] = None,
+    utm_medium: Optional[str] = None,
+    utm_campaign: Optional[str] = None,
+    utm_content: Optional[str] = None,
+    utm_term: Optional[str] = None,
+    referrer: Optional[str] = None,
+    landing_page: Optional[str] = None
 ) -> Dict[str, Any]:
     """Insert a new lead record into the database."""
     order_number = generate_order_number(lead_type)
@@ -107,12 +120,16 @@ def create_lead(
             INSERT INTO leads (
                 order_number, lead_type, client_name, phone, email,
                 company, inn, delivery_address, comment, items_json,
-                total_weight_kg, file_path
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                total_weight_kg, file_path,
+                utm_source, utm_medium, utm_campaign, utm_content, utm_term,
+                referrer, landing_page
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """, (
             order_number, lead_type, client_name, phone, email,
             company, inn, delivery_address, comment, items_json,
-            total_weight_kg, file_path
+            total_weight_kg, file_path,
+            utm_source, utm_medium, utm_campaign, utm_content, utm_term,
+            referrer, landing_page
         ))
         lead_id = cursor.lastrowid
         conn.commit()

@@ -115,6 +115,14 @@
         totalWeightKg: totalWeightKg,
         weightPerMeter: weightPerMeter
       };
+
+      if (typeof window.reachGoal === 'function') {
+        window.reachGoal('calc_completed', {
+          diameter: diameter,
+          meters: totalPipeMeters,
+          pipeType: pipeType
+        });
+      }
     },
 
     setVal(id, val) {
@@ -148,6 +156,13 @@
           form: 'Комплект',
           weightM: 1.5
         }, calc.jointsCount);
+      }
+
+      if (typeof window.reachGoal === 'function') {
+        window.reachGoal('calc_added_to_cart', {
+          diameter: calc.diameter,
+          meters: calc.totalMeters
+        });
       }
 
       window.App.showToast('Расчетная спецификация добавлена в корзину');
@@ -200,6 +215,13 @@
         a.click();
         a.remove();
         window.URL.revokeObjectURL(url);
+
+        if (typeof window.reachGoal === 'function') {
+          window.reachGoal('pdf_downloaded', {
+            diameter: calc.diameter,
+            meters: calc.totalMeters
+          });
+        }
 
         if (window.App && window.App.showToast) {
           window.App.showToast('Официальное КП успешно сформировано и скачано');

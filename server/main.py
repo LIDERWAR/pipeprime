@@ -68,6 +68,33 @@ async def health_check():
         "timestamp": datetime.now().isoformat()
     }
 
+def format_utm_lines(utm_data) -> List[str]:
+    """Helper to format marketing attribution tags for Telegram notifications."""
+    lines = []
+    source = getattr(utm_data, 'utm_source', None) or (utm_data.get('utm_source') if isinstance(utm_data, dict) else None)
+    campaign = getattr(utm_data, 'utm_campaign', None) or (utm_data.get('utm_campaign') if isinstance(utm_data, dict) else None)
+    medium = getattr(utm_data, 'utm_medium', None) or (utm_data.get('utm_medium') if isinstance(utm_data, dict) else None)
+    term = getattr(utm_data, 'utm_term', None) or (utm_data.get('utm_term') if isinstance(utm_data, dict) else None)
+    content = getattr(utm_data, 'utm_content', None) or (utm_data.get('utm_content') if isinstance(utm_data, dict) else None)
+    landing = getattr(utm_data, 'landing_page', None) or (utm_data.get('landing_page') if isinstance(utm_data, dict) else None)
+    referrer = getattr(utm_data, 'referrer', None) or (utm_data.get('referrer') if isinstance(utm_data, dict) else None)
+
+    if source or campaign:
+        lines.append("\n🎯 <b>Рекламный источник:</b>")
+        if source:
+            lines.append(f"• Канал: <code>{source} / {medium or 'cpc'}</code>")
+        if campaign:
+            lines.append(f"• Кампания: <code>{campaign}</code>")
+        if term:
+            lines.append(f"• Ключ/Запрос: <code>{term}</code>")
+        if content:
+            lines.append(f"• Объявление: <code>{content}</code>")
+        if landing:
+            lines.append(f"• Посадочная: <code>{landing}</code>")
+    elif referrer:
+        lines.append(f"\n🌐 <b>Переход:</b> {referrer}")
+    return lines
+
 # --- 1. Specification Orders from Cart Drawer ---
 @app.post("/api/leads/specification", response_model=LeadResponse, tags=["Leads"])
 async def create_specification_lead(payload: SpecificationLeadRequest):
@@ -86,7 +113,14 @@ async def create_specification_lead(payload: SpecificationLeadRequest):
         delivery_address=payload.delivery_address,
         comment=payload.comment,
         items=items_dicts,
-        total_weight_kg=payload.total_weight_kg or 0.0
+        total_weight_kg=payload.total_weight_kg or 0.0,
+        utm_source=payload.utm_source,
+        utm_medium=payload.utm_medium,
+        utm_campaign=payload.utm_campaign,
+        utm_content=payload.utm_content,
+        utm_term=payload.utm_term,
+        referrer=payload.referrer,
+        landing_page=payload.landing_page
     )
 
     # Format Telegram Notification
@@ -105,6 +139,8 @@ async def create_specification_lead(payload: SpecificationLeadRequest):
         tg_lines.append("\n<b>Состав спецификации:</b>")
         for idx, itm in enumerate(payload.items, start=1):
             tg_lines.append(f"{idx}. <b>{itm.display_name}</b> | {itm.display_qty} шт./хлыст (Арт: {itm.article or '—'})")
+
+    tg_lines.extend(format_utm_lines(payload))
 
     lead_keyboard = telegram_service.build_lead_inline_keyboard(lead['order_number'], payload.phone)
     await telegram_service.send_message("\n".join(tg_lines), reply_markup=lead_keyboard)
@@ -146,6 +182,13 @@ async def upload_estimate_file(
     company: Optional[str] = Form(None),
     inn: Optional[str] = Form(None),
     comment: Optional[str] = Form(None),
+    utm_source: Optional[str] = Form(None),
+    utm_medium: Optional[str] = Form(None),
+    utm_campaign: Optional[str] = Form(None),
+    utm_content: Optional[str] = Form(None),
+    utm_term: Optional[str] = Form(None),
+    referrer: Optional[str] = Form(None),
+    landing_page: Optional[str] = Form(None),
     file: UploadFile = File(...)
 ):
     """
@@ -182,17 +225,31 @@ async def upload_estimate_file(
         company=company,
         inn=inn,
         comment=comment,
-        file_path=str(target_path)
+        file_path=str(target_path),
+        utm_source=utm_source,
+        utm_medium=utm_medium,
+        utm_campaign=utm_campaign,
+        utm_content=utm_content,
+        utm_term=utm_term,
+        referrer=referrer,
+        landing_page=landing_page
     )
 
-    caption = (
-        f"📎 <b>ПРОЕКТНАЯ СМЕТА НА РАСЧЕТ</b> (<code>{lead['order_number']}</code>)\n"
-        f"<b>Заказчик:</b> {name} | {phone}\n"
-        f"<b>Компания:</b> {company or '—'} (ИНН: {inn or '—'})\n"
-        f"<b>Email:</b> {email or '—'}\n"
-        f"<b>Файл:</b> {file.filename} ({(len(contents)/1024/1024):.2f} МБ)\n"
+    caption_lines = [
+        f"📎 <b>ПРОЕКТНАЯ СМЕТА НА РАСЧЕТ</b> (<code>{lead['order_number']}</code>)\n",
+        f"<b>Заказчик:</b> {name} | {phone}",
+        f"<b>Компания:</b> {company or '—'} (ИНН: {inn or '—'})",
+        f"<b>Email:</b> {email or '—'}",
+        f"<b>Файл:</b> {file.filename} ({(len(contents)/1024/1024):.2f} МБ)",
         f"<b>Комментарий:</b> {comment or '—'}"
-    )
+    ]
+    utm_info = {
+        'utm_source': utm_source, 'utm_medium': utm_medium,
+        'utm_campaign': utm_campaign, 'utm_content': utm_content,
+        'utm_term': utm_term, 'referrer': referrer, 'landing_page': landing_page
+    }
+    caption_lines.extend(format_utm_lines(utm_info))
+    caption = "\n".join(caption_lines)
 
     lead_keyboard = telegram_service.build_lead_inline_keyboard(lead['order_number'], phone)
     await telegram_service.send_document(target_path, caption, reply_markup=lead_keyboard)
@@ -232,16 +289,26 @@ async def request_callback(payload: CallbackLeadRequest):
         lead_type="callback",
         client_name=payload.name,
         phone=payload.phone,
-        comment=payload.comment or payload.topic
+        comment=payload.comment or payload.topic,
+        utm_source=payload.utm_source,
+        utm_medium=payload.utm_medium,
+        utm_campaign=payload.utm_campaign,
+        utm_content=payload.utm_content,
+        utm_term=payload.utm_term,
+        referrer=payload.referrer,
+        landing_page=payload.landing_page
     )
 
-    tg_text = (
-        f"📞 <b>ЗАПРОС ОБРАТНОГО ЗВОНКА</b> (<code>{lead['order_number']}</code>)\n\n"
-        f"<b>Имя:</b> {payload.name}\n"
-        f"<b>Телефон:</b> {payload.phone}\n"
-        f"<b>Тема:</b> {payload.topic or 'Консультация инженера'}\n"
+    tg_lines = [
+        f"📞 <b>ЗАПРОС ОБРАТНОГО ЗВОНКА</b> (<code>{lead['order_number']}</code>)\n",
+        f"<b>Имя:</b> {payload.name}",
+        f"<b>Телефон:</b> {payload.phone}",
+        f"<b>Тема:</b> {payload.topic or 'Консультация инженера'}",
         f"<b>Комментарий:</b> {payload.comment or '—'}"
-    )
+    ]
+    tg_lines.extend(format_utm_lines(payload))
+    tg_text = "\n".join(tg_lines)
+
     lead_keyboard = telegram_service.build_lead_inline_keyboard(lead['order_number'], payload.phone)
     await telegram_service.send_message(tg_text, reply_markup=lead_keyboard)
     await max_service.send_message(tg_text)
@@ -279,7 +346,14 @@ async def request_atr_access(payload: ATRRequest):
         email=payload.email,
         company=payload.company,
         inn=payload.inn,
-        comment=f"Цель: {payload.purpose}"
+        comment=f"Цель: {payload.purpose}",
+        utm_source=payload.utm_source,
+        utm_medium=payload.utm_medium,
+        utm_campaign=payload.utm_campaign,
+        utm_content=payload.utm_content,
+        utm_term=payload.utm_term,
+        referrer=payload.referrer,
+        landing_page=payload.landing_page
     )
 
     token, expires_at = atr_service.create_access_token(
@@ -291,15 +365,17 @@ async def request_atr_access(payload: ATRRequest):
 
     download_url = f"/api/atr/download/{token}"
 
-    tg_text = (
-        f"🔐 <b>ЗАПРОС ДОСТУПА К АТР 2026</b> (<code>{lead['order_number']}</code>)\n\n"
-        f"<b>Инженер:</b> {payload.name}\n"
-        f"<b>Организация:</b> {payload.company} (ИНН: <code>{payload.inn}</code>)\n"
-        f"<b>Телефон:</b> {payload.phone}\n"
-        f"<b>Email:</b> {payload.email}\n"
-        f"<b>Цель:</b> {payload.purpose or 'Проектирование'}\n\n"
+    tg_lines = [
+        f"🔐 <b>ЗАПРОС ДОСТУПА К АТР 2026</b> (<code>{lead['order_number']}</code>)\n",
+        f"<b>Инженер:</b> {payload.name}",
+        f"<b>Организация:</b> {payload.company} (ИНН: <code>{payload.inn}</code>)",
+        f"<b>Телефон:</b> {payload.phone}",
+        f"<b>Email:</b> {payload.email}",
+        f"<b>Цель:</b> {payload.purpose or 'Проектирование'}\n",
         f"<i>Сгенерирован временный токен доступа (24ч):</i> <code>{token[:12]}...</code>"
-    )
+    ]
+    tg_lines.extend(format_utm_lines(payload))
+    tg_text = "\n".join(tg_lines)
     lead_keyboard = telegram_service.build_lead_inline_keyboard(lead['order_number'], payload.phone)
     await telegram_service.send_message(tg_text, reply_markup=lead_keyboard)
     await max_service.send_message(tg_text)
