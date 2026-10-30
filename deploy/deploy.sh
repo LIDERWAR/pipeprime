@@ -36,7 +36,7 @@ mkdir -p server/data server/storage/uploads server/storage/protected
 if [ "$MODE" = "docker" ]; then
     echo "🐳 Building and restarting Docker containers..."
     docker compose down --remove-orphans || true
-    docker compose build --pull
+    docker compose build
     docker compose up -d
 
     echo "⏳ Waiting for health check..."
